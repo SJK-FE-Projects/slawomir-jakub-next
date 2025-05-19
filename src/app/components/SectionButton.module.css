@@ -1,0 +1,23 @@
+.button {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    /* fully pill-shaped */
+    border: 1px solid #000;
+    /* optional border to match the shape */
+    font-size: 0.875rem;
+    /* adjust as needed */
+    line-height: 1;
+    cursor: pointer;
+    user-select: none;
+    background: transparent;
+    /* default: no bg */
+    color: inherit;
+}
+
+.selected {
+    background: #000;
+    /* black bg when selected */
+    color: #fff;
+    /* white text */
+}
