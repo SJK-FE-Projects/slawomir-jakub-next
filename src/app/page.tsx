@@ -10,8 +10,8 @@ export default function Home() {
       <main className={styles.main}>
         <MenuButton />
         <HeaderBar
-          headline="Hej I'm Slawomir Jakub Krzyzak"
-          subheadline="UI/UX designer and Web Developer"
+          headline="Hej! I'm Slawomir Jakub Krzyzak"
+          subheadline="Web Designer and Developer. Born in PL. Made in EU."
           sections={["Section 1", "Section 2", "Section 3"]}
         />
       </main>

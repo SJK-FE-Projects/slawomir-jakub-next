@@ -1,8 +1,18 @@
+@font-face {
+    font-family: 'Vegan';
+    src: url('/VeganRegular.otf') format('opentype');
+
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --background: #ffffff;
     --foreground: #171717;
-    --co-black-transparent: rgba(22, 22, 22, 0.12);
+    --cod-black-transparent: rgba(22, 22, 22, 0.12);
     --cod-black: #161616;
+    --alabaster-gray: #F8F8F8;
 }
 
 h1 {
@@ -12,7 +22,7 @@ h1 {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    letter-spacing: -0.94px;
+    letter-spacing: -1.94px;
 }
 
 h2 {
@@ -22,7 +32,19 @@ h2 {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    letter-spacing: -0.72px;
+    letter-spacing: -1.72px;
+}
+
+.text-large {
+    color: var(--cod-black, #161616);
+    /* TextLarge */
+    font-family: Vegan;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    /* 40px */
+    letter-spacing: -0.4px;
 }
 
 @media (prefers-color-scheme: dark) {
