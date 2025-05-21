@@ -12,28 +12,36 @@ type BaseProps = {
 
 type LargeProps = BaseProps & {
   variant: "large";
-  /** main body text */
-  text: string;
+  /** main body text items */
+  text: string[];
 };
 
 type DateProps = BaseProps & {
   variant: "date";
-  /** position or role title */
-  title: string;
-  /** date string (e.g. “Jan 2020 – Mar 2022”) */
-  date: string;
-  /** company name */
-  company: string;
-  /** description copy */
-  description: string;
+
+  /** array of experience items */
+  items: Array<{
+    /** position or role title */
+    title: string;
+    /** date string (e.g. "Jan 2020 – Mar 2022") */
+    date: string;
+    /** company name */
+    company: string;
+    /** description copy */
+    description: string;
+  }>;
 };
 
 type SkillsProps = BaseProps & {
   variant: "skills";
-  /** heading for this skill block */
-  title: string;
-  /** descriptive text under the heading */
-  description: string;
+
+  /** array of skill items */
+  items: Array<{
+    /** heading for this skill block */
+    title: string;
+    /** descriptive text under the heading */
+    description: string;
+  }>;
 };
 
 export type TextBlockProps = LargeProps | DateProps | SkillsProps;
@@ -49,7 +57,13 @@ export default function TextBlock(props: TextBlockProps) {
             <SectionButton text={sectionLabel} selected={false} />
           </div>
           <div className={styles.contentContainer}>
-            <div className="textLarge">{props.text}</div>
+            {props.text.map((text, index) => (
+              <div
+                key={index}
+                className="textLarge"
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            ))}
           </div>
         </div>
       );
@@ -62,12 +76,19 @@ export default function TextBlock(props: TextBlockProps) {
             <SectionButton text={sectionLabel} selected={false} />
           </div>
           <div className={styles.contentContainer}>
-            <div className="textLarge">{props.title}</div>
-            <div className={styles.meta}>
-              <div className="textRegular">{props.date}</div>
-              <div className="textRegular">{props.company}</div>
-            </div>
-            <div className="textDefault">{props.description}</div>
+            {props.items.map((item, index) => (
+              <div key={index} className={styles.dateItem}>
+                <div className="textLarge">{item.title}</div>
+                <div className={styles.meta}>
+                  <div className="textRegular">{item.date}</div>
+                  <div className="textRegular">{item.company}</div>
+                </div>
+                <div
+                  className="textDefault"
+                  dangerouslySetInnerHTML={{ __html: item.description }}
+                />
+              </div>
+            ))}
           </div>
         </div>
       );
@@ -80,8 +101,15 @@ export default function TextBlock(props: TextBlockProps) {
             <SectionButton text={sectionLabel} selected={false} />
           </div>
           <div className={styles.contentContainer}>
-            <div className="textLarge">{props.title}</div>
-            <div className="textDefault">{props.description}</div>
+            {props.items.map((item, index) => (
+              <div key={index} className={styles.skillItem}>
+                <div className="textLarge">{item.title}</div>
+                <div
+                  className="textDefault"
+                  dangerouslySetInnerHTML={{ __html: item.description }}
+                />
+              </div>
+            ))}
           </div>
         </div>
       );

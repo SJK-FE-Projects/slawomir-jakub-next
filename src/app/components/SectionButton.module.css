@@ -11,7 +11,28 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    box-sizing: content-box;
+}
 
+.button:focus {
+    outline: 1px solid var(--cod-black);
+    outline-offset: -1px;
+    box-shadow: none;
+}
+
+.button:active {
+    outline: 1px solid var(--cod-black);
+    outline-offset: -1px;
+    transform: none;
+    box-shadow: none;
 }
 
 .selected {

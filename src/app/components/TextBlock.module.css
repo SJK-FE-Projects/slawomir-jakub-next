@@ -5,7 +5,6 @@
     background-color: var(--Neutral-Alabaster-Gray, #F8F8F8);
     padding: 1rem;
     border-radius: 8px;
-
 }
 
 .sectionButtonContainer {
@@ -19,7 +18,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 1.5rem;
 }
 
 /* large text */
@@ -40,27 +39,28 @@
 }
 
 /* date variant */
-.dateBlock .title {
-    font-weight: 600;
+.dateItem {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.dateBlock .meta {
+.dateItem .meta {
     display: flex;
-    gap: 8px;
+    flex-direction: column;
+    gap: 4px;
     color: var(--Neutral-Cod-Black, #161616);
 }
 
-.dateBlock .description {
-    margin-top: 8px;
-    font-size: 16px;
-}
-
 /* skills variant */
-.skillsBlock .title {
-    font-weight: 600;
-    margin-bottom: 8px;
+.skillItem {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.skillsBlock .description {
-    font-size: 16px;
+.skillItem .title {
+    font-weight: 600;
 }
