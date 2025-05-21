@@ -1,0 +1,66 @@
+.block {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    background-color: var(--Neutral-Alabaster-Gray, #F8F8F8);
+    padding: 1rem;
+    border-radius: 8px;
+
+}
+
+.sectionButtonContainer {
+    flex: 1;
+    /* Takes 1/4 of the space */
+}
+
+.contentContainer {
+    flex: 3;
+    /* Takes 3/4 of the space */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+/* large text */
+.textLarge {
+    composes: h1 from global;
+}
+
+/* regular text */
+.textRegular {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* default text */
+.textDefault {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* date variant */
+.dateBlock .title {
+    font-weight: 600;
+}
+
+.dateBlock .meta {
+    display: flex;
+    gap: 8px;
+    color: var(--Neutral-Cod-Black, #161616);
+}
+
+.dateBlock .description {
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+/* skills variant */
+.skillsBlock .title {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.skillsBlock .description {
+    font-size: 16px;
+}

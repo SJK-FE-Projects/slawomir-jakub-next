@@ -35,7 +35,7 @@ h2 {
     letter-spacing: -1.72px;
 }
 
-.text-large {
+.textLarge {
     color: var(--cod-black, #161616);
     /* TextLarge */
     font-family: Vegan;
@@ -45,6 +45,30 @@ h2 {
     line-height: 100%;
     /* 40px */
     letter-spacing: -0.4px;
+}
+
+.textRegular {
+    color: var(--cod-Black, #161616);
+    /* TextRegular */
+    font-family: Vegan;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    /* 32px */
+    letter-spacing: -0.32px;
+}
+
+.textDefault {
+    color: var(--cod-Black, #161616);
+    /* TextDefault */
+    font-family: Vegan;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    /* 28px */
+    letter-spacing: -0.28px;
 }
 
 @media (prefers-color-scheme: dark) {

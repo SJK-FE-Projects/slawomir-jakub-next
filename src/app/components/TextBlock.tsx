@@ -1,93 +1,90 @@
 // src/components/TextBlock.tsx
 import React from "react";
+import SectionButton from "./SectionButton";
 import styles from "./TextBlock.module.css";
 
 type BaseProps = {
-  /** common styling/layout props */
+  /** text for the SectionButton */
+  sectionLabel: string;
+  /** optional class override */
   className?: string;
 };
 
 type LargeProps = BaseProps & {
   variant: "large";
+  /** main body text */
   text: string;
-  actionLabel: string;
-  onActionClick?: () => void;
 };
 
 type DateProps = BaseProps & {
   variant: "date";
+  /** position or role title */
   title: string;
-  dateFrom: string;
-  dateTo?: string;
+  /** date string (e.g. “Jan 2020 – Mar 2022”) */
+  date: string;
+  /** company name */
+  company: string;
+  /** description copy */
   description: string;
 };
 
 type SkillsProps = BaseProps & {
   variant: "skills";
-  label: string;
-  items: string[];
+  /** heading for this skill block */
+  title: string;
+  /** descriptive text under the heading */
+  description: string;
 };
 
-type ClientsProps = BaseProps & {
-  variant: "clients";
-  region: string;
-  clients: string[];
-};
-
-export type TextBlockProps =
-  | LargeProps
-  | DateProps
-  | SkillsProps
-  | ClientsProps;
+export type TextBlockProps = LargeProps | DateProps | SkillsProps;
 
 export default function TextBlock(props: TextBlockProps) {
+  const { sectionLabel, className } = props;
+
   switch (props.variant) {
-    case "large":
-      const { text, actionLabel, onActionClick, className } = props;
+    case "large": {
       return (
         <div className={`${styles.block} ${className ?? ""}`}>
-          <button className={styles.actionButton} onClick={onActionClick}>
-            {actionLabel}
-          </button>
-          <div className={styles.textLarge}>{text}</div>
-        </div>
-      );
-
-    case "date":
-      const { title, dateFrom, dateTo, description } = props;
-      return (
-        <div className={styles.block}>
-          <div className={styles.title}>{title}</div>
-          <div className={styles.date}>
-            {dateFrom}
-            {dateTo ? `—${dateTo}` : ""}
+          <div className={styles.sectionButtonContainer}>
+            <SectionButton text={sectionLabel} selected={false} />
           </div>
-          <div className={styles.desc}>{description}</div>
+          <div className={styles.contentContainer}>
+            <div className="textLarge">{props.text}</div>
+          </div>
         </div>
       );
+    }
 
-    case "skills":
+    case "date": {
       return (
-        <div className={styles.block}>
-          <div className={styles.title}>{props.label}</div>
-          <ul className={styles.list}>
-            {props.items.map((s) => (
-              <li key={s}>{s}</li>
-            ))}
-          </ul>
+        <div className={`${styles.block} ${className ?? ""}`}>
+          <div className={styles.sectionButtonContainer}>
+            <SectionButton text={sectionLabel} selected={false} />
+          </div>
+          <div className={styles.contentContainer}>
+            <div className="textLarge">{props.title}</div>
+            <div className={styles.meta}>
+              <div className="textRegular">{props.date}</div>
+              <div className="textRegular">{props.company}</div>
+            </div>
+            <div className="textDefault">{props.description}</div>
+          </div>
         </div>
       );
+    }
 
-    case "clients":
+    case "skills": {
       return (
-        <div className={styles.block}>
-          <div className={styles.title}>{props.region}</div>
-          <ul className={styles.list}>
-            {props.clients.map((c) => (
-              <li key={c}>{c}</li>
-            ))}
-          </ul>
+        <div className={`${styles.block} ${className ?? ""}`}>
+          <div className={styles.sectionButtonContainer}>
+            <SectionButton text={sectionLabel} selected={false} />
+          </div>
+          <div className={styles.contentContainer}>
+            <div className="textLarge">{props.title}</div>
+            <div className="textDefault">{props.description}</div>
+          </div>
         </div>
       );
+    }
   }
 }
