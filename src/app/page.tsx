@@ -11,7 +11,9 @@ export default function Home() {
       {" "}
       <main className={styles.main}>
         {" "}
-        <MenuButton />{" "}
+        <div className={styles.menuButton}>
+          <MenuButton />{" "}
+        </div>
         <HeaderBar
           headline="Hej! I'm Slawomir Jakub Krzyzak"
           subheadline="Web Designer and Developer. Born in PL. Made in EU."
