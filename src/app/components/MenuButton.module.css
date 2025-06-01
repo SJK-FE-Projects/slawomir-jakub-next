@@ -27,6 +27,8 @@
     gap: 1rem;
     display: inline-flex;
     align-items: center;
+    justify-content: start;
+
     width: 100%;
 }
 

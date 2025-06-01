@@ -3,3 +3,13 @@
     width: 100%;
     max-width: 100svw;
 }
+
+.sectionButtonsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    width: 100%;
+}

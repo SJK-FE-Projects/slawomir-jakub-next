@@ -1,5 +1,6 @@
 import React from "react";
 import SectionButton from "./SectionButton";
+import styles from "./HeaderBar.module.css";
 
 type HeaderBarProps = {
   headline: string;
@@ -20,7 +21,7 @@ const HeaderBar: React.FC<HeaderBarProps> = ({
         <h1>{headline}</h1>
         <h2>{subheadline}</h2>
       </div>
-      <div style={{ marginTop: "1rem", display: "flex", gap: "0.5rem" }}>
+      <div className={styles.sectionButtonsContainer}>
         {sections.map((section, idx) => (
           <SectionButton key={idx} text={section} selected={false} />
         ))}
