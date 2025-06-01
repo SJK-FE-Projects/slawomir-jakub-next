@@ -2,8 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-
+    width: 100%;
 }
 
 .main {
@@ -13,14 +12,12 @@
     gap: 1rem;
     padding-top: 80px;
     width: 100%;
-
-
 }
 
 .menuButton {
     position: fixed;
+    z-index: 2000;
     top: 1rem;
-
 }
 
 .projectGrid {

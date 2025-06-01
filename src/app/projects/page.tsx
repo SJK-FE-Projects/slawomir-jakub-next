@@ -26,17 +26,26 @@ export default function ProjectsPage() {
   const projects: Project[] = [
     {
       id: "1",
-      title: "Project 1",
-      roles: "Role 1, Role 2, Role 3",
+      title: "PORSCHE",
+      roles: "UX / Screen Design / Web Flow",
       year: "2024",
-      description: "Description of project 1",
+      description:
+        "Web flow and screen design for PORSCHE. The backlog UI of the rental system for test drives.",
       images: [
         {
           src: "/projectImages/jim2.jpg",
           alt: "Project 1 image",
         },
+        {
+          src: "/projectImages/jim2.jpg",
+          alt: "Project 1 image",
+        },
+        {
+          src: "/projectImages/jim2.jpg",
+          alt: "Project 1 image",
+        },
       ],
-      sectionLabel: "Cultural",
+      sectionLabel: "Business",
       width: 4,
       pull: 1,
       marginTop: 0,
@@ -48,6 +57,14 @@ export default function ProjectsPage() {
       year: "2024",
       description: "Description of project 2",
       images: [
+        {
+          src: "/projectImages/jim2.jpg",
+          alt: "Project 2 image",
+        },
+        {
+          src: "/projectImages/jim2.jpg",
+          alt: "Project 2 image",
+        },
         {
           src: "/projectImages/jim2.jpg",
           alt: "Project 2 image",
