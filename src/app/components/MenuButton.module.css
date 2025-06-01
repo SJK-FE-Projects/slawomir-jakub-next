@@ -23,7 +23,11 @@
 }
 
 .menuContainer {
-    position: relative;
+    position: sticky;
+    gap: 1rem;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
 }
 
 .menuButton {
@@ -43,6 +47,8 @@
     outline: none;
     box-sizing: content-box;
     cursor: pointer;
+    z-index: 2000;
+    ;
 }
 
 .menuButton:focus {

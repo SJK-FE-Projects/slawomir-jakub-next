@@ -85,7 +85,7 @@ export default function Home() {
             {
               title: "C Programming Bootcamp",
               date: "2024",
-              company: "42 BERLIN, (DE)",
+              company: "42 Berlin, (DE)",
               description: "",
             },
             {

@@ -1,6 +1,6 @@
 import SectionButton from "./SectionButton";
 import Image from "next/image";
-import styles from "../projects/project.module.css";
+import styles from "./projectBlock.module.css";
 
 type ProjectImage = {
   /** Image source, imported using next/image or require */
@@ -22,12 +22,6 @@ export type ProjectBlockProps = {
   images: ProjectImage[];
   /** Text for the SectionButton */
   sectionLabel: string;
-  /** Width of the project block (3-6 columns) */
-  width?: 3 | 4 | 5 | 6;
-  /** Starting column (1-3) */
-  pull?: 1 | 2 | 3;
-  /** Top margin in pixels (can be negative) */
-  marginTop?: number;
   /** Optional class override */
   className?: string;
 };
@@ -39,29 +33,24 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
   description,
   images,
   sectionLabel,
-  width = 6,
-  pull = 1,
-  marginTop = 0,
   className,
 }) => {
-  const blockStyle = {
-    marginTop: `${marginTop}px`,
-    gridColumn: `span ${width}`,
-    gridColumnStart: pull,
-  };
-
   return (
-    <div
-      className={`${styles.projectBlock} ${className ?? ""}`}
-      style={blockStyle}
-    >
-      <div className="textCaption">{year}</div>
-      <div className="textRegular">{title}</div>
-      <div
-        className="textDefault"
-        dangerouslySetInnerHTML={{ __html: description }}
-      />
-      <SectionButton text={sectionLabel} selected={false} />
+    <div className={`${styles.projectBlock} ${className ?? ""}`}>
+      <div className={styles.projectContent}>
+        <div className="textCaption"> — {year}</div>
+        <div className={styles.factsContent}>
+          <span className="textCaption">{roles}</span>
+          <SectionButton text={sectionLabel} selected={false} />
+        </div>
+        <div className="textRegular">{title}</div>
+        <div
+          className="textDefault"
+          dangerouslySetInnerHTML={{
+            __html: description,
+          }}
+        />
+      </div>
       {images.length > 0 && (
         <div
           style={{
@@ -75,7 +64,10 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
             src={images[0].src}
             alt={images[0].alt}
             fill
-            style={{ objectFit: "cover" }}
+            style={{
+              objectFit: "cover",
+              borderRadius: "1rem",
+            }}
             priority
           />
         </div>
