@@ -47,7 +47,7 @@ export default function ProjectsPage() {
       ],
       sectionLabel: "Business",
       width: 4,
-      pull: 1,
+      pull: 3,
       marginTop: 0,
     },
     {
@@ -71,8 +71,8 @@ export default function ProjectsPage() {
         },
       ],
       sectionLabel: "Cultural",
-      width: 4,
-      pull: 1,
+      width: 3,
+      pull: 2,
       marginTop: -50,
     },
     {
@@ -88,8 +88,8 @@ export default function ProjectsPage() {
         },
       ],
       sectionLabel: "Cultural",
-      width: 3,
-      pull: 3,
+      width: 4,
+      pull: 1,
       marginTop: -50,
     },
   ];
@@ -111,7 +111,9 @@ export default function ProjectsPage() {
           {projects.map((project) => (
             <div
               key={project.id}
-              className={`${styles[`width3`]} ${styles[`pull0`]}`}
+              className={`${styles[`width${project.width}`]} ${
+                styles[`pull${project.pull}`]
+              }`}
             >
               <Link
                 href={`/projects/${project.id}`}
@@ -126,6 +128,9 @@ export default function ProjectsPage() {
                   sectionLabel={project.sectionLabel}
                 />
               </Link>
+              {/* <p>
+                {`pull${project.pull}`} {[`width${project.width}`]}{" "}
+              </p> */}
             </div>
           ))}
         </div>
