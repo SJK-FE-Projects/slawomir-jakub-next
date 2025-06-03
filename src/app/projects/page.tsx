@@ -66,7 +66,7 @@ export default function ProjectsPage() {
           alt: "Project 2 image",
         },
         {
-          src: "/projectImages/jim2.jpg",
+          src: "/projectImages/Porsche3.jpg",
           alt: "Project 2 image",
         },
       ],
@@ -83,7 +83,7 @@ export default function ProjectsPage() {
       description: "Description of project 3",
       images: [
         {
-          src: "/projectImages/jim2.jpg",
+          src: "/projectImages/Porsche3.jpg",
           alt: "Project 3 image",
         },
       ],

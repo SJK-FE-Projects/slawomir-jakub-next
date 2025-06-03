@@ -65,8 +65,9 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
             alt={images[0].alt}
             fill
             style={{
-              objectFit: "cover",
+              objectFit: "fill",
               borderRadius: "1rem",
+              width: "100%",
             }}
             priority
           />
