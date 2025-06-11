@@ -13,6 +13,8 @@ type Project = {
   images: {
     src: string;
     alt: string;
+    width?: number;
+    pull?: number;
   }[];
   sectionLabel: string;
   width: 3 | 4 | 5 | 6;
@@ -60,14 +62,20 @@ export default function ProjectsPage() {
         {
           src: "/projectImages/jim2.jpg",
           alt: "Project 2 image",
+          width: 4,
+          pull: 1,
         },
         {
           src: "/projectImages/jim2.jpg",
           alt: "Project 2 image",
+          width: 3,
+          pull: 3,
         },
         {
           src: "/projectImages/Porsche3.jpg",
           alt: "Project 2 image",
+          width: 4,
+          pull: 2,
         },
       ],
       sectionLabel: "Cultural",
@@ -85,6 +93,8 @@ export default function ProjectsPage() {
         {
           src: "/projectImages/Porsche3.jpg",
           alt: "Project 3 image",
+          width: 3,
+          pull: 2,
         },
       ],
       sectionLabel: "Cultural",

@@ -3,27 +3,22 @@ import Image from "next/image";
 import styles from "./projectBlock.module.css";
 
 type ProjectImage = {
-  /** Image source, imported using next/image or require */
   src: string;
-  /** Alt text for accessibility */
   alt: string;
+  width?: number;
+  pull?: number;
 };
 
 export type ProjectBlockProps = {
-  /** Project title */
   title: string;
-  /** Year or date string */
   year: string;
-  /** Project roles */
   roles: string;
-  /** Project description (can contain HTML) */
   description: string;
-  /** Array of images (imported locally) */
   images: ProjectImage[];
-  /** Text for the SectionButton */
   sectionLabel: string;
-  /** Optional class override */
   className?: string;
+  width?: 3 | 4 | 5 | 6;
+  pull?: 1 | 2 | 3;
 };
 
 const ProjectBlock: React.FC<ProjectBlockProps> = ({
@@ -52,25 +47,36 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
         />
       </div>
       {images.length > 0 && (
-        <div
-          style={{
-            marginTop: "1rem",
-            position: "relative",
-            width: "100%",
-            aspectRatio: "16/9",
-          }}
-        >
-          <Image
-            src={images[0].src}
-            alt={images[0].alt}
-            fill
-            style={{
-              objectFit: "fill",
-              borderRadius: "1rem",
-              width: "100%",
-            }}
-            priority
-          />
+        <div className={styles.imagesGrid}>
+          {images.map((img, idx) => (
+            <div
+              key={idx}
+              className={`${styles[`width${img.width}`]} ${
+                styles[`pull${img.pull}`]
+              }`}
+              style={{
+                marginTop: "1rem",
+                position: "relative",
+                width: "100%",
+                height: "auto",
+              }}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                layout="responsive"
+                width={16}
+                height={9}
+                style={{
+                  objectFit: "contain",
+                  borderRadius: "1rem",
+                  width: "100%",
+                  height: "auto",
+                }}
+                priority
+              />
+            </div>
+          ))}
         </div>
       )}
     </div>
