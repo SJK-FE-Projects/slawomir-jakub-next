@@ -6,7 +6,10 @@ import SectionButton from "../components/SectionButton";
 import styles from "./projects.module.css";
 import MenuButton from "../components/MenuButton";
 import HeaderBar from "../components/HeaderBar";
-import { useFluidElement } from "../hooks/useFluidLoading";
+import {
+  useIntersectionObserver,
+  useElementAnimation,
+} from "../hooks/useIntersectionObserver";
 
 type Project = {
   id: string;
@@ -27,22 +30,29 @@ type Project = {
 };
 
 export default function ProjectsPage() {
-  // Component for single project with fluid animation
+  // Component for single project with animation
   const ProjectContainer = ({ project }: { project: Project }) => {
-    const projectRef = useFluidElement();
-    const contentRef = useFluidElement();
+    const [ref, isIntersecting, initialMarginTop] = useIntersectionObserver();
+    const [contentRef, contentInView, contentMarginTop] = useElementAnimation();
 
     return (
       <div
+        ref={ref}
         className={`${styles.projectGrid} ${styles[project.marginTopClass]}`}
-        id={project.id}
+        style={{
+          marginTop: isIntersecting ? "0px" : `${initialMarginTop}px`,
+          transition: "margin-top 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        }}
       >
-        {/* Project content with fluid animation */}
+        {/* Project content - spans according to project width/pull */}
         <div
-          ref={contentRef as React.RefObject<HTMLDivElement>}
+          ref={contentRef}
           className={`${styles[`width${project.width}`]} ${
             styles[`pull${project.pull}`]
-          } section`}
+          } ${styles.elementAnimation} ${contentInView ? styles.inView : ""}`}
+          style={{
+            marginTop: contentInView ? "0px" : `${contentMarginTop}px`,
+          }}
         >
           <div className="textCaption"> — {project.year}</div>
           <div className={styles.factsContent}>
@@ -58,18 +68,23 @@ export default function ProjectsPage() {
           />
         </div>
 
-        {/* Each image gets its own grid position and fluid animation */}
+        {/* Each image gets its own grid position and animation */}
         {project.images.map((img, idx) => {
-          const ImageWithFluidAnimation = () => {
-            const imgRef = useFluidElement();
+          const ImageWithAnimation = () => {
+            const [imgRef, imgInView, imgMarginTop] = useElementAnimation();
 
             return (
               <div
                 key={`${project.id}-img-${idx}`}
-                ref={imgRef as React.RefObject<HTMLDivElement>}
+                ref={imgRef}
                 className={`${styles[`width${img.width || 3}`]} ${
                   styles[`pull${img.pull || 1}`]
-                } section`}
+                } ${styles.elementAnimation} ${imgInView ? styles.inView : ""}`}
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  marginTop: imgInView ? "0px" : `${imgMarginTop}px`,
+                }}
               >
                 <Image
                   src={img.src}
@@ -88,7 +103,7 @@ export default function ProjectsPage() {
             );
           };
 
-          return <ImageWithFluidAnimation key={`${project.id}-img-${idx}`} />;
+          return <ImageWithAnimation key={`${project.id}-img-${idx}`} />;
         })}
       </div>
     );

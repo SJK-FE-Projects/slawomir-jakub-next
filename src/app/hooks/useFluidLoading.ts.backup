@@ -1,0 +1,126 @@
+
+"use client";
+
+import { useEffect, useRef } from 'react';
+
+// EXACT copy of fluid.js reference implementation
+let fluidLoading: any = {};
+
+// Global variables (exactly like reference)
+let $section: NodeListOf<Element>;
+let settings: any, defaultSettings = { classes: "section" };
+let scrollPos = 0;
+let direction = 0;
+
+function init(sett?: any) {
+	settings = Object.assign(defaultSettings, sett);
+	setElements();
+	setEvents();
+}
+
+function setElements() {
+	$section = document.querySelectorAll('.' + settings.classes);
+}
+
+function setEvents() {
+	// Assign random classes (EXACTLY like reference)
+	$section.forEach(function (item, key) {
+		const random = Math.ceil(Math.random() * 10);
+		(item as HTMLElement).classList.add('temp-' + random);
+	});
+
+	checkVisible();
+
+	// Scroll and resize listeners (EXACTLY like reference)
+	document.addEventListener('scroll', function (e) {
+		checkVisible();
+	});
+
+	document.addEventListener('resize', function (e) {
+		checkVisible();
+	});
+
+	// Scroll direction tracking (EXACTLY like reference)
+	document.addEventListener('scroll', function () {
+		if ((document.body.getBoundingClientRect()).top > scrollPos) {
+			document.dispatchEvent(new CustomEvent('scroll:up'));
+		} else {
+			document.dispatchEvent(new CustomEvent('scroll:down'));
+		}
+		scrollPos = (document.body.getBoundingClientRect()).top;
+	});
+
+	document.addEventListener('scroll:up', function () {
+		direction = 1;
+	});
+
+	document.addEventListener('scroll:down', function () {
+		direction = 0;
+	});
+}
+
+function checkVisible() {
+	const windowHeight = window.innerHeight;
+	const scrollTop = window.scrollY;
+
+	$section.forEach(function (item, key) {
+		const element = item as HTMLElement;
+		const itemTop = element.offsetTop;
+		const itemHeight = element.offsetHeight;
+
+		// EXACT logic from reference implementation
+		if ((itemTop + itemHeight * .7 - scrollTop) >= 0 && (itemTop) <= (scrollTop + windowHeight) || scrollTop === 0) {
+			element.classList.add('active');
+			element.classList.remove('bottom');
+			element.classList.remove('top');
+		} else {
+			element.classList.remove('active');
+		}
+
+		if ((itemTop + itemHeight * .7 - scrollTop) < 100 && scrollTop > 0) {
+			element.classList.add('top');
+			element.classList.remove('bottom');
+			element.classList.remove('active');
+		}
+
+		if ((itemTop) > scrollTop + windowHeight) {
+			element.classList.add('bottom');
+			element.classList.remove('top');
+			element.classList.remove('active');
+		}
+	});
+}
+
+fluidLoading = {
+	init: init
+};
+
+// React hook to initialize the exact reference implementation
+export const useFluidLoading = (className: string = 'section') => {
+	useEffect(() => {
+		// Initialize with exact reference code
+		fluidLoading.init({ classes: className });
+
+		// No cleanup needed as reference doesn't have it
+		return () => {
+			// Minimal cleanup
+			document.removeEventListener('scroll', checkVisible);
+			document.removeEventListener('resize', checkVisible);
+		};
+	}, [className]);
+};
+
+// Hook for individual elements (simplified version that just assigns classes)
+export const useFluidElement = () => {
+	const ref = useRef<HTMLDivElement>(null);
+	const randomClass = useRef(`temp-${Math.ceil(Math.random() * 10)}`);
+
+	useEffect(() => {
+		if (ref.current) {
+			// Add section class and random temp class
+			ref.current.classList.add('section', randomClass.current);
+		}
+	}, []);
+
+	return ref;
+};

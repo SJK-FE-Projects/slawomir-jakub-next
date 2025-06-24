@@ -20,6 +20,31 @@
     top: 1rem;
 }
 
+.projectsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 100%;
+    margin-top: 6rem;
+    /* Stały margin-top dla całego kontenera projektów */
+}
+
+/* Margin Top Classes - teraz dla poszczególnych projektów */
+.marginDefault {
+    margin-top: 4rem;
+    /* Stały margin między projektami */
+}
+
+.marginNegative {
+    margin-top: -2rem;
+    /* Negatywny margines dla niektórych projektów */
+}
+
+.marginLarge {
+    margin-top: 8rem;
+    /* Większy margines dla niektórych projektów */
+}
+
 .projectGrid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -72,6 +97,22 @@
     grid-column: 1 / span 6;
 }
 
+.width6.pull2 {
+    grid-column: 2 / span 6;
+}
+
+.width6.pull3 {
+    grid-column: 3 / span 6;
+}
+
+.factsContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
 /* Project block styles */
 
 .projectLink {
@@ -85,3 +126,74 @@
 .projectLink:hover {
     opacity: 0.8;
 }
+
+/* Fluid Loading System - EXACT reference implementation (NO sticky behavior) */
+
+/* Section base class - only transition for margin-top */
+.section {
+    transition: margin-top 0.8s ease-out;
+}
+
+/* Ensure section elements work with fluid.css */
+.section {
+    /* Każdy element z klasą section będzie miał fluid animację */
+    position: relative;
+}
+
+/* Override grid-specific margin issues */
+.projectGrid .section {
+    /* Zapewnij że fluid animacje nie interferują z CSS margin */
+    margin-top: 0 !important;
+}
+
+/* Random classes with different margin-tops - these are ALWAYS applied */
+.temp-1 {
+    margin-top: 50px;
+}
+
+.temp-2 {
+    margin-top: 100px;
+}
+
+.temp-3 {
+    margin-top: 150px;
+}
+
+.temp-4 {
+    margin-top: 200px;
+}
+
+.temp-5 {
+    margin-top: 75px;
+}
+
+.temp-6 {
+    margin-top: 125px;
+}
+
+.temp-7 {
+    margin-top: 175px;
+}
+
+.temp-8 {
+    margin-top: 60px;
+}
+
+.temp-9 {
+    margin-top: 110px;
+}
+
+.temp-10 {
+    margin-top: 160px;
+}
+
+/* ONLY when active, override margin-top to 0 */
+.section.active {
+    margin-top: 0px !important;
+}
+
+/* The reference implementation DOES revert when leaving viewport */
+/* This creates the "jumping" effect which is the original behavior */
+
+/* In the reference implementation, .top and .bottom classes are added but have no visual effect */
+/* They're just state tracking classes for potential future use */

@@ -10,6 +10,8 @@
 * {
     margin: o;
     padding: 0;
+    scroll-behavior: smooth;
+
 }
 
 :root {
