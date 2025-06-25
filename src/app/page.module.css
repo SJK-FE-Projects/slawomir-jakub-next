@@ -9,14 +9,20 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 1rem;
     padding-top: 80px;
     width: 100%;
-
 }
 
 .menuButton {
     position: fixed;
     z-index: 2000;
     top: 1rem;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 6rem;
 }
