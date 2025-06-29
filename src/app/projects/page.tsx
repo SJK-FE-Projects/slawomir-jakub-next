@@ -6,6 +6,7 @@ import SectionButton from "../components/SectionButton";
 import styles from "./projects.module.css";
 import MenuButton from "../components/MenuButton";
 import HeaderBar from "../components/HeaderBar";
+import MediaElement from "../components/MediaElement";
 import { useFluidElement } from "../hooks/useFluidLoading";
 
 type Project = {
@@ -71,7 +72,7 @@ export default function ProjectsPage() {
                   styles[`pull${img.pull || 1}`]
                 } section`}
               >
-                <Image
+                <MediaElement
                   src={img.src}
                   alt={img.alt}
                   width={800}
@@ -94,7 +95,7 @@ export default function ProjectsPage() {
     );
   };
 
-  // Example projects data
+  // Example projects data with real media files
   const projects: Project[] = [
     {
       id: "1",
@@ -109,51 +110,58 @@ export default function ProjectsPage() {
       marginTopClass: "marginDefault",
       images: [
         {
-          src: "/projectImages/jim2.jpg",
-          alt: "Project 1 image",
+          src: "/projectImages/P1/Porsche1-2.jpg",
+          alt: "Porsche UI Design",
           width: 5,
           pull: 1,
         },
         {
-          src: "/projectImages/jim2.jpg",
-          alt: "Project 1 image",
+          src: "/projectImages/P1/PorscheLogin2.mp4",
+          alt: "Porsche Login Animation",
           width: 4,
           pull: 3,
         },
         {
-          src: "/projectImages/jim2.jpg",
-          alt: "Project 1 image",
+          src: "/projectImages/P1/Porsche2A-2.jpg",
+          alt: "Porsche Interface",
           width: 4,
           pull: 1,
+        },
+        {
+          src: "/projectImages/P1/PorscheIcons2.mp4",
+          alt: "Porsche Icons Animation",
+          width: 3,
+          pull: 2,
         },
       ],
     },
     {
       id: "2",
-      title: "Project 2",
-      roles: "Role 1, Role 2",
+      title: "DOCUMENTA PROJECT",
+      roles: "UI/UX Design / Video Production",
       year: "2024",
-      description: "Description of project 2",
+      description:
+        "Interactive video installations and digital experiences for Documenta art exhibition.",
       width: 4,
       pull: 2,
       sectionLabel: "Cultural",
       marginTopClass: "marginNegative",
       images: [
         {
-          src: "/projectImages/jim2.jpg",
-          alt: "Project 2 image",
+          src: "/projectImages/P2/doc1.mp4",
+          alt: "Documenta Video 1",
           width: 5,
           pull: 2,
         },
         {
-          src: "/projectImages/jim2.jpg",
-          alt: "Project 2 image",
+          src: "/projectImages/P2/doc2.mp4",
+          alt: "Documenta Video 2",
           width: 3,
           pull: 3,
         },
         {
-          src: "/projectImages/Porsche3.jpg",
-          alt: "Project 2 image",
+          src: "/projectImages/P2/doc3.mp4",
+          alt: "Documenta Video 3",
           width: 4,
           pull: 1,
         },
@@ -161,13 +169,13 @@ export default function ProjectsPage() {
     },
     {
       id: "3",
-      title: "Project 3",
-      roles: "Role 1",
+      title: "PROJECT 3",
+      roles: "Creative Direction",
       year: "2024",
-      description: "Description of project 3",
+      description: "Third project description here.",
       images: [
         {
-          src: "/projectImages/Porsche3.jpg",
+          src: "/projectImages/jim2.jpg",
           alt: "Project 3 image",
           width: 5,
           pull: 2,

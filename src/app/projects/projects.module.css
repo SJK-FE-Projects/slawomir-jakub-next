@@ -45,6 +45,22 @@
     /* Większy margines dla niektórych projektów */
 }
 
+/* Margin Top Classes - teraz dla poszczególnych projektów */
+.marginDefault {
+    margin-top: 4rem;
+    /* Stały margin między projektami */
+}
+
+.marginNegative {
+    margin-top: -2rem;
+    /* Negatywny margines dla niektórych projektów */
+}
+
+.marginLarge {
+    margin-top: 8rem;
+    /* Większy margines dla niektórych projektów */
+}
+
 .projectGrid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
