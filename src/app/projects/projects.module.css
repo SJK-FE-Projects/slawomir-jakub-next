@@ -69,6 +69,23 @@
     width: 100%;
 }
 
+/* width 2 */
+.width2.pull1 {
+    grid-column: 1 / span 2;
+}
+
+.width2.pull2 {
+    grid-column: 2 / span 2;
+}
+
+.width2.pull3 {
+    grid-column: 3 / span 2;
+}
+
+.width2.pull4 {
+    grid-column: 4 / span 2;
+}
+
 /* width 3 */
 .width3.pull1 {
     grid-column: 1 / span 3;

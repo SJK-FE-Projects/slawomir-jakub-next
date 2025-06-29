@@ -99,10 +99,11 @@ export default function ProjectsPage() {
   const projects: Project[] = [
     {
       id: "1",
-      title: "", // TO FILL
-      roles: "", // TO FILL
-      year: "2024",
-      description: "", // TO FILL
+      title: "PORSCHE", // TO FILL
+      roles: "UX Design / Screen Design / Visual Design", // TO FILL
+      year: "2022",
+      description:
+        "Web flow and screen design for PORSCHE. The backlog UI of the rental system for test drives.", // TO FILL
       sectionLabel: "Business",
       width: 4,
       pull: 3,
@@ -142,10 +143,11 @@ export default function ProjectsPage() {
     },
     {
       id: "2",
-      title: "", // TO FILL
-      roles: "", // TO FILL
-      year: "2024",
-      description: "", // TO FILL
+      title: "Documenta '15", // TO FILL
+      roles: "Screen Design", // TO FILL
+      year: "2021",
+      description:
+        "Layouting and UI animations for the branding project of fifteenth edition of Documenta developed by and on behalf of StanHema agency in Berlin.", // TO FILL
       width: 4,
       pull: 2,
       sectionLabel: "Cultural",
@@ -179,10 +181,11 @@ export default function ProjectsPage() {
     },
     {
       id: "3",
-      title: "", // TO FILL
-      roles: "", // TO FILL
-      year: "2024",
-      description: "", // TO FILL
+      title: "Jugend im Museum", // TO FILL
+      roles: "Design System / WebFlow / UX / UI", // TO FILL
+      year: "2023",
+      description:
+        "Design system and screen design for Jugend im Museum in Berlin. Developed for and on behalf of design office anschlaege.de.", // TO FILL
       sectionLabel: "Cultural",
       width: 4,
       pull: 1,
@@ -234,11 +237,13 @@ export default function ProjectsPage() {
     },
     {
       id: "4",
-      title: "", // TO FILL
-      roles: "", // TO FILL
-      year: "2024",
-      description: "", // TO FILL
-      sectionLabel: "Business",
+      title:
+        "Zukunftszentrum für Europäische Transformation und Deutsche Einheit in Jena", // TO FILL
+      roles: " Screen Design / Lay-Outing / Branding / Workshop Facilitation ", // TO FILL
+      year: "2023",
+      description:
+        "Workshops, branding and screen design for the campaign of city council of Jena for the German Center of Future. Developed on behalf of design office anschlaege.de.", // TO FILL
+      sectionLabel: "Cultural",
       width: 4,
       pull: 3,
       marginTopClass: "marginNegative",
@@ -289,10 +294,11 @@ export default function ProjectsPage() {
     },
     {
       id: "5",
-      title: "", // TO FILL
-      roles: "", // TO FILL
-      year: "2024",
-      description: "", // TO FILL
+      title: "suissimage", // TO FILL
+      roles: "Screen Design / UX Conept", // TO FILL
+      year: "2021",
+      description:
+        "UI & UX Design for the pitch project of swiss cinematographic cooperative. Developed on behalf of formdusche design office.", // TO FILL
       sectionLabel: "Cultural",
       width: 4,
       pull: 2,
@@ -326,10 +332,11 @@ export default function ProjectsPage() {
     },
     {
       id: "6",
-      title: "", // TO FILL
-      roles: "", // TO FILL
-      year: "2024",
-      description: "", // TO FILL
+      title: "Kleist Museum Frankfurt Oder", // TO FILL
+      roles: "Screen Design / UX Concept", // TO FILL
+      year: "2022",
+      description:
+        "Comprehensive branding project for Kleist Museum in Frankfurt. Design of UI components and guidelines for various media. Developing extensive web flow and screen design for the text-oriented literature project. Project developed on behalf of design office anschlaege.de.", // TO FILL
       sectionLabel: "Business",
       width: 4,
       pull: 1,
@@ -369,10 +376,11 @@ export default function ProjectsPage() {
     },
     {
       id: "7",
-      title: "", // TO FILL
-      roles: "", // TO FILL
+      title: "August Bebel Instutut Berlin", // TO FILL
+      roles: "Screen Design / UX Concept / Design System", // TO FILL
       year: "2024",
-      description: "", // TO FILL
+      description:
+        "Screen design visual communication for August Bebel Institut in Berlin. Developed on behalf of design office anschlaege.de.", // TO FILL
       sectionLabel: "Cultural",
       width: 4,
       pull: 3,
@@ -400,11 +408,12 @@ export default function ProjectsPage() {
     },
     {
       id: "8",
-      title: "", // TO FILL
-      roles: "", // TO FILL
+      title: "ROC Berlin", // TO FILL
+      roles: "Branding / Design System / Screen Design", // TO FILL
       year: "2024",
-      description: "", // TO FILL
-      sectionLabel: "Business",
+      description:
+        "Pitch project for agency SMITH Berlin. Corporate identity, visual communication and web design for rebranding of ROC Berlin.", // TO FILL
+      sectionLabel: "Cultural",
       width: 4,
       pull: 2,
       marginTopClass: "marginNegative",
@@ -467,10 +476,11 @@ export default function ProjectsPage() {
     },
     {
       id: "9",
-      title: "", // TO FILL
-      roles: "", // TO FILL
+      title: "Berlinische Galerie", // TO FILL
+      roles: "Layouting", // TO FILL
       year: "2024",
-      description: "", // TO FILL
+      description:
+        "Layouting for the rebranding project of new CI for Berlinische Galerie developed by and on behalf of BUREAU Mario Lombardo.", // TO FILL
       sectionLabel: "Cultural",
       width: 4,
       pull: 1,
@@ -480,36 +490,36 @@ export default function ProjectsPage() {
           src: "/projectImages/P9/bg1.jpg",
           alt: "BG Image 1",
           width: 5,
-          pull: 1,
+          pull: 2,
         },
         {
           src: "/projectImages/P9/BG2.jpg",
           alt: "BG Image 2",
-          width: 4,
-          pull: 3,
+          width: 3,
+          pull: 1,
         },
         {
           src: "/projectImages/P9/BG2A.jpg",
           alt: "BG Image 2A",
           width: 3,
-          pull: 2,
+          pull: 4,
         },
         {
           src: "/projectImages/P9/BG3.jpg",
           alt: "BG Image 3",
-          width: 4,
+          width: 2,
           pull: 1,
         },
         {
           src: "/projectImages/P9/BG3A.jpg",
           alt: "BG Image 3A",
           width: 3,
-          pull: 3,
+          pull: 4,
         },
         {
           src: "/projectImages/P9/BG4.jpg",
           alt: "BG Image 4",
-          width: 5,
+          width: 2,
           pull: 2,
         },
         {
@@ -522,10 +532,11 @@ export default function ProjectsPage() {
     },
     {
       id: "10",
-      title: "", // TO FILL
-      roles: "", // TO FILL
-      year: "2024",
-      description: "", // TO FILL
+      title: "Finland 100", // TO FILL
+      roles: "Game Design / Concept Development", // TO FILL
+      year: "2018",
+      description:
+        "Communication project of memo game and merchandising developed to honor and showcase the rich cultural legacy of Finnish pattern design. Created in for of the 'Finland 100' national initiative, the game was produced in collaboration with the Finnish National Gallery and Aalto University’s School of Arts, Design and Architecture in Helsinki.", // TO FILL
       sectionLabel: "Business",
       width: 4,
       pull: 3,
