@@ -24,42 +24,13 @@
     display: flex;
     flex-direction: column;
     gap: 4rem;
+    /* Konsystentny odstęp między wszystkimi projektami */
     width: 100%;
     margin-top: 6rem;
-    /* Stały margin-top dla całego kontenera projektów */
 }
 
-/* Margin Top Classes - teraz dla poszczególnych projektów */
-.marginDefault {
-    margin-top: 4rem;
-    /* Stały margin między projektami */
-}
-
-.marginNegative {
-    margin-top: -2rem;
-    /* Negatywny margines dla niektórych projektów */
-}
-
-.marginLarge {
-    margin-top: 8rem;
-    /* Większy margines dla niektórych projektów */
-}
-
-/* Margin Top Classes - teraz dla poszczególnych projektów */
-.marginDefault {
-    margin-top: 4rem;
-    /* Stały margin między projektami */
-}
-
-.marginNegative {
-    margin-top: -2rem;
-    /* Negatywny margines dla niektórych projektów */
-}
-
-.marginLarge {
-    margin-top: 8rem;
-    /* Większy margines dla niektórych projektów */
-}
+/* Usunięte margin-top classes - teraz używamy tylko gap dla odstępów */
+/* Projekty będą miały równe odstępy dzięki gap */
 
 .projectGrid {
     display: grid;
@@ -164,69 +135,58 @@
     opacity: 0.8;
 }
 
-/* Fluid Loading System - EXACT reference implementation (NO sticky behavior) */
+/* Fluid Loading System - używa transform zamiast margin-top dla lepszej kontroli */
 
-/* Section base class - only transition for margin-top */
+/* Section base class - transition dla transform zamiast margin */
 .section {
-    transition: margin-top 0.8s ease-out;
-}
-
-/* Ensure section elements work with fluid.css */
-.section {
-    /* Każdy element z klasą section będzie miał fluid animację */
+    transition: transform 0.8s ease-out;
     position: relative;
 }
 
-/* Override grid-specific margin issues */
-.projectGrid .section {
-    /* Zapewnij że fluid animacje nie interferują z CSS margin */
-    margin-top: 0 !important;
-}
-
-/* Random classes with different margin-tops - these are ALWAYS applied */
+/* Random transform values - zamiast margin-top używamy translateY */
 .temp-1 {
-    margin-top: 50px;
+    transform: translateY(50px);
 }
 
 .temp-2 {
-    margin-top: 100px;
+    transform: translateY(100px);
 }
 
 .temp-3 {
-    margin-top: 150px;
+    transform: translateY(150px);
 }
 
 .temp-4 {
-    margin-top: 200px;
+    transform: translateY(200px);
 }
 
 .temp-5 {
-    margin-top: 75px;
+    transform: translateY(75px);
 }
 
 .temp-6 {
-    margin-top: 125px;
+    transform: translateY(125px);
 }
 
 .temp-7 {
-    margin-top: 175px;
+    transform: translateY(175px);
 }
 
 .temp-8 {
-    margin-top: 60px;
+    transform: translateY(60px);
 }
 
 .temp-9 {
-    margin-top: 110px;
+    transform: translateY(110px);
 }
 
 .temp-10 {
-    margin-top: 160px;
+    transform: translateY(160px);
 }
 
-/* ONLY when active, override margin-top to 0 */
+/* Gdy aktywne, resetuj transform do 0 */
 .section.active {
-    margin-top: 0px !important;
+    transform: translateY(0) !important;
 }
 
 /* The reference implementation DOES revert when leaving viewport */

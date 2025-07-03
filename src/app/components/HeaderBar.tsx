@@ -6,15 +6,28 @@ type HeaderBarProps = {
   headline: string;
   subheadline: string;
   sections: string[];
-  onSectionClick?: (section: string) => void;
+  selectedSection?: string | null;
+  onSectionClick?: (section: string | null) => void;
 };
 
 const HeaderBar: React.FC<HeaderBarProps> = ({
   headline,
   subheadline,
   sections,
+  selectedSection,
   onSectionClick,
 }) => {
+  const handleSectionClick = (section: string) => {
+    if (onSectionClick) {
+      // If clicking the same section, deselect it (show all)
+      if (selectedSection === section) {
+        onSectionClick(null);
+      } else {
+        onSectionClick(section);
+      }
+    }
+  };
+
   return (
     <nav>
       <div>
@@ -23,7 +36,12 @@ const HeaderBar: React.FC<HeaderBarProps> = ({
       </div>
       <div className={styles.sectionButtonsContainer}>
         {sections.map((section, idx) => (
-          <SectionButton key={idx} text={section} selected={false} />
+          <SectionButton
+            key={idx}
+            text={section}
+            selected={selectedSection === section}
+            onClick={() => handleSectionClick(section)}
+          />
         ))}
       </div>
     </nav>

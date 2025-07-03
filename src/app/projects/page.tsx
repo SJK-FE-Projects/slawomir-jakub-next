@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import SectionButton from "../components/SectionButton";
 import styles from "./projects.module.css";
@@ -24,20 +24,23 @@ type Project = {
   sectionLabel: string;
   width: 3 | 4 | 5 | 6;
   pull: 1 | 2 | 3;
-  marginTopClass: string;
+  // Usunięto marginTopClass - teraz używamy gap w container
 };
 
 export default function ProjectsPage() {
+  const [selectedSection, setSelectedSection] = useState<string | null>(null);
+
+  const handleSectionClick = (section: string | null) => {
+    setSelectedSection(section);
+  };
+
   // Component for single project with fluid animation
   const ProjectContainer = ({ project }: { project: Project }) => {
     const projectRef = useFluidElement();
     const contentRef = useFluidElement();
 
     return (
-      <div
-        className={`${styles.projectGrid} ${styles[project.marginTopClass]}`}
-        id={project.id}
-      >
+      <div className={styles.projectGrid} id={project.id}>
         {/* Project content with fluid animation */}
         <div
           ref={contentRef as React.RefObject<HTMLDivElement>}
@@ -107,7 +110,6 @@ export default function ProjectsPage() {
       sectionLabel: "Business",
       width: 4,
       pull: 3,
-      marginTopClass: "marginDefault",
       images: [
         {
           src: "/projectImages/P1/PorscheLogin2.mp4",
@@ -151,7 +153,6 @@ export default function ProjectsPage() {
       width: 4,
       pull: 2,
       sectionLabel: "Cultural",
-      marginTopClass: "marginNegative",
       images: [
         {
           src: "/projectImages/P2/doc1.mp4",
@@ -189,7 +190,6 @@ export default function ProjectsPage() {
       sectionLabel: "Cultural",
       width: 4,
       pull: 1,
-      marginTopClass: "marginDefault",
       images: [
         {
           src: "/projectImages/P3/JiM1.mp4",
@@ -246,7 +246,6 @@ export default function ProjectsPage() {
       sectionLabel: "Cultural",
       width: 4,
       pull: 3,
-      marginTopClass: "marginNegative",
       images: [
         {
           src: "/projectImages/P4/jzet0a.mp4",
@@ -302,7 +301,6 @@ export default function ProjectsPage() {
       sectionLabel: "Cultural",
       width: 4,
       pull: 2,
-      marginTopClass: "marginDefault",
       images: [
         {
           src: "/projectImages/P5/si1.mp4",
@@ -340,7 +338,6 @@ export default function ProjectsPage() {
       sectionLabel: "Business",
       width: 4,
       pull: 1,
-      marginTopClass: "marginNegative",
       images: [
         {
           src: "/projectImages/P6/km0.mp4",
@@ -384,7 +381,6 @@ export default function ProjectsPage() {
       sectionLabel: "Cultural",
       width: 4,
       pull: 3,
-      marginTopClass: "marginDefault",
       images: [
         {
           src: "/projectImages/P7/abi1.mp4",
@@ -416,7 +412,6 @@ export default function ProjectsPage() {
       sectionLabel: "Cultural",
       width: 4,
       pull: 2,
-      marginTopClass: "marginNegative",
       images: [
         {
           src: "/projectImages/P8/roc1.jpg",
@@ -484,7 +479,6 @@ export default function ProjectsPage() {
       sectionLabel: "Cultural",
       width: 4,
       pull: 1,
-      marginTopClass: "marginDefault",
       images: [
         {
           src: "/projectImages/P9/bg1.jpg",
@@ -540,7 +534,6 @@ export default function ProjectsPage() {
       sectionLabel: "Business",
       width: 4,
       pull: 3,
-      marginTopClass: "marginNegative",
       images: [
         {
           src: "/projectImages/P10/pdff1.jpg",
@@ -570,6 +563,11 @@ export default function ProjectsPage() {
     },
   ];
 
+  // Filter projects based on selected section
+  const filteredProjects = selectedSection
+    ? projects.filter((project) => project.sectionLabel === selectedSection)
+    : projects;
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -579,10 +577,12 @@ export default function ProjectsPage() {
         <HeaderBar
           headline="Hej! I'm Slawomir Jakub Krzyzak"
           subheadline="Web Design and Development Projects"
-          sections={["Business", "Culture"]}
+          sections={["Business", "Cultural"]}
+          selectedSection={selectedSection}
+          onSectionClick={handleSectionClick}
         />
         <div className={styles.projectsContainer}>
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <ProjectContainer key={project.id} project={project} />
           ))}
         </div>
