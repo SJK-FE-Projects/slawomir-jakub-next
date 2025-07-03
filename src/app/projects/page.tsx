@@ -194,7 +194,7 @@ export default function ProjectsPage() {
         {
           src: "/projectImages/P3/JiM1.mp4",
           alt: "JiM Video 1",
-          width: 6,
+          width: 5,
           pull: 1,
         },
         {
@@ -313,8 +313,8 @@ export default function ProjectsPage() {
         {
           src: "/projectImages/P5/si2.mp4",
           alt: "SI Video 2",
-          width: 4,
-          pull: 3,
+          width: 5,
+          pull: 2,
         },
         {
           src: "/projectImages/P5/si3.mp4",
