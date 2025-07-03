@@ -4,7 +4,6 @@ import React, { useEffect, useRef } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import ProjectBlock from "../../components/ProjectBlock";
 import ImagePreview from "../../components/ImagePreview";
 import MenuButton from "../../components/MenuButton";
 import HeaderBar from "../../components/HeaderBar";
@@ -128,7 +127,7 @@ export default function ProjectPage({ params }: Props) {
     return () => {
       unobservers.forEach((unobserve) => unobserve());
     };
-  }, [fluid.isInitialized, projectData.id]);
+  }, [fluid, fluid.isInitialized, projectData.id]);
 
   return (
     <div className={styles.page}>

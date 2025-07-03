@@ -33,7 +33,7 @@ export const useScrollDirection = () => {
 export const useFluidLoading = () => {
 	const [isInitialized, setIsInitialized] = useState(false);
 	const scrollDirection = useScrollDirection();
-	const elementsRef = useRef<Map<HTMLElement, { randomClass: string }>>(new Map());
+	const elementsRef = useRef<Map<HTMLElement, { randomClass: string; wasActivated: boolean }>>(new Map());
 
 	const observeElement = useCallback((element: HTMLElement) => {
 		if (!element || elementsRef.current.has(element)) return;
@@ -43,7 +43,7 @@ export const useFluidLoading = () => {
 		const randomClass = `temp-${randomClassNumber}`;
 
 		element.classList.add('fluid', randomClass);
-		elementsRef.current.set(element, { randomClass });
+		elementsRef.current.set(element, { randomClass, wasActivated: false });
 
 		// Set initial state based on scroll direction
 		if (scrollDirection === 'up') {
@@ -67,30 +67,36 @@ export const useFluidLoading = () => {
 		const scrollTop = window.pageYOffset;
 
 		elementsRef.current.forEach((data, element) => {
+			// Skip if element was already activated (one-time animation)
+			if (data.wasActivated) return;
+
 			const rect = element.getBoundingClientRect();
 			const itemTop = rect.top + scrollTop;
 			const itemHeight = rect.height;
 
-			// Element is in viewport
+			// Element is in viewport - activate ONCE
 			if ((itemTop + itemHeight * 0.7 - scrollTop) >= 0 &&
 				(itemTop) <= (scrollTop + windowHeight) ||
 				scrollTop === 0) {
 				element.classList.add('active');
 				element.classList.remove('bottom', 'top');
-			} else {
-				element.classList.remove('active');
+				// Mark as permanently activated
+				data.wasActivated = true;
 			}
 
-			// Element is above viewport (scrolled past)
-			if ((itemTop + itemHeight * 0.7 - scrollTop) < 100 && scrollTop > 0) {
-				element.classList.add('top');
-				element.classList.remove('bottom', 'active');
-			}
+			// Only update position classes if not yet activated
+			if (!data.wasActivated) {
+				// Element is above viewport (scrolled past)
+				if ((itemTop + itemHeight * 0.7 - scrollTop) < 100 && scrollTop > 0) {
+					element.classList.add('top');
+					element.classList.remove('bottom');
+				}
 
-			// Element is below viewport
-			if ((itemTop) > scrollTop + windowHeight) {
-				element.classList.add('bottom');
-				element.classList.remove('top', 'active');
+				// Element is below viewport
+				if ((itemTop) > scrollTop + windowHeight) {
+					element.classList.add('bottom');
+					element.classList.remove('top');
+				}
 			}
 		});
 	}, []);

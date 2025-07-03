@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import SectionButton from "../components/SectionButton";
 import styles from "./projects.module.css";
 import MenuButton from "../components/MenuButton";
@@ -36,7 +35,6 @@ export default function ProjectsPage() {
 
   // Component for single project with fluid animation
   const ProjectContainer = ({ project }: { project: Project }) => {
-    const projectRef = useFluidElement();
     const contentRef = useFluidElement();
 
     return (

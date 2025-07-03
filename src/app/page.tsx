@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./page.module.css";
-import SectionButton from "./components/SectionButton";
 import MenuButton from "./components/MenuButton";
 import HeaderBar from "./components/HeaderBar";
 

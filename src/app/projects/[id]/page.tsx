@@ -1,15 +1,8 @@
 import { notFound } from "next/navigation";
 import ProjectBlock from "../../components/ProjectBlock";
 
-// This is a dynamic route parameter
-type Props = {
-  params: {
-    id: string;
-  };
-};
-
 // This function can be async if you need to fetch data
-export default function ProjectPage({ params }: Props) {
+export default function ProjectPage() {
   // Here you would typically fetch project data based on the ID
   // For now, we'll use dummy data
   const projectData = {
