@@ -86,6 +86,10 @@
     grid-column: 4 / span 2;
 }
 
+.width2.pull5 {
+    grid-column: 5 / span 2;
+}
+
 /* width 3 */
 .width3.pull1 {
     grid-column: 1 / span 3;
