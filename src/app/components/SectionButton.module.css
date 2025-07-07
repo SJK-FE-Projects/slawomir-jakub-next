@@ -7,8 +7,6 @@
     backdrop-filter: blur(5px);
     background: var(--neutral-cod-black-12, rgba(22, 22, 22, 0.12));
     color: var(--cod-black);
-    font-size: 18px;
-    font-style: normal;
     font-weight: 400;
     line-height: normal;
     text-decoration: none;
@@ -40,4 +38,11 @@
     /* black bg when selected */
     color: #fff;
     /* white text */
+}
+
+@media (max-width: 768px) {
+    .button {
+        padding: 4px 10px;
+        gap: 1rem;
+    }
 }

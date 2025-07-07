@@ -40,10 +40,15 @@ const contactItems = [
 
 const MenuButton = () => {
   const [showContactDropdown, setShowContactDropdown] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleContactDropdown = () => {
     setShowContactDropdown(!showContactDropdown);
+  };
+
+  const toggleMobileMenu = () => {
+    setShowMobileMenu(!showMobileMenu);
   };
 
   useEffect(() => {
@@ -53,21 +58,32 @@ const MenuButton = () => {
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setShowContactDropdown(false);
+        setShowMobileMenu(false);
       }
     };
 
-    if (showContactDropdown) {
+    if (showContactDropdown || showMobileMenu) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showContactDropdown]);
+  }, [showContactDropdown, showMobileMenu]);
 
   return (
     <div className={styles.menuContainer} ref={dropdownRef}>
-      <div className={styles.menuRow}>
+      {/* Mobile Menu Button */}
+      <button className={styles.mobileMenuButton} onClick={toggleMobileMenu}>
+        Menu
+      </button>
+
+      {/* Desktop Menu Row */}
+      <div
+        className={`${styles.menuRow} ${
+          showMobileMenu ? styles.mobileMenuOpen : ""
+        }`}
+      >
         {menuItems.map((item) => (
           <Link key={item.href} href={item.href} className={styles.menuItem}>
             {item.label}
@@ -81,22 +97,22 @@ const MenuButton = () => {
             Contacts
           </button>
         </div>
+        {showContactDropdown && (
+          <div className={styles.dropdown}>
+            {contactItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={styles.dropdownItem}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
-      {showContactDropdown && (
-        <div className={styles.dropdown}>
-          {contactItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={styles.dropdownItem}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

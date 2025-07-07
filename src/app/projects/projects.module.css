@@ -194,3 +194,60 @@
 
 /* In the reference implementation, .top and .bottom classes are added but have no visual effect */
 /* They're just state tracking classes for potential future use */
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .main {
+        padding-top: 120px;
+        /* More space for mobile menu */
+    }
+
+    .projectsContainer {
+        margin-top: 2rem;
+        /* Reduced margin on mobile */
+        gap: 2rem;
+        /* Smaller gap between projects */
+    }
+
+    .projectGrid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        gap: 1rem !important;
+    }
+
+    /* Reset all grid positioning for mobile - everything becomes single column */
+    .width2,
+    .width3,
+    .width4,
+    .width5,
+    .width6 {
+        grid-column: unset !important;
+        width: 100% !important;
+    }
+
+    .factsContent {
+        flex-direction: row !important;
+        gap: 0.5rem !important;
+        align-items: baseline !important;
+    }
+
+    /* Disable fluid loading transforms on mobile for better performance */
+    .section {
+        transform: none !important;
+        gap: 0.5rem !important;
+    }
+
+    .temp-1,
+    .temp-2,
+    .temp-3,
+    .temp-4,
+    .temp-5,
+    .temp-6,
+    .temp-7,
+    .temp-8,
+    .temp-9,
+    .temp-10 {
+        transform: none !important;
+    }
+}
