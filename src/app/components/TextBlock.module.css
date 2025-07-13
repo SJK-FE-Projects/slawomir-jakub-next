@@ -1,29 +1,25 @@
-.block {
-    display: flex;
-    gap: 2rem;
-    width: 100%;
-    background-color: var(--Neutral-Alabaster-Gray, #F8F8F8);
-    padding: 1rem;
-    border-radius: 8px;
-}
-
 .sectionButtonContainer {
-    flex: 1;
-    /* Takes 1/4 of the space */
+    /* SectionButton will be positioned in first column by parent grid */
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* Ensure button stays inline */
+    white-space: nowrap;
+    overflow: visible;
+    width: fit-content;
+    max-width: 100%;
 }
 
 .contentContainer {
-    flex: 3;
-    /* Takes 3/4 of the space */
+    /* Content will be positioned by parent grid with width/pull classes */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
-}
-
-/* large text */
-.textLarge {
-    composes: h1 from global;
+    background-color: var(--Neutral-Alabaster-Gray, #F8F8F8);
+    padding: 1rem;
+    border-radius: 8px;
+    width: 100%;
 }
 
 /* regular text */
@@ -63,4 +59,18 @@
 
 .skillItem .title {
     font-weight: 600;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    .sectionButtonContainer {
+        /* Mobile styles for section button */
+        margin-bottom: 1rem;
+    }
+    
+    .contentContainer {
+        /* Mobile styles for content */
+        padding: 0.75rem;
+        gap: 1rem;
+    }
 }

@@ -3,26 +3,90 @@
 import styles from "./page.module.css";
 import MenuButton from "./components/MenuButton";
 import HeaderBar from "./components/HeaderBar";
+import SectionButton from "./components/SectionButton";
 
 import TextBlock, { TextBlockProps } from "./components/TextBlock";
 
 import { useFluidElement } from "./hooks/useFluidLoading";
 
+import React, { useState, useEffect } from "react";
+
+// Helper to generate anchor id from label
+const toSectionId = (label: string) =>
+  label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
 export default function Home() {
   // Component wrapper for TextBlock with fluid animation
-  const TextBlockWithAnimation = (props: TextBlockProps) => {
+  const TextBlockWithAnimation = (
+    props: TextBlockProps & {
+      id?: string;
+    }
+  ) => {
     const textBlockRef = useFluidElement();
 
     return (
       <div
         ref={textBlockRef as React.RefObject<HTMLDivElement>}
         className="section"
+        id={props.id}
       >
         {" "}
         <TextBlock {...props} />{" "}
       </div>
     );
   };
+
+  // Section anchor ids in order
+  const sectionIds = [
+    "professional-summary",
+    "professional-experience",
+    "education-training",
+    "technical-skills",
+    "selected-clients",
+  ];
+  const sectionLabels = [
+    "Professional Summary",
+    "Professional Experience",
+    "Education & Training",
+    "Technical Skills",
+    "Selected Clients",
+  ];
+
+  // Track which section is active
+  const [activeSection, setActiveSection] = useState<string | null>(
+    sectionLabels[0]
+  );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      let found = false;
+
+      for (let i = 0; i < sectionIds.length; i++) {
+        const el = document.getElementById(sectionIds[i]);
+
+        if (el) {
+          const rect = el.getBoundingClientRect();
+
+          if (rect.top <= 120 && rect.bottom > 120) {
+            setActiveSection(sectionLabels[i]);
+            found = true;
+            break;
+          }
+        }
+      }
+
+      if (!found) setActiveSection(null);
+    };
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className={styles.page}>
@@ -36,18 +100,25 @@ export default function Home() {
         <HeaderBar
           headline="Hej! I'm Slawomir Jakub Krzyzak"
           subheadline="Web Designer and Developer. Born in PL. Made in EU."
-          sections={[
-            "Professional Summary",
-            "Professional Experience",
-            "Education & Training",
-            "Technical Skills",
-            "Selected Clients",
-          ]}
+          sections={sectionLabels}
+          selectedSection={activeSection}
+          onSectionClick={(section) => {
+            if (!section) return;
+            const anchor = document.getElementById(toSectionId(section));
+            if (anchor) {
+              anchor.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+            setActiveSection(section);
+          }}
         />{" "}
         {/* Content wrapper with margin-top like projectsContainer */}
         <div className={styles.contentContainer}>
           {" "}
           <TextBlockWithAnimation
+            id={toSectionId(sectionLabels[0])}
             variant="large"
             sectionLabel="Professional Summary"
             text={[
@@ -56,6 +127,7 @@ export default function Home() {
             ]}
           />{" "}
           <TextBlockWithAnimation
+            id={toSectionId(sectionLabels[1])}
             variant="date"
             sectionLabel="Professional Experience"
             items={[
@@ -94,6 +166,7 @@ export default function Home() {
             ]}
           />{" "}
           <TextBlockWithAnimation
+            id={toSectionId(sectionLabels[2])}
             variant="date"
             sectionLabel="Education & Training"
             items={[
@@ -158,6 +231,7 @@ export default function Home() {
             ]}
           />{" "}
           <TextBlockWithAnimation
+            id={toSectionId(sectionLabels[3])}
             variant="skills"
             sectionLabel="Technical Skills"
             items={[
@@ -205,6 +279,7 @@ export default function Home() {
             ]}
           />{" "}
           <TextBlockWithAnimation
+            id={toSectionId(sectionLabels[4])}
             variant="skills"
             sectionLabel="Selected Clients"
             items={[

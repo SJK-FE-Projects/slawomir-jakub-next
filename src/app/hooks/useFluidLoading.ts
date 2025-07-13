@@ -1,10 +1,18 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from 'react';
+import {
+	useEffect,
+	useRef,
+	useState,
+	useCallback
+}
+
+	from 'react';
 
 // Scroll direction detection (from detectScroll.js)
 export const useScrollDirection = () => {
-	const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
+	const [scrollDirection,
+		setScrollDirection] = useState<'up' | 'down'>('down');
 	const scrollPos = useRef(0);
 
 	useEffect(() => {
@@ -15,41 +23,65 @@ export const useScrollDirection = () => {
 
 			if (currentScrollPos > scrollPos.current) {
 				setScrollDirection('up');
-			} else {
+			}
+
+			else {
 				setScrollDirection('down');
 			}
 
 			scrollPos.current = currentScrollPos;
-		};
+		}
+
+			;
 
 		document.addEventListener('scroll', handleScroll);
 		return () => document.removeEventListener('scroll', handleScroll);
-	}, []);
+	}
+
+		, []);
 
 	return scrollDirection;
-};
+}
+
+	;
 
 // Fluid loading animation hook (from fluid.js)
 export const useFluidLoading = () => {
-	const [isInitialized, setIsInitialized] = useState(false);
+	const [isInitialized,
+		setIsInitialized] = useState(false);
 	const scrollDirection = useScrollDirection();
-	const elementsRef = useRef<Map<HTMLElement, { randomClass: string; wasActivated: boolean }>>(new Map());
+
+	const elementsRef = useRef<Map<HTMLElement,
+		{
+			randomClass: string;
+			wasActivated: boolean
+		}
+
+	>>(new Map());
 
 	const observeElement = useCallback((element: HTMLElement) => {
 		if (!element || elementsRef.current.has(element)) return;
 
 		// Add random temp class (1-10)
 		const randomClassNumber = Math.ceil(Math.random() * 10);
-		const randomClass = `temp-${randomClassNumber}`;
+		const randomClass = `temp-${randomClassNumber
+			}`;
 
 		element.classList.add('fluid', randomClass);
-		elementsRef.current.set(element, { randomClass, wasActivated: false });
+
+		elementsRef.current.set(element, {
+			randomClass, wasActivated: false
+		}
+
+		);
 
 		// Set initial state based on scroll direction
 		if (scrollDirection === 'up') {
 			element.classList.add('top');
 			element.classList.remove('bottom', 'active');
-		} else {
+		}
+
+		else {
 			element.classList.add('bottom');
 			element.classList.remove('top', 'active');
 		}
@@ -57,8 +89,12 @@ export const useFluidLoading = () => {
 		return () => {
 			element.classList.remove('fluid', randomClass, 'active', 'top', 'bottom');
 			elementsRef.current.delete(element);
-		};
-	}, [scrollDirection]);
+		}
+
+			;
+	}
+
+		, [scrollDirection]);
 
 	const checkVisible = useCallback(() => {
 		if (typeof window === 'undefined') return;
@@ -75,9 +111,7 @@ export const useFluidLoading = () => {
 			const itemHeight = rect.height;
 
 			// Element is in viewport - activate ONCE
-			if ((itemTop + itemHeight * 0.7 - scrollTop) >= 0 &&
-				(itemTop) <= (scrollTop + windowHeight) ||
-				scrollTop === 0) {
+			if ((itemTop + itemHeight * 0.7 - scrollTop) >= 0 && (itemTop) <= (scrollTop + windowHeight) || scrollTop === 0) {
 				element.classList.add('active');
 				element.classList.remove('bottom', 'top');
 				// Mark as permanently activated
@@ -86,6 +120,7 @@ export const useFluidLoading = () => {
 
 			// Only update position classes if not yet activated
 			if (!data.wasActivated) {
+
 				// Element is above viewport (scrolled past)
 				if ((itemTop + itemHeight * 0.7 - scrollTop) < 100 && scrollTop > 0) {
 					element.classList.add('top');
@@ -98,19 +133,27 @@ export const useFluidLoading = () => {
 					element.classList.remove('top');
 				}
 			}
-		});
-	}, []);
+		}
+
+		);
+	}
+
+		, []);
 
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
 
 		const handleScroll = () => {
 			checkVisible();
-		};
+		}
+
+			;
 
 		const handleResize = () => {
 			checkVisible();
-		};
+		}
+
+			;
 
 		// Initial check
 		checkVisible();
@@ -123,24 +166,107 @@ export const useFluidLoading = () => {
 		return () => {
 			document.removeEventListener('scroll', handleScroll);
 			document.removeEventListener('resize', handleResize);
-		};
-	}, [checkVisible]);
+		}
 
-	return { observeElement, isInitialized };
-};
+			;
+	}
 
-// Hook for individual elements
+		, [checkVisible]);
+
+	return {
+		observeElement,
+		isInitialized
+	}
+
+		;
+}
+
+	;
+
+// Hook for individual elements - matches original jQuery behavior exactly
 export const useFluidElement = () => {
 	const elementRef = useRef<HTMLElement>(null);
-	const { observeElement } = useFluidLoading();
+	const [isInitialized,
+		setIsInitialized] = useState(false);
 
 	useEffect(() => {
 		const element = elementRef.current;
-		if (!element || !observeElement) return;
+		if (!element) return;
 
-		const cleanup = observeElement(element);
-		return cleanup;
-	}, [observeElement]);
+		// Add random temp class (1-10) - this stays permanent like in jQuery version
+		const random = Math.ceil(Math.random() * 10);
+		element.classList.add('section', `temp-${random}`);
+
+		const checkVisible = () => {
+			if (typeof window === 'undefined') return;
+
+			const windowHeight = window.innerHeight;
+			const scrollTop = window.pageYOffset;
+			const itemTop = element.offsetTop;
+			const itemHeight = element.offsetHeight;
+
+			// Element is in viewport (enters with 70% visible like jQuery version)
+			const inViewport = (itemTop + itemHeight * 0.7 - scrollTop) >= 0 && (itemTop) <= (scrollTop + windowHeight) || scrollTop === 0;
+
+			// Element is completely out of viewport (fully above or below)
+			const fullyOutOfViewport = (itemTop + itemHeight < scrollTop) || // Fully above viewport
+				(itemTop > scrollTop + windowHeight); // Fully below viewport
+
+			if (inViewport) {
+				// In viewport - add active, remove position classes
+				element.classList.add('active');
+				element.classList.remove('bottom', 'top');
+			}
+
+			else if (fullyOutOfViewport) {
+				// Only remove active when element is COMPLETELY out of viewport
+				element.classList.remove('active');
+			}
+
+			// Update position tracking classes (like jQuery version)
+			if ((itemTop + itemHeight * 0.7 - scrollTop) < 100 && scrollTop > 0) {
+				element.classList.add('top');
+				element.classList.remove('bottom');
+			}
+
+			if ((itemTop) > scrollTop + windowHeight) {
+				element.classList.add('bottom');
+				element.classList.remove('top');
+			}
+		}
+
+			;
+
+		const handleScroll = () => checkVisible();
+		const handleResize = () => checkVisible();
+
+		// Initial check
+		checkVisible();
+
+		document.addEventListener('scroll', handleScroll, {
+			passive: true
+		}
+
+		);
+
+		document.addEventListener('resize', handleResize, {
+			passive: true
+		}
+
+		);
+
+		setIsInitialized(true);
+
+		return () => {
+			document.removeEventListener('scroll', handleScroll);
+			document.removeEventListener('resize', handleResize);
+			element.classList.remove('section', `temp-${random}`, 'active', 'top', 'bottom');
+		};
+	}
+
+		, []);
 
 	return elementRef;
-};
+}
+
+	;
