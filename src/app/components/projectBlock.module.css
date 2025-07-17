@@ -24,7 +24,13 @@
     grid-auto-rows: auto;
     gap: 1rem;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 3rem;
+
+    @media (max-width: 768px) {
+        gap: 0.5rem !important;
+        margin-top: 4rem !important;
+
+    }
 }
 
 /* width 3 */

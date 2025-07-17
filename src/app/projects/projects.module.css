@@ -23,7 +23,7 @@
 .projectsContainer {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 6rem;
     /* Konsystentny odstęp między wszystkimi projektami */
     width: 100%;
     margin-top: 6rem;
@@ -203,9 +203,9 @@
     }
 
     .projectsContainer {
-        margin-top: 2rem;
+        margin-top: 3rem;
         /* Reduced margin on mobile */
-        gap: 2rem;
+        gap: 3rem;
         /* Smaller gap between projects */
     }
 
@@ -213,7 +213,7 @@
         display: flex !important;
         flex-direction: column !important;
         grid-template-columns: none !important;
-        gap: 1rem !important;
+        gap: 0.5rem !important;
     }
 
     /* Reset all grid positioning for mobile - everything becomes single column */

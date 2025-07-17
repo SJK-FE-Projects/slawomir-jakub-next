@@ -8,6 +8,8 @@ type BaseProps = {
   sectionLabel: string;
   /** optional class override */
   className?: string;
+  /** optional id for the section */
+  id?: string;
 };
 
 type LargeProps = BaseProps & {
@@ -46,73 +48,91 @@ type SkillsProps = BaseProps & {
 
 export type TextBlockProps = LargeProps | DateProps | SkillsProps;
 
-export default function TextBlock(props: TextBlockProps) {
-  const { sectionLabel, className } = props;
+const TextBlock = React.forwardRef<HTMLDivElement, TextBlockProps>(
+  (props, ref) => {
+    const { sectionLabel, className, id } = props;
 
-  switch (props.variant) {
-    case "large": {
-      return (
-        <div className={`${styles.block} ${className ?? ""}`}>
-          <div className={styles.sectionButtonContainer}>
-            <SectionButton text={sectionLabel} selected={false} />
+    switch (props.variant) {
+      case "large": {
+        return (
+          <div
+            ref={ref}
+            className={`${styles.block} ${className ?? ""} section`}
+            id={id}
+          >
+            <div className={styles.sectionButtonContainer}>
+              <SectionButton text={sectionLabel} selected={false} />
+            </div>
+            <div className={styles.contentContainer}>
+              {props.text.map((text, index) => (
+                <div
+                  key={index}
+                  className="textLarge"
+                  dangerouslySetInnerHTML={{ __html: text }}
+                />
+              ))}
+            </div>
           </div>
-          <div className={styles.contentContainer}>
-            {props.text.map((text, index) => (
-              <div
-                key={index}
-                className="textLarge"
-                dangerouslySetInnerHTML={{ __html: text }}
-              />
-            ))}
-          </div>
-        </div>
-      );
-    }
+        );
+      }
 
-    case "date": {
-      return (
-        <div className={`${styles.block} ${className ?? ""}`}>
-          <div className={styles.sectionButtonContainer}>
-            <SectionButton text={sectionLabel} selected={false} />
-          </div>
-          <div className={styles.contentContainer}>
-            {props.items.map((item, index) => (
-              <div key={index} className={styles.dateItem}>
-                <div className="textLarge">{item.title}</div>
-                <div className={styles.meta}>
-                  <div className="textRegular">{item.date}</div>
-                  <div className="textRegular">{item.company}</div>
+      case "date": {
+        return (
+          <div
+            ref={ref}
+            className={`${styles.block} ${className ?? ""} section`}
+            id={id}
+          >
+            <div className={styles.sectionButtonContainer}>
+              <SectionButton text={sectionLabel} selected={false} />
+            </div>
+            <div className={styles.contentContainer}>
+              {props.items.map((item, index) => (
+                <div key={index} className={styles.dateItem}>
+                  <div className="textLarge">{item.title}</div>
+                  <div className={styles.meta}>
+                    <div className="textRegular">{item.date}</div>
+                    <div className="textRegular">{item.company}</div>
+                  </div>
+                  <div
+                    className="textDefault"
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  />
                 </div>
-                <div
-                  className="textDefault"
-                  dangerouslySetInnerHTML={{ __html: item.description }}
-                />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      );
-    }
+        );
+      }
 
-    case "skills": {
-      return (
-        <div className={`${styles.block} ${className ?? ""}`}>
-          <div className={styles.sectionButtonContainer}>
-            <SectionButton text={sectionLabel} selected={false} />
+      case "skills": {
+        return (
+          <div
+            ref={ref}
+            className={`${styles.block} ${className ?? ""} section`}
+            id={id}
+          >
+            <div className={styles.sectionButtonContainer}>
+              <SectionButton text={sectionLabel} selected={false} />
+            </div>
+            <div className={styles.contentContainer}>
+              {props.items.map((item, index) => (
+                <div key={index} className={styles.skillItem}>
+                  <div className="textLarge">{item.title}</div>
+                  <div
+                    className="textDefault"
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-          <div className={styles.contentContainer}>
-            {props.items.map((item, index) => (
-              <div key={index} className={styles.skillItem}>
-                <div className="textLarge">{item.title}</div>
-                <div
-                  className="textDefault"
-                  dangerouslySetInnerHTML={{ __html: item.description }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      );
+        );
+      }
     }
   }
-}
+);
+
+TextBlock.displayName = "TextBlock";
+
+export default TextBlock;
