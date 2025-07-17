@@ -1,64 +1,64 @@
-.fluid.temp-1 {
+.section.temp-1 {
     -webkit-transition: transform 1100ms ease-in, opacity 400ms ease-out;
     transition: transform 1100ms ease-in, opacity 400ms ease-out;
 }
 
-.fluid.temp-2 {
+.section.temp-2 {
     -webkit-transition: transform 1200ms ease-in, opacity 400ms ease-out;
     transition: transform 1200ms ease-in, opacity 400ms ease-out;
 }
 
-.fluid.temp-3 {
+.section.temp-3 {
     -webkit-transition: transform 1300ms ease-in, opacity 400ms ease-out;
     transition: transform 1300ms ease-in, opacity 400ms ease-out;
 }
 
-.fluid.temp-4 {
+.section.temp-4 {
     -webkit-transition: transform 1400ms ease-in, opacity 400ms ease-out;
     transition: transform 1400ms ease-in, opacity 400ms ease-out;
 }
 
-.fluid.temp-5 {
+.section.temp-5 {
     -webkit-transition: transform 1500ms ease-in, opacity 400ms ease-out;
     transition: transform 1500ms ease-in, opacity 400ms ease-out;
 }
 
-.fluid.temp-6 {
+.section.temp-6 {
     -webkit-transition: transform 1600ms ease-in, opacity 400ms ease-out;
     transition: transform 1600ms ease-in, opacity 400ms ease-out;
 }
 
-.fluid.temp-7 {
+.section.temp-7 {
     -webkit-transition: transform 1700ms ease-in, opacity 400ms ease-out;
     transition: transform 1700ms ease-in, opacity 400ms ease-out;
 }
 
-.fluid.temp-8 {
+.section.temp-8 {
     -webkit-transition: transform 1800ms ease-in, opacity 400ms ease-out;
     transition: transform 1800ms ease-in, opacity 400ms ease-out;
 }
 
-.fluid.temp-9 {
+.section.temp-9 {
     -webkit-transition: transform 1900ms ease-in, opacity 400ms ease-out;
     transition: transform 1900ms ease-in, opacity 400ms ease-out;
 }
 
-.fluid.temp-10 {
+.section.temp-10 {
     -webkit-transition: transform 2000ms ease-in, opacity 400ms ease-out;
     transition: transform 2000ms ease-in, opacity 400ms ease-out;
 }
 
-.fluid.active {
+.section.active {
     -webkit-transform: translateY(0px);
     transform: translateY(0px);
 }
 
-.fluid.bottom {
+.section.bottom {
     -webkit-transform: translateY(150px);
     transform: translateY(150px);
 }
 
-.fluid.top {
+.section.top {
     -webkit-transform: translateY(-150px);
     transform: translateY(-150px);
 }

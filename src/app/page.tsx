@@ -34,7 +34,8 @@ export default function Home() {
         className="section" // This class is added by useFluidElement, but keeping it explicit
         id={props.id}
       >
-        <TextBlock {...props} />
+        {" "}
+        <TextBlock {...props} />{" "}
       </div>
     );
   };
@@ -105,12 +106,14 @@ export default function Home() {
           onSectionClick={(section) => {
             if (!section) return;
             const anchor = document.getElementById(toSectionId(section));
+
             if (anchor) {
               anchor.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
               });
             }
+
             setActiveSection(section);
           }}
         />{" "}

@@ -186,8 +186,7 @@ export const useFluidLoading = () => {
 // Hook for individual elements - matches original jQuery behavior exactly
 export const useFluidElement = () => {
 	const elementRef = useRef<HTMLElement>(null);
-	const [isInitialized,
-		setIsInitialized] = useState(false);
+	const [isInitialized, setIsInitialized] = useState(false);
 
 	useEffect(() => {
 		const element = elementRef.current;
@@ -208,34 +207,26 @@ export const useFluidElement = () => {
 			// Element is in viewport (enters with 70% visible like jQuery version)
 			const inViewport = (itemTop + itemHeight * 0.7 - scrollTop) >= 0 && (itemTop) <= (scrollTop + windowHeight) || scrollTop === 0;
 
-			// Element is completely out of viewport (fully above or below)
-			const fullyOutOfViewport = (itemTop + itemHeight < scrollTop) || // Fully above viewport
-				(itemTop > scrollTop + windowHeight); // Fully below viewport
-
 			if (inViewport) {
 				// In viewport - add active, remove position classes
 				element.classList.add('active');
 				element.classList.remove('bottom', 'top');
-			}
-
-			else if (fullyOutOfViewport) {
-				// Only remove active when element is COMPLETELY out of viewport
+			} else {
+				// Out of viewport - remove active and set position classes
 				element.classList.remove('active');
-			}
 
-			// Update position tracking classes (like jQuery version)
-			if ((itemTop + itemHeight * 0.7 - scrollTop) < 100 && scrollTop > 0) {
-				element.classList.add('top');
-				element.classList.remove('bottom');
+				// Element is above viewport (scrolled past)
+				if ((itemTop + itemHeight) < scrollTop) {
+					element.classList.add('top');
+					element.classList.remove('bottom');
+				}
+				// Element is below viewport
+				else if (itemTop > (scrollTop + windowHeight)) {
+					element.classList.add('bottom');
+					element.classList.remove('top');
+				}
 			}
-
-			if ((itemTop) > scrollTop + windowHeight) {
-				element.classList.add('bottom');
-				element.classList.remove('top');
-			}
-		}
-
-			;
+		};
 
 		const handleScroll = () => checkVisible();
 		const handleResize = () => checkVisible();
@@ -245,15 +236,11 @@ export const useFluidElement = () => {
 
 		document.addEventListener('scroll', handleScroll, {
 			passive: true
-		}
-
-		);
+		});
 
 		document.addEventListener('resize', handleResize, {
 			passive: true
-		}
-
-		);
+		});
 
 		setIsInitialized(true);
 
@@ -262,11 +249,7 @@ export const useFluidElement = () => {
 			document.removeEventListener('resize', handleResize);
 			element.classList.remove('section', `temp-${random}`, 'active', 'top', 'bottom');
 		};
-	}
-
-		, []);
+	}, []);
 
 	return elementRef;
-}
-
-	;
+};
