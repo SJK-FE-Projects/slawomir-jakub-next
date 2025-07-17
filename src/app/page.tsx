@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "./page.module.css";
+import "./fluid.css"; // Add fluid CSS import
 import MenuButton from "./components/MenuButton";
 import HeaderBar from "./components/HeaderBar";
 import SectionButton from "./components/SectionButton";
@@ -30,11 +31,10 @@ export default function Home() {
     return (
       <div
         ref={textBlockRef as React.RefObject<HTMLDivElement>}
-        className="section"
+        className="section" // This class is added by useFluidElement, but keeping it explicit
         id={props.id}
       >
-        {" "}
-        <TextBlock {...props} />{" "}
+        <TextBlock {...props} />
       </div>
     );
   };
