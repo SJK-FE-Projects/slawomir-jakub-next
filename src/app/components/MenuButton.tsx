@@ -58,7 +58,10 @@ const MenuButton = () => {
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setShowContactDropdown(false);
-        setShowMobileMenu(false);
+        // Only close mobile menu if we're actually on mobile
+        if (window.innerWidth <= 768) {
+          setShowMobileMenu(false);
+        }
       }
     };
 

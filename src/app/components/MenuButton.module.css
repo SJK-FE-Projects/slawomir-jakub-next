@@ -40,6 +40,7 @@
 
 .dropdownWrapper {
     position: relative;
+    display: flex;
 }
 
 .menuButton {
@@ -69,8 +70,8 @@
 }
 
 .dropdown {
-    position: relative;
-    top: 0;
+    position: absolute;
+    top: 100%;
     left: 0;
     display: flex;
     flex-direction: row;
@@ -154,13 +155,14 @@
 /* Mobile Menu Styles */
 .mobileMenuButton {
     display: none;
+    /* Hidden by default on desktop */
     padding: 1rem 2rem;
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.80);
     box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(5px);
     color: var(--cod-black);
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 120%;
     border: none;
@@ -173,35 +175,110 @@
     background: rgba(255, 255, 255, 0.95);
 }
 
+/* Mobile Menu Items Styles */
+.mobileMenuItems {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.mobileMenuItem,
+.mobileMenuButton {
+    display: inline-flex;
+    padding: 1rem 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.80);
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    color: var(--cod-black);
+
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.mobileMenuItem:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.mobileContactButton {
+    display: inline-flex;
+    padding: 1rem 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.80);
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    color: var(--cod-black);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 120%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.mobileContactButton:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.mobileContactItems {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.mobileContactItem {
+    display: inline-flex;
+    padding: 0.75rem 1.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.80);
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    color: var(--cod-black);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 120%;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.mobileContactItem:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .mobileMenuButton {
         display: block;
+        /* Show only on mobile */
     }
 
     .menuRow {
         display: none;
-        flex-direction: row;
-        gap: 1rem;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 16px;
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 1000;
-        padding: 1rem;
-        flex-wrap: wrap;
+        /* Hide desktop menu by default on mobile */
     }
 
     .menuRow.mobileMenuOpen {
         display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 100%;
     }
 
     .menuItem,
-    .contactButton {
+    .contactButton,
+    .mobileMenuButton {
         font-size: 18px;
         padding: 0.75rem 1.5rem;
         width: auto;
@@ -211,8 +288,6 @@
     .dropdown {
         position: static !important;
         flex-direction: row;
-        gap: 1rem;
-        margin-top: 0;
         box-shadow: none;
         background: none;
         backdrop-filter: none;
@@ -228,5 +303,47 @@
 
     .dropdownWrapper {
         width: auto;
+    }
+
+}
+
+/* Desktop Styles - Default */
+@media (min-width: 769px) {
+    .menuRow {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+}
+
+/* Desktop Styles - Ensure mobile menu is hidden */
+@media (min-width: 769px) {
+    .mobileMenuButton {
+        display: none !important;
+        /* Force hide on desktop */
+    }
+
+    .menuRow {
+        display: flex !important;
+        /* Force show on desktop */
+    }
+
+    .menuRow.mobileMenuOpen {
+        display: flex !important;
+        /* Maintain desktop layout even if mobile class is present */
+        flex-direction: row !important;
+        margin-top: 0 !important;
+    }
+
+    .dropdownWrapper {
+        width: auto;
+    }
+
+    .dropdown {
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        flex-direction: row !important;
+        margin-top: 1rem !important;
     }
 }

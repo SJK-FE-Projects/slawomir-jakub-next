@@ -31,12 +31,60 @@
     z-index: 100;
 }
 
-.headerBar {
-    position: sticky;
-    top: 0;
-    z-index: 90;
-    background: var(--background);
-    padding: 1rem 0;
+/* Universal Button Styles */
+.button,
+.menuButton,
+.menuItem,
+.contactButton,
+.dropdownItem,
+.mobileMenuButton {
+    display: inline-flex;
+    padding: 1rem 2rem;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.80);
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    color: var(--cod-black);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 120%;
+    border: none;
+    outline: none;
+    box-sizing: content-box;
+    cursor: pointer;
+    z-index: 2000;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.button:hover,
+.menuButton:hover,
+.menuItem:hover,
+.contactButton:hover,
+.dropdownItem:hover,
+.mobileMenuButton:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.button:focus,
+.menuButton:focus,
+.menuItem:focus,
+.contactButton:focus,
+.dropdownItem:focus,
+.mobileMenuButton:focus {
+    outline: 1px solid var(--cod-black);
+    outline-offset: -2px;
+}
+
+/* Mobile Menu State Classes */
+.mobileMenuOpen {
+    /* Add any specific styling for open mobile menu state */
+}
+
+.mobileMenuClosed {
+    /* Add any specific styling for closed mobile menu state */
 }
 
 /* Small Caps style */
@@ -177,7 +225,20 @@ a {
         letter-spacing: -0.1px;
     }
 
-    /* Menu Button Responsive */
+    /* Universal Button Styles - Mobile Override */
+    .button,
+    .menuButton,
+    .menuItem,
+    .contactButton,
+    .dropdownItem,
+    .mobileMenuButton {
+        font-size: 18px;
+        padding: 0.75rem 1.5rem;
+        width: auto;
+        justify-content: center;
+    }
+
+    /* Hide desktop menu button positioning on mobile */
     .menuButton {
         position: fixed;
         top: 1rem;
@@ -201,32 +262,18 @@ a {
 
     /* General mobile adjustments */
     body {
-        padding: 0.5rem;
-    }
-
-    /* Buttons 20% smaller on mobile */
-    .button,
-    .menuButton,
-    .menuItem,
-    .contactButton,
-    .dropdownItem,
-    .mobileMenuButton {
-        font-size: 14px !important;
-        /* 22px * 0.8 = 17.6px */
-        padding: 0.5rem 1.6rem !important;
-        /* 1rem * 0.8 = 0.8rem, 2rem * 0.8 = 1.6rem */
+        padding: 0.75rem;
     }
 
     /* Menu becomes dropdown on mobile */
     .menuRow {
-        flex-direction: column !important;
         width: 100% !important;
     }
 
     .dropdown {
         position: static !important;
         flex-direction: column !important;
-        width: 100% !important;
+        width: 100vw !important;
         gap: 0.5rem !important;
     }
 }
@@ -241,20 +288,54 @@ a {
     /* marker class, no styles needed */
 }
 
-.temp-1 { transform: translateY(50px); }
-.temp-2 { transform: translateY(100px); }
-.temp-3 { transform: translateY(150px); }
-.temp-4 { transform: translateY(200px); }
-.temp-5 { transform: translateY(75px); }
-.temp-6 { transform: translateY(125px); }
-.temp-7 { transform: translateY(175px); }
-.temp-8 { transform: translateY(60px); }
-.temp-9 { transform: translateY(110px); }
-.temp-10 { transform: translateY(160px); }
+.temp-1 {
+    transform: translateY(50px);
+}
+
+.temp-2 {
+    transform: translateY(100px);
+}
+
+.temp-3 {
+    transform: translateY(150px);
+}
+
+.temp-4 {
+    transform: translateY(200px);
+}
+
+.temp-5 {
+    transform: translateY(75px);
+}
+
+.temp-6 {
+    transform: translateY(125px);
+}
+
+.temp-7 {
+    transform: translateY(175px);
+}
+
+.temp-8 {
+    transform: translateY(60px);
+}
+
+.temp-9 {
+    transform: translateY(110px);
+}
+
+.temp-10 {
+    transform: translateY(160px);
+}
 
 .section.active {
     transform: translateY(0) !important;
 }
 
-.top { /* for state tracking, no visual effect */ }
-.bottom { /* for state tracking, no visual effect */ }
+.top {
+    /* for state tracking, no visual effect */
+}
+
+.bottom {
+    /* for state tracking, no visual effect */
+}
