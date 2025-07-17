@@ -75,8 +75,10 @@
     left: 0;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 1rem;
     z-index: 1000;
+    width: 100%;
 }
 
 .menuItem {
@@ -345,5 +347,7 @@
         left: 0 !important;
         flex-direction: row !important;
         margin-top: 1rem !important;
+        width: 100%;
+        flex-wrap: nowrap !important;
     }
 }
