@@ -1,4 +1,4 @@
-.button {
+.sectionButton {
     display: flex;
     padding: 6px 12px;
     align-items: center;
@@ -18,15 +18,17 @@
     appearance: none;
     box-shadow: none;
     box-sizing: content-box;
+    text-wrap: nowrap;
+
 }
 
-.button:focus {
+.sectionButton:focus {
     outline: 1px solid var(--cod-black);
     outline-offset: -1px;
     box-shadow: none;
 }
 
-.button:active {
+.sectionButton:active {
     outline: 1px solid var(--cod-black);
     outline-offset: -1px;
     transform: none;
@@ -41,8 +43,11 @@
 }
 
 @media (max-width: 768px) {
-    .button {
+    .sectionButton {
         padding: 4px 10px;
         gap: 1rem;
+        /* text-wrap: nowrap; */
     }
+
+
 }

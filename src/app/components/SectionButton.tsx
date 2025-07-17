@@ -18,7 +18,7 @@ export default function SectionButton({
   return (
     <button
       type="button"
-      className={`textCaption ${styles.button} ${
+      className={`textCaption ${styles.sectionButton} ${
         selected ? styles.selected : ""
       }`}
       onClick={onClick}

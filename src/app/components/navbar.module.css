@@ -1,9 +1,15 @@
 .navbar {
     width: 100%;
-    /* background: white; */}
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
 
 .headlines {
     padding: 1rem 2rem;
+    display: flex;
+    width: auto;
 }
 
 .stickyMenu {
@@ -17,4 +23,15 @@
     padding: 1rem 2rem;
     border-bottom: 1px solid #eee;
     background: white;
+}
+
+.sectionButtonsWrapper {
+    display: flex;
+    flex-direction: row;
+    ;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+    width: 100%;
+    flex-wrap: wrap;
 }

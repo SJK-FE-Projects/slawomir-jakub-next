@@ -30,7 +30,7 @@ const HeaderBar: React.FC<HeaderBarProps> = ({
 
   return (
     <nav>
-      <div>
+      <div className={styles.navWrapper}>
         <h1>{headline}</h1>
         <h2>{subheadline}</h2>
       </div>

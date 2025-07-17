@@ -19,21 +19,14 @@ const Navbar: React.FC = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.headlines}>
-        <span className={styles.logo}>Sławomir Jakub</span>
+        <h1 className={styles.logo}>Sławomir Jakub</h1>
         <h1 className={styles.headline}>
           Hej! I&apos;m Slawomir Jakub Krzyzak
         </h1>
         <h2 className={styles.subheadline}>Web Web Projects</h2>
       </div>
       {/* Section navigation row */}
-      <div
-        style={{
-          display: "flex",
-          gap: "1rem",
-          justifyContent: "center",
-          margin: "1rem 0",
-        }}
-      >
+      <div className={styles.sectionButtonsWrapper}>
         {sections.map((section) => (
           <SectionButton
             key={section}
