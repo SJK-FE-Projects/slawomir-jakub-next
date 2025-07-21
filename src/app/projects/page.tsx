@@ -559,6 +559,68 @@ export default function ProjectsPage() {
         },
       ],
     },
+    {
+      id: "11",
+      title: "Project P11", // TO FILL
+      roles: "Design / Development", // TO FILL
+      year: "2024",
+      description:
+        "Description for Project P11. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", // TO FILL
+      sectionLabel: "Product",
+      width: 4,
+      pull: 1,
+      images: [
+        {
+          src: "/projectImages/P11/blm1.jpg",
+          alt: "P11 Image 1",
+          width: 5,
+          pull: 1,
+        },
+        {
+          src: "/projectImages/P11/blm2.jpg",
+          alt: "P11 Image 2",
+          width: 4,
+          pull: 3,
+        },
+        {
+          src: "/projectImages/P11/blm3.jpg",
+          alt: "P11 Image 3",
+          width: 4,
+          pull: 2,
+        },
+      ],
+    },
+    {
+      id: "12",
+      title: "Project P12", // TO FILL
+      roles: "UI/UX Design", // TO FILL
+      year: "2024",
+      description:
+        "Description for Project P12. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", // TO FILL
+      sectionLabel: "Business",
+      width: 4,
+      pull: 1,
+      images: [
+        {
+          src: "/projectImages/P12/hm1.jpg",
+          alt: "P12 Image 1",
+          width: 6,
+          pull: 1,
+        },
+        {
+          src: "/projectImages/P12/hm2.jpg",
+          alt: "P12 Image 2",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P12/hm3.jpg",
+          alt: "P12 Image 3",
+          width: 4,
+          pull: 3,
+        },
+      ],
+    },
   ];
 
   // Filter projects based on selected section

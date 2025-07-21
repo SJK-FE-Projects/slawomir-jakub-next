@@ -57,7 +57,7 @@ const TextBlock = React.forwardRef<HTMLDivElement, TextBlockProps>(
         return (
           <div
             ref={ref}
-            className={`${styles.block} ${className ?? ""} section`}
+            className={`${styles.block} ${className ?? ""}`}
             id={id}
           >
             <div className={styles.sectionButtonContainer}>
@@ -80,7 +80,7 @@ const TextBlock = React.forwardRef<HTMLDivElement, TextBlockProps>(
         return (
           <div
             ref={ref}
-            className={`${styles.block} ${className ?? ""} section`}
+            className={`${styles.block} ${className ?? ""}`}
             id={id}
           >
             <div className={styles.sectionButtonContainer}>
@@ -109,7 +109,7 @@ const TextBlock = React.forwardRef<HTMLDivElement, TextBlockProps>(
         return (
           <div
             ref={ref}
-            className={`${styles.block} ${className ?? ""} section`}
+            className={`${styles.block} ${className ?? ""}`}
             id={id}
           >
             <div className={styles.sectionButtonContainer}>

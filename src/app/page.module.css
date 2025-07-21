@@ -19,10 +19,28 @@
     top: 1rem;
 }
 
+/* Change contentContainer to match projectsContainer pattern */
 .contentContainer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    /* Same gap as projectsContainer */
     width: 100%;
     margin-top: 6rem;
+}
+
+/* Remove duplicate fluid animation classes - TextBlock.module.css handles them */
+
+/* Simple container for TextBlock - let TextBlock.module.css handle the grid layout */
+.textBlockGrid {
+    width: 100%;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .contentContainer {
+        margin-top: 3rem;
+        gap: 1rem;
+        /* Smaller gap on mobile, same as projects */
+    }
 }
