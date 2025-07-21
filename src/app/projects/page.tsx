@@ -107,7 +107,7 @@ export default function ProjectsPage() {
         "Web flow and screen design for PORSCHE. The backlog UI of the rental system for test drives.", // TO FILL
       sectionLabel: "Business",
       width: 4,
-      pull: 3,
+      pull: 1,
       images: [
         {
           src: "/projectImages/P1/PorscheLogin2.mp4",
@@ -149,7 +149,7 @@ export default function ProjectsPage() {
       description:
         "Layouting and UI animations for the branding project of fifteenth edition of Documenta developed by and on behalf of StanHema agency in Berlin.", // TO FILL
       width: 4,
-      pull: 2,
+      pull: 1,
       sectionLabel: "Cultural",
       images: [
         {
@@ -243,7 +243,7 @@ export default function ProjectsPage() {
         "Workshops, branding and screen design for the campaign of city council of Jena for the German Center of Future. Developed on behalf of design office anschlaege.de.", // TO FILL
       sectionLabel: "Cultural",
       width: 4,
-      pull: 3,
+      pull: 1,
       images: [
         {
           src: "/projectImages/P4/jzet0a.mp4",
@@ -298,7 +298,7 @@ export default function ProjectsPage() {
         "UI & UX Design for the pitch project of swiss cinematographic cooperative. Developed on behalf of formdusche design office.", // TO FILL
       sectionLabel: "Cultural",
       width: 4,
-      pull: 2,
+      pull: 1,
       images: [
         {
           src: "/projectImages/P5/si1.mp4",
@@ -376,9 +376,9 @@ export default function ProjectsPage() {
       year: "2024",
       description:
         "Screen design visual communication for August Bebel Institut in Berlin. Developed on behalf of design office anschlaege.de.", // TO FILL
-      sectionLabel: "Cultural",
+      sectionLabel: "Product",
       width: 4,
-      pull: 3,
+      pull: 1,
       images: [
         {
           src: "/projectImages/P7/abi1.mp4",
@@ -409,7 +409,7 @@ export default function ProjectsPage() {
         "Pitch project for agency SMITH Berlin. Corporate identity, visual communication and web design for rebranding of ROC Berlin.", // TO FILL
       sectionLabel: "Cultural",
       width: 4,
-      pull: 2,
+      pull: 1,
       images: [
         {
           src: "/projectImages/P8/roc1.jpg",
@@ -531,7 +531,7 @@ export default function ProjectsPage() {
         "Communication project of memo game and merchandising developed to honor and showcase the rich cultural legacy of Finnish pattern design. Created in for of the 'Finland 100' national initiative, the game was produced in collaboration with the Finnish National Gallery and Aalto University’s School of Arts, Design and Architecture in Helsinki.", // TO FILL
       sectionLabel: "Business",
       width: 4,
-      pull: 3,
+      pull: 1,
       images: [
         {
           src: "/projectImages/P10/pdff1.jpg",

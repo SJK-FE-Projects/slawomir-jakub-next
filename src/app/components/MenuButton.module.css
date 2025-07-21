@@ -3,9 +3,11 @@
     padding: 1rem 2rem;
     align-items: flex-start;
     gap: 10px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.80);
-    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.4);
+    background: color(display-p3 1 1 1 / 0.4);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 8px 0px color(display-p3 0 0 0 / 0.25);
     backdrop-filter: blur(5px);
     color: var(--cod-black);
     font-size: 22px;
@@ -48,9 +50,11 @@
     padding: 1rem 2rem;
     align-items: flex-start;
     gap: 10px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.80);
-    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.4);
+    background: color(display-p3 1 1 1 / 0.4);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 8px 0px color(display-p3 0 0 0 / 0.25);
     backdrop-filter: blur(5px);
     color: var(--cod-black);
     font-size: 22px;
@@ -86,9 +90,11 @@
     padding: 1rem 2rem;
     align-items: flex-start;
     gap: 16px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.80);
-    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.4);
+    background: color(display-p3 1 1 1 / 0.4);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 8px 0px color(display-p3 0 0 0 / 0.25);
     backdrop-filter: blur(5px);
     color: var(--cod-black);
     font-size: 22px;
@@ -99,7 +105,7 @@
 }
 
 .menuItem:hover {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .contactButton {
@@ -107,9 +113,11 @@
     padding: 1rem 2rem;
     align-items: flex-start;
     gap: 10px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.80);
-    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.4);
+    background: color(display-p3 1 1 1 / 0.4);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 8px 0px color(display-p3 0 0 0 / 0.25);
     backdrop-filter: blur(5px);
     color: var(--cod-black);
     font-size: 22px;
@@ -123,7 +131,7 @@
 }
 
 .contactButton:hover {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .contactButton:focus {
@@ -136,9 +144,11 @@
     align-items: flex-start;
     justify-content: flex-start;
     gap: 10px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.80);
-    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.4);
+    background: color(display-p3 1 1 1 / 0.4);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 8px 0px color(display-p3 0 0 0 / 0.25);
     backdrop-filter: blur(5px);
     color: var(--cod-black);
     font-size: 22px;
@@ -151,7 +161,8 @@
 }
 
 .dropdownItem:hover {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.8);
+    background: color(display-p3 1 1 1 / 0.8);
 }
 
 /* Mobile Menu Styles */
@@ -159,9 +170,11 @@
     display: none;
     /* Hidden by default on desktop */
     padding: 1rem 2rem;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.80);
-    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.4);
+    background: color(display-p3 1 1 1 / 0.4);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 8px 0px color(display-p3 0 0 0 / 0.25);
     backdrop-filter: blur(5px);
     color: var(--cod-black);
     font-size: 18px;
@@ -174,7 +187,7 @@
 }
 
 .mobileMenuButton:hover {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.8);
 }
 
 /* Mobile Menu Items Styles */
@@ -192,9 +205,11 @@
     padding: 1rem 2rem;
     align-items: center;
     justify-content: center;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.80);
-    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.4);
+    background: color(display-p3 1 1 1 / 0.4);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 8px 0px color(display-p3 0 0 0 / 0.25);
     backdrop-filter: blur(5px);
     color: var(--cod-black);
 
@@ -203,7 +218,7 @@
 }
 
 .mobileMenuItem:hover {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .mobileContactButton {
@@ -211,9 +226,11 @@
     padding: 1rem 2rem;
     align-items: center;
     justify-content: center;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.80);
-    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.4);
+    background: color(display-p3 1 1 1 / 0.4);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 8px 0px color(display-p3 0 0 0 / 0.25);
     backdrop-filter: blur(5px);
     color: var(--cod-black);
     font-size: 18px;
@@ -226,7 +243,7 @@
 }
 
 .mobileContactButton:hover {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .mobileContactItems {
@@ -242,9 +259,11 @@
     padding: 0.75rem 1.5rem;
     align-items: center;
     justify-content: center;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.80);
-    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.4);
+    background: color(display-p3 1 1 1 / 0.4);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 8px 0px color(display-p3 0 0 0 / 0.25);
     backdrop-filter: blur(5px);
     color: var(--cod-black);
     font-size: 16px;
@@ -255,7 +274,50 @@
 }
 
 .mobileContactItem:hover {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Desktop Styles - Default */
+@media (min-width: 769px) {
+    .menuRow {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+}
+
+/* Desktop Styles - Ensure mobile menu is hidden */
+@media (min-width: 769px) {
+    .mobileMenuButton {
+        display: none !important;
+        /* Force hide on desktop */
+    }
+
+    .menuRow {
+        display: flex !important;
+        /* Force show on desktop */
+    }
+
+    .menuRow.mobileMenuOpen {
+        display: flex !important;
+        /* Maintain desktop layout even if mobile class is present */
+        flex-direction: row !important;
+        margin-top: 0 !important;
+    }
+
+    .dropdownWrapper {
+        width: auto;
+    }
+
+    .dropdown {
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        flex-direction: row !important;
+        margin-top: 1rem !important;
+        width: 100%;
+        flex-wrap: nowrap !important;
+    }
 }
 
 /* Mobile Responsive Styles */
@@ -301,53 +363,14 @@
         padding: 0.75rem 1.5rem;
         width: auto;
         justify-content: center;
-    }
-
-    .dropdownWrapper {
-        width: auto;
-    }
-
-}
-
-/* Desktop Styles - Default */
-@media (min-width: 769px) {
-    .menuRow {
         display: flex;
-        gap: 1rem;
-        align-items: center;
-    }
-}
-
-/* Desktop Styles - Ensure mobile menu is hidden */
-@media (min-width: 769px) {
-    .mobileMenuButton {
-        display: none !important;
-        /* Force hide on desktop */
-    }
-
-    .menuRow {
-        display: flex !important;
-        /* Force show on desktop */
-    }
-
-    .menuRow.mobileMenuOpen {
-        display: flex !important;
-        /* Maintain desktop layout even if mobile class is present */
         flex-direction: row !important;
-        margin-top: 0 !important;
     }
 
     .dropdownWrapper {
         width: auto;
-    }
-
-    .dropdown {
-        position: absolute !important;
-        top: 100% !important;
-        left: 0 !important;
+        background: none !important;
+        display: flex;
         flex-direction: row !important;
-        margin-top: 1rem !important;
-        width: 100%;
-        flex-wrap: nowrap !important;
     }
 }

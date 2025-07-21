@@ -1,5 +1,83 @@
+/* Grid container for TextBlock */
+.block {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    width: 100%;
+    /* Add fluid animation system */
+    transition: transform 0.8s ease-out;
+    position: relative;
+}
+
+/* Width and pull classes for grid positioning */
+/* width 2 */
+.width2.pull1 {
+    grid-column: 1 / span 2;
+}
+
+.width2.pull2 {
+    grid-column: 2 / span 2;
+}
+
+.width2.pull3 {
+    grid-column: 3 / span 2;
+}
+
+.width2.pull4 {
+    grid-column: 4 / span 2;
+}
+
+.width2.pull5 {
+    grid-column: 5 / span 2;
+}
+
+/* width 3 */
+.width3.pull1 {
+    grid-column: 1 / span 3;
+}
+
+.width3.pull2 {
+    grid-column: 2 / span 3;
+}
+
+.width3.pull3 {
+    grid-column: 3 / span 3;
+}
+
+.width3.pull4 {
+    grid-column: 4 / span 3;
+}
+
+/* width 4 */
+.width4.pull1 {
+    grid-column: 1 / span 4;
+}
+
+.width4.pull2 {
+    grid-column: 2 / span 4;
+}
+
+.width4.pull3 {
+    grid-column: 3 / span 4;
+}
+
+/* width 5 */
+.width5.pull1 {
+    grid-column: 1 / span 5;
+}
+
+.width5.pull2 {
+    grid-column: 2 / span 5;
+}
+
+/* width 6 */
+.width6.pull1 {
+    grid-column: 1 / span 6;
+}
+
 .sectionButtonContainer {
-    /* SectionButton will be positioned in first column by parent grid */
+    /* Takes 2 columns on desktop */
+    grid-column: 1 / span 2;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -11,7 +89,8 @@
 }
 
 .contentContainer {
-    /* Content will be positioned by parent grid with width/pull classes */
+    /* Takes remaining 4 columns on desktop */
+    grid-column: 3 / span 4;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -65,16 +144,96 @@
     font-weight: 600;
 }
 
+/* Fluid Loading System - Random transform values */
+.temp-1 {
+    transform: translateY(50px);
+}
+
+.temp-2 {
+    transform: translateY(100px);
+}
+
+.temp-3 {
+    transform: translateY(150px);
+}
+
+.temp-4 {
+    transform: translateY(200px);
+}
+
+.temp-5 {
+    transform: translateY(75px);
+}
+
+.temp-6 {
+    transform: translateY(125px);
+}
+
+.temp-7 {
+    transform: translateY(175px);
+}
+
+.temp-8 {
+    transform: translateY(60px);
+}
+
+.temp-9 {
+    transform: translateY(110px);
+}
+
+.temp-10 {
+    transform: translateY(160px);
+}
+
+/* When active, reset transform to 0 */
+.block.active {
+    transform: translateY(0) !important;
+}
+
 /* Mobile responsive styles */
 @media (max-width: 768px) {
+
+    /* Reset all grid positioning for mobile */
+    .width2,
+    .width3,
+    .width4,
+    .width5,
+    .width6 {
+        grid-column: unset !important;
+        width: 100% !important;
+    }
+
     .sectionButtonContainer {
-        /* Mobile styles for section button */
+        grid-column: unset !important;
         margin-bottom: 0.5rem;
     }
 
     .contentContainer {
-        /* Mobile styles for content */
+        grid-column: unset !important;
         padding: 0.75rem;
         gap: 1rem;
+    }
+
+    /* Disable all temp transforms on mobile */
+    .temp-1,
+    .temp-2,
+    .temp-3,
+    .temp-4,
+    .temp-5,
+    .temp-6,
+    .temp-7,
+    .temp-8,
+    .temp-9,
+    .temp-10 {
+        transform: none !important;
+    }
+
+    .block {
+        display: flex !important;
+        flex-direction: column !important;
+
+        gap: 0.5rem !important;
+        /* Disable fluid loading transforms on mobile */
+        transform: none !important;
     }
 }
