@@ -4,7 +4,6 @@ import styles from "./page.module.css";
 import "./fluid.css"; // Add fluid CSS import
 import MenuButton from "./components/MenuButton";
 import HeaderBar from "./components/HeaderBar";
-import SectionButton from "./components/SectionButton";
 
 import TextBlock, { TextBlockProps } from "./components/TextBlock";
 
