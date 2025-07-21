@@ -86,7 +86,7 @@ export default function Home() {
     });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [sectionIds, sectionLabels]); // ✅ Add missing dependencies
 
   return (
     <div className={styles.page}>
