@@ -597,7 +597,7 @@ export default function ProjectsPage() {
       year: "2024",
       description:
         "Description for Project P12. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", // TO FILL
-      sectionLabel: "Business",
+      sectionLabel: "Product",
       width: 4,
       pull: 1,
       images: [
