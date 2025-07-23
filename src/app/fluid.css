@@ -1,66 +1,66 @@
-.section.temp-1 {
+.fluid.temp-1 {
     -webkit-transition: transform 1100ms ease-in, opacity 400ms ease-out;
     transition: transform 1100ms ease-in, opacity 400ms ease-out;
 }
 
-.section.temp-2 {
+.fluid.temp-2 {
     -webkit-transition: transform 1200ms ease-in, opacity 400ms ease-out;
     transition: transform 1200ms ease-in, opacity 400ms ease-out;
 }
 
-.section.temp-3 {
+.fluid.temp-3 {
     -webkit-transition: transform 1300ms ease-in, opacity 400ms ease-out;
     transition: transform 1300ms ease-in, opacity 400ms ease-out;
 }
 
-.section.temp-4 {
+.fluid.temp-4 {
     -webkit-transition: transform 1400ms ease-in, opacity 400ms ease-out;
     transition: transform 1400ms ease-in, opacity 400ms ease-out;
 }
 
-.section.temp-5 {
+.fluid.temp-5 {
     -webkit-transition: transform 1500ms ease-in, opacity 400ms ease-out;
     transition: transform 1500ms ease-in, opacity 400ms ease-out;
 }
 
-.section.temp-6 {
+.fluid.temp-6 {
     -webkit-transition: transform 1600ms ease-in, opacity 400ms ease-out;
     transition: transform 1600ms ease-in, opacity 400ms ease-out;
 }
 
-.section.temp-7 {
+.fluid.temp-7 {
     -webkit-transition: transform 1700ms ease-in, opacity 400ms ease-out;
     transition: transform 1700ms ease-in, opacity 400ms ease-out;
 }
 
-.section.temp-8 {
+.fluid.temp-8 {
     -webkit-transition: transform 1800ms ease-in, opacity 400ms ease-out;
     transition: transform 1800ms ease-in, opacity 400ms ease-out;
 }
 
-.section.temp-9 {
+.fluid.temp-9 {
     -webkit-transition: transform 1900ms ease-in, opacity 400ms ease-out;
     transition: transform 1900ms ease-in, opacity 400ms ease-out;
 }
 
-.section.temp-10 {
+.fluid.temp-10 {
     -webkit-transition: transform 2000ms ease-in, opacity 400ms ease-out;
     transition: transform 2000ms ease-in, opacity 400ms ease-out;
 }
 
-.section.active {
+.fluid.active {
     -webkit-transform: translateY(0px);
     transform: translateY(0px);
 }
 
-.section.bottom {
-    -webkit-transform: translateY(150px);
-    transform: translateY(150px);
+.fluid.bottom {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
 }
 
-.section.top {
-    -webkit-transform: translateY(-150px);
-    transform: translateY(-150px);
+.fluid.top {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
 }
 
 @keyframes nabokiup {
