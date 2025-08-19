@@ -143,6 +143,98 @@ export default function ProjectsPage() {
     },
     {
       id: "2",
+      title: "Creative Museum 2.0. by BadischesLandes Museum", // TO FILL
+      roles: "UX/UI Design, Development", // TO FILL
+      year: "2022—2023",
+      description:
+        "Designed with anschlaege.de for the Badisches Landesmuseum, Creative Museum is a digital participatory platform aimed at digitally curious and younger audiences as well as broader under‑represented visitor groups. The concept centers on user‑generated content, campaign‑based interactions, voting, feedback loops and gamified mechanics (points, badges, levels), creating a dynamic social feed that empowers users as curators, co‑creators and civic contributors. Concept development flowed through co‑design workshops, wireframing and screen design, resulting in dev‑ready hand‑off for implementation. Credits: anschlaege.de × Badisches Landesmuseum", // TO FILL
+      sectionLabel: "Product",
+      width: 4,
+      pull: 1,
+      images: [
+        {
+          src: "/projectImages/P11/blm0.jpg",
+          alt: "P11 Image 1",
+          width: 5,
+          pull: 1,
+        },
+        {
+          src: "/projectImages/P11/blm1.jpg",
+          alt: "P11 Image 1",
+          width: 5,
+          pull: 1,
+        },
+        {
+          src: "/projectImages/P11/blm2.jpg",
+          alt: "P11 Image 2",
+          width: 4,
+          pull: 3,
+        },
+        {
+          src: "/projectImages/P11/blm3a.jpg",
+          alt: "P11 Image 3",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P11/blm4a.jpg",
+          alt: "P11 Image 3",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P11/blm6.jpg",
+          alt: "P11 Image 3",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P11/blm7.jpg",
+          alt: "P11 Image 3",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P11/blm9.jpg",
+          alt: "P11 Image 3",
+          width: 4,
+          pull: 2,
+        },
+      ],
+    },
+    {
+      id: "3",
+      title: "hermaid", // TO FILL
+      roles: "UI Design & Development", // TO FILL
+      year: "2024",
+      description: `hermaid is a digital health app designed to support women navigating menopause by combining AI assisted self learning, symptom tracking, and expert consultations into one holistic platform. The redesign focused on crafting a clear information architecture, intuitive user flows, and visually coherent screen designs across mobile devices—all tailored to foster trust, accessibility, and long‑term engagement. The goal was to present menopause not as a medical issue, but as a journey supported through science based content, personalized recommendations, and seamless access to certified hormone experts. The result: a modern, professional wellness platform that empowers users and vouches for their hormonal health in a scalable and empathetic way.`,
+      sectionLabel: "Product",
+      width: 4,
+      pull: 1,
+      images: [
+        {
+          src: "/projectImages/P12/hm1.jpg",
+          alt: "P12 Image 1",
+          width: 6,
+          pull: 1,
+        },
+        {
+          src: "/projectImages/P12/hm2.jpg",
+          alt: "P12 Image 2",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P12/hm3.jpg",
+          alt: "P12 Image 3",
+          width: 4,
+          pull: 3,
+        },
+      ],
+    },
+
+    {
+      id: "2",
       title: "Documenta '15", // TO FILL
       roles: "Screen Design", // TO FILL
       year: "2021",
@@ -179,7 +271,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "3",
+      id: "4",
       title: "Jugend im Museum", // TO FILL
       roles: "Design System / WebFlow / UX / UI", // TO FILL
       year: "2023",
@@ -234,7 +326,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "4",
+      id: "5",
       title:
         "Zukunftszentrum für Europäische Transformation und Deutsche Einheit in Jena", // TO FILL
       roles: " Screen Design / Lay-Outing / Branding / Workshop Facilitation ", // TO FILL
@@ -290,7 +382,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "5",
+      id: "6",
       title: "suissimage", // TO FILL
       roles: "Screen Design / UX Conept", // TO FILL
       year: "2021",
@@ -327,7 +419,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "6",
+      id: "7",
       title: "Kleist Museum Frankfurt Oder", // TO FILL
       roles: "Screen Design / UX Concept", // TO FILL
       year: "2022",
@@ -376,7 +468,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "7",
+      id: "8",
       title: "August Bebel Instutut Berlin", // TO FILL
       roles: "Screen Design / UX Concept / Design System", // TO FILL
       year: "2024",
@@ -419,7 +511,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "8",
+      id: "9",
       title: "ROC Berlin", // TO FILL
       roles: "Branding / Design System / Screen Design", // TO FILL
       year: "2024",
@@ -486,7 +578,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "9",
+      id: "10",
       title: "Berlinische Galerie", // TO FILL
       roles: "Layouting", // TO FILL
       year: "2024",
@@ -541,7 +633,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "10",
+      id: "11",
       title: "Finland 100", // TO FILL
       roles: "Game Design / Concept Development", // TO FILL
       year: "2018",
@@ -577,98 +669,6 @@ export default function ProjectsPage() {
         },
       ],
     },
-    {
-      id: "11",
-      title: "Project P11", // TO FILL
-      roles: "Design / Development", // TO FILL
-      year: "2024",
-      description:
-        "Description for Project P11. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", // TO FILL
-      sectionLabel: "Product",
-      width: 4,
-      pull: 1,
-      images: [
-        {
-          src: "/projectImages/P11/blm0.jpg",
-          alt: "P11 Image 1",
-          width: 5,
-          pull: 1,
-        },
-        {
-          src: "/projectImages/P11/blm1.jpg",
-          alt: "P11 Image 1",
-          width: 5,
-          pull: 1,
-        },
-        {
-          src: "/projectImages/P11/blm2.jpg",
-          alt: "P11 Image 2",
-          width: 4,
-          pull: 3,
-        },
-        {
-          src: "/projectImages/P11/blm3a.jpg",
-          alt: "P11 Image 3",
-          width: 4,
-          pull: 2,
-        },
-        {
-          src: "/projectImages/P11/blm4a.jpg",
-          alt: "P11 Image 3",
-          width: 4,
-          pull: 2,
-        },
-        {
-          src: "/projectImages/P11/blm6.jpg",
-          alt: "P11 Image 3",
-          width: 4,
-          pull: 2,
-        },
-        {
-          src: "/projectImages/P11/blm7.jpg",
-          alt: "P11 Image 3",
-          width: 4,
-          pull: 2,
-        },
-        {
-          src: "/projectImages/P11/blm9.jpg",
-          alt: "P11 Image 3",
-          width: 4,
-          pull: 2,
-        },
-      ],
-    },
-    {
-      id: "12",
-      title: "Project P12", // TO FILL
-      roles: "UI/UX Design", // TO FILL
-      year: "2024",
-      description:
-        "Description for Project P12. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", // TO FILL
-      sectionLabel: "Product",
-      width: 4,
-      pull: 1,
-      images: [
-        {
-          src: "/projectImages/P12/hm1.jpg",
-          alt: "P12 Image 1",
-          width: 6,
-          pull: 1,
-        },
-        {
-          src: "/projectImages/P12/hm2.jpg",
-          alt: "P12 Image 2",
-          width: 4,
-          pull: 2,
-        },
-        {
-          src: "/projectImages/P12/hm3.jpg",
-          alt: "P12 Image 3",
-          width: 4,
-          pull: 3,
-        },
-      ],
-    },
   ];
 
   // Filter projects based on selected section
@@ -685,7 +685,7 @@ export default function ProjectsPage() {
         <HeaderBar
           headline="Hej! I'm Slawomir Jakub Krzyzak"
           subheadline="Web Design and Development Projects"
-          sections={["Business", "Cultural", "Product"]}
+          sections={["Business", "Cultural"]}
           selectedSection={selectedSection}
           onSectionClick={handleSectionClick}
         />
