@@ -9,7 +9,6 @@ const elements = new Set<HTMLElement>();
 let listenersAttached = false;
 let subscribers = 0;
 let scrollPosGlobal = 0;
-let directionGlobal = 0; // 0: down, 1: up
 
 const hasTempClass = (el: HTMLElement) =>
 	Array.from(el.classList).some((c) => /^temp-\d+$/.test(c));
@@ -75,11 +74,9 @@ const onScrollDir = () => {
 };
 
 const onUp = () => {
-	directionGlobal = 1;
 };
 
 const onDown = () => {
-	directionGlobal = 0;
 };
 
 const onScrollOrResize = () => checkVisible();

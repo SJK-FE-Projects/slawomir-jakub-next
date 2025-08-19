@@ -9,7 +9,7 @@ import TextBlock, { TextBlockProps } from "./components/TextBlock";
 
 import { useFluidElement } from "./hooks/useFluidLoading";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 // Helper to generate anchor id from label
 const toSectionId = (label: string) =>
@@ -271,6 +271,31 @@ export default function Home() {
       ],
     },
   ];
+
+  // Before:
+  // useEffect(() => {
+  //   const onResize = () => {
+  //     // uses values like width, height, someState, etc.
+  //   };
+  //   window.addEventListener("resize", onResize);
+  //   return () => window.removeEventListener("resize", onResize);
+  // }, []); // missing dependencies
+
+  // After: memoize handler with proper dependencies
+  const onResize = useCallback(
+    () => {
+      // ...existing code that uses width/height/someState/refs...
+    },
+    [
+      // add actual dependencies used inside onResize, e.g.:
+      // width, height, someState
+    ]
+  );
+
+  useEffect(() => {
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [onResize]);
 
   return (
     <div className={styles.page}>

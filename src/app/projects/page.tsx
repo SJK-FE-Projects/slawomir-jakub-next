@@ -632,43 +632,43 @@ export default function ProjectsPage() {
         },
       ],
     },
-    {
-      id: "11",
-      title: "Finland 100", // TO FILL
-      roles: "Game Design / Concept Development", // TO FILL
-      year: "2018",
-      description:
-        "Communication project of memo game and merchandising developed to honor and showcase the rich cultural legacy of Finnish pattern design. Created in for of the 'Finland 100' national initiative, the game was produced in collaboration with the Finnish National Gallery and Aalto University’s School of Arts, Design and Architecture in Helsinki.", // TO FILL
-      sectionLabel: "Business",
-      width: 4,
-      pull: 1,
-      images: [
-        {
-          src: "/projectImages/P10/pdff1.jpg",
-          alt: "PDFF Image 1",
-          width: 6,
-          pull: 1,
-        },
-        {
-          src: "/projectImages/P10/pdff2.jpg",
-          alt: "PDFF Image 2",
-          width: 4,
-          pull: 2,
-        },
-        {
-          src: "/projectImages/P10/pdff3.jpg",
-          alt: "PDFF Image 3",
-          width: 4,
-          pull: 3,
-        },
-        {
-          src: "/projectImages/P10/pdff4.jpg",
-          alt: "PDFF Image 4",
-          width: 4,
-          pull: 1,
-        },
-      ],
-    },
+    // {
+    //   id: "11",
+    //   title: "Finland 100", // TO FILL
+    //   roles: "Game Design / Concept Development", // TO FILL
+    //   year: "2018",
+    //   description:
+    //     "Communication project of memo game and merchandising developed to honor and showcase the rich cultural legacy of Finnish pattern design. Created in for of the 'Finland 100' national initiative, the game was produced in collaboration with the Finnish National Gallery and Aalto University’s School of Arts, Design and Architecture in Helsinki.", // TO FILL
+    //   sectionLabel: "Business",
+    //   width: 4,
+    //   pull: 1,
+    //   images: [
+    //     {
+    //       src: "/projectImages/P10/pdff1.jpg",
+    //       alt: "PDFF Image 1",
+    //       width: 6,
+    //       pull: 1,
+    //     },
+    //     {
+    //       src: "/projectImages/P10/pdff2.jpg",
+    //       alt: "PDFF Image 2",
+    //       width: 4,
+    //       pull: 2,
+    //     },
+    //     {
+    //       src: "/projectImages/P10/pdff3.jpg",
+    //       alt: "PDFF Image 3",
+    //       width: 4,
+    //       pull: 3,
+    //     },
+    //     {
+    //       src: "/projectImages/P10/pdff4.jpg",
+    //       alt: "PDFF Image 4",
+    //       width: 4,
+    //       pull: 1,
+    //     },
+    //   ],
+    // },
   ];
 
   // Filter projects based on selected section
