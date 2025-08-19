@@ -110,31 +110,31 @@ export default function ProjectsPage() {
       pull: 1,
       images: [
         {
-          src: "/projectImages/P1/PorscheLogin2.mp4",
+          src: "/projectImages/P1/PorscheLogin.mp4",
           alt: "Porsche UI Design",
           width: 5,
           pull: 1,
         },
         {
-          src: "/projectImages/P1/Porsche1-2.jpg",
+          src: "/projectImages/P1/Porsche1.jpg",
           alt: "Porsche Login Animation",
           width: 4,
           pull: 3,
         },
         {
-          src: "/projectImages/P1/Porsche2A-2.jpg",
+          src: "/projectImages/P1/Porsche2.jpg",
           alt: "Porsche Interface",
           width: 4,
           pull: 1,
         },
         {
-          src: "/projectImages/P1/Porsche3-2.jpg",
+          src: "/projectImages/P1/Porsche3.jpg",
           alt: "Porsche Design System",
           width: 4,
           pull: 3,
         },
         {
-          src: "/projectImages/P1/PorscheIcons2.mp4",
+          src: "/projectImages/P1/PorscheIcons.mp4",
           alt: "Porsche Icons Animation",
           width: 4,
           pull: 2,
@@ -367,6 +367,12 @@ export default function ProjectsPage() {
           width: 4,
           pull: 1,
         },
+        {
+          src: "/projectImages/P6/km2.mp4",
+          alt: "KM Image 6",
+          width: 4,
+          pull: 1,
+        },
       ],
     },
     {
@@ -387,13 +393,25 @@ export default function ProjectsPage() {
           pull: 1,
         },
         {
-          src: "/projectImages/P7/abi2.mp4",
+          src: "/projectImages/P7/abi8d.jpg",
           alt: "ABI Video 2",
           width: 4,
           pull: 2,
         },
         {
-          src: "/projectImages/P7/abi3.mp4",
+          src: "/projectImages/P7/abi8c.jpg",
+          alt: "ABI Video 3",
+          width: 5,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P7/abi8b.jpg",
+          alt: "ABI Video 3",
+          width: 5,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P7/abi6b.jpg",
           alt: "ABI Video 3",
           width: 5,
           pull: 2,
@@ -571,6 +589,12 @@ export default function ProjectsPage() {
       pull: 1,
       images: [
         {
+          src: "/projectImages/P11/blm0.jpg",
+          alt: "P11 Image 1",
+          width: 5,
+          pull: 1,
+        },
+        {
           src: "/projectImages/P11/blm1.jpg",
           alt: "P11 Image 1",
           width: 5,
@@ -583,7 +607,31 @@ export default function ProjectsPage() {
           pull: 3,
         },
         {
-          src: "/projectImages/P11/blm3.jpg",
+          src: "/projectImages/P11/blm3a.jpg",
+          alt: "P11 Image 3",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P11/blm4a.jpg",
+          alt: "P11 Image 3",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P11/blm6.jpg",
+          alt: "P11 Image 3",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P11/blm7.jpg",
+          alt: "P11 Image 3",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P11/blm9.jpg",
           alt: "P11 Image 3",
           width: 4,
           pull: 2,
