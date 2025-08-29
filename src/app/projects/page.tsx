@@ -154,19 +154,19 @@ export default function ProjectsPage() {
       pull: 1,
       images: [
         {
-          src: "/projectImages/P12/hm1.jpg",
+          src: "/projectImages/P12/hm1a.jpg",
           alt: "P12 Image 1",
           width: 6,
           pull: 1,
         },
         {
-          src: "/projectImages/P12/hm2.jpg",
+          src: "/projectImages/P12/hm2a.jpg",
           alt: "P12 Image 2",
           width: 4,
           pull: 2,
         },
         {
-          src: "/projectImages/P12/hm3.jpg",
+          src: "/projectImages/P12/hm3a.jpg",
           alt: "P12 Image 3",
           width: 4,
           pull: 3,
@@ -630,61 +630,61 @@ export default function ProjectsPage() {
         },
       ],
     },
-    {
-      id: "13",
-      title: "Berlinische Galerie", // TO FILL
-      roles: "Layouting", // TO FILL
-      year: "2024",
-      description:
-        "Layouting for the rebranding project of new CI for Berlinische Galerie developed by and on behalf of BUREAU Mario Lombardo.", // TO FILL
-      sectionLabel: "Cultural",
-      width: 4,
-      pull: 1,
-      images: [
-        {
-          src: "/projectImages/P9/bg1.jpg",
-          alt: "BG Image 1",
-          width: 6,
-          pull: 1,
-        },
-        {
-          src: "/projectImages/P9/BG2.jpg",
-          alt: "BG Image 2",
-          width: 2,
-          pull: 1,
-        },
-        {
-          src: "/projectImages/P9/BG2A.jpg",
-          alt: "BG Image 2A",
-          width: 2,
-          pull: 4,
-        },
-        {
-          src: "/projectImages/P9/BG3.jpg",
-          alt: "BG Image 3",
-          width: 2,
-          pull: 2,
-        },
-        {
-          src: "/projectImages/P9/BG3A.jpg",
-          alt: "BG Image 3A",
-          width: 2,
-          pull: 5,
-        },
-        {
-          src: "/projectImages/P9/BG4.jpg",
-          alt: "BG Image 4",
-          width: 2,
-          pull: 1,
-        },
-        {
-          src: "/projectImages/P9/BG4A.jpg",
-          alt: "BG Image 4A",
-          width: 2,
-          pull: 4,
-        },
-      ],
-    },
+    // {
+    //   id: "13",
+    //   title: "Berlinische Galerie", // TO FILL
+    //   roles: "Layouting", // TO FILL
+    //   year: "2024",
+    //   description:
+    //     "Layouting for the rebranding project of new CI for Berlinische Galerie developed by and on behalf of BUREAU Mario Lombardo.", // TO FILL
+    //   sectionLabel: "Cultural",
+    //   width: 4,
+    //   pull: 1,
+    //   images: [
+    //     {
+    //       src: "/projectImages/P9/bg1.jpg",
+    //       alt: "BG Image 1",
+    //       width: 6,
+    //       pull: 1,
+    //     },
+    //     {
+    //       src: "/projectImages/P9/BG2.jpg",
+    //       alt: "BG Image 2",
+    //       width: 2,
+    //       pull: 1,
+    //     },
+    //     {
+    //       src: "/projectImages/P9/BG2A.jpg",
+    //       alt: "BG Image 2A",
+    //       width: 2,
+    //       pull: 4,
+    //     },
+    //     {
+    //       src: "/projectImages/P9/BG3.jpg",
+    //       alt: "BG Image 3",
+    //       width: 2,
+    //       pull: 2,
+    //     },
+    //     {
+    //       src: "/projectImages/P9/BG3A.jpg",
+    //       alt: "BG Image 3A",
+    //       width: 2,
+    //       pull: 5,
+    //     },
+    //     {
+    //       src: "/projectImages/P9/BG4.jpg",
+    //       alt: "BG Image 4",
+    //       width: 2,
+    //       pull: 1,
+    //     },
+    //     {
+    //       src: "/projectImages/P9/BG4A.jpg",
+    //       alt: "BG Image 4A",
+    //       width: 2,
+    //       pull: 4,
+    //     },
+    //   ],
+    // },
     // {
     //   id: "11",
     //   title: "Finland 100", // TO FILL
