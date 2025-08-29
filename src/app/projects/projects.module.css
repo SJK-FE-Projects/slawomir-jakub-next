@@ -26,7 +26,7 @@
     gap: 6rem;
     /* Konsystentny odstęp między wszystkimi projektami */
     width: 100%;
-    margin-top: 6rem;
+    margin-block: 6rem;
 }
 
 /* Usunięte margin-top classes - teraz używamy tylko gap dla odstępów */

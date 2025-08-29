@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import "./fluid.css";
 import MenuButton from "./components/MenuButton";
 import HeaderBar from "./components/HeaderBar";
+import Footer from "./components/Footer";
 
 import TextBlock, { TextBlockProps } from "./components/TextBlock";
 
@@ -333,7 +334,7 @@ export default function Home() {
           ))}
         </div>{" "}
       </main>{" "}
-      <footer className={styles.footer}></footer>{" "}
+      <Footer />
     </div>
   );
 }

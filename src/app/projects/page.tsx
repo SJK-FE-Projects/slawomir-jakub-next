@@ -7,6 +7,7 @@ import MenuButton from "../components/MenuButton";
 import HeaderBar from "../components/HeaderBar";
 import MediaElement from "../components/MediaElement";
 import { useFluidElement } from "../hooks/useFluidLoading";
+import Footer from "../components/Footer";
 
 type Project = {
   id: string;
@@ -27,7 +28,8 @@ type Project = {
 };
 
 export default function ProjectsPage() {
-  const [selectedSection, setSelectedSection] = useState<string | null>(null);
+  // Initialize with "All" selected instead of null
+  const [selectedSection, setSelectedSection] = useState<string | null>("All");
 
   const handleSectionClick = (section: string | null) => {
     setSelectedSection(section);
@@ -147,7 +149,7 @@ export default function ProjectsPage() {
       roles: "UI Design & Development", // TO FILL
       year: "2024",
       description: `hermaid is a digital health app designed to support women navigating menopause by combining AI assisted self learning, symptom tracking, and expert consultations into one holistic platform. The redesign focused on crafting a clear information architecture, intuitive user flows, and visually coherent screen designs across mobile devices—all tailored to foster trust, accessibility, and long‑term engagement. The goal was to present menopause not as a medical issue, but as a journey supported through science based content, personalized recommendations, and seamless access to certified hormone experts. The result: a modern, professional wellness platform that empowers users and vouches for their hormonal health in a scalable and empathetic way.`,
-      sectionLabel: "Product",
+      sectionLabel: "Business",
       width: 4,
       pull: 1,
       images: [
@@ -174,7 +176,7 @@ export default function ProjectsPage() {
     {
       id: "3",
       title: "RedBull Advanced Technologies", // TO FILL
-      roles: "UX Design, Screen Design, Hand-offs", // TO FILL
+      roles: "UX Design, Screen Design, Dev-ready Hand-off", // TO FILL
       year: "2025", // TO FILL
       description:
         "Red Bull Advanced Technologies is the engineering arm of Red Bull Racing, applying Formula 1 expertise to groundbreaking projects in automotive, aerospace, and advanced mobility. The redesigned website showcases this innovation through a streamlined site architecture, intuitive user journeys, and a bold, performance-driven visual design. Clear content structure and responsive layouts support a growing portfolio of high-impact projects. The result is a modern digital platform that reflects the precision, ambition, and technological edge of the RBAT brand. Project on behalf of diesdas.digital agency.", // TO FILL
@@ -206,13 +208,13 @@ export default function ProjectsPage() {
           src: "/projectImages/P13/rbat2.jpg",
           alt: "P13 Image 3",
           width: 4,
-          pull: 2,
+          pull: 3,
         },
         {
           src: "/projectImages/P13/rbat3.jpg",
           alt: "P13 Image 3",
           width: 4,
-          pull: 2,
+          pull: 1,
         },
         {
           src: "/projectImages/P13/rbat4.jpg",
@@ -229,14 +231,14 @@ export default function ProjectsPage() {
       year: "2022—2023",
       description:
         "Designed with anschlaege.de for the Badisches Landesmuseum, Creative Museum is a digital participatory platform aimed at digitally curious and younger audiences as well as broader under‑represented visitor groups. The concept centers on user‑generated content, campaign‑based interactions, voting, feedback loops and gamified mechanics (points, badges, levels), creating a dynamic social feed that empowers users as curators, co‑creators and civic contributors. Concept development flowed through co‑design workshops, wireframing and screen design, resulting in dev‑ready hand‑off for implementation. Credits: anschlaege.de × Badisches Landesmuseum", // TO FILL
-      sectionLabel: "Product",
+      sectionLabel: "Business",
       width: 4,
       pull: 1,
       images: [
         {
           src: "/projectImages/P11/blm0.jpg",
           alt: "P11 Image 1",
-          width: 5,
+          width: 6,
           pull: 1,
         },
         {
@@ -261,7 +263,7 @@ export default function ProjectsPage() {
           src: "/projectImages/P11/blm4a.jpg",
           alt: "P11 Image 3",
           width: 4,
-          pull: 2,
+          pull: 1,
         },
         {
           src: "/projectImages/P11/blm6.jpg",
@@ -273,7 +275,7 @@ export default function ProjectsPage() {
           src: "/projectImages/P11/blm7.jpg",
           alt: "P11 Image 3",
           width: 4,
-          pull: 2,
+          pull: 3,
         },
         {
           src: "/projectImages/P11/blm9.jpg",
@@ -513,8 +515,8 @@ export default function ProjectsPage() {
         {
           src: "/projectImages/P6/km2.mp4",
           alt: "KM Image 6",
-          width: 4,
-          pull: 1,
+          width: 5,
+          pull: 2,
         },
       ],
     },
@@ -525,7 +527,7 @@ export default function ProjectsPage() {
       year: "2024",
       description:
         "Screen design visual communication for August Bebel Institut in Berlin. Developed on behalf of design office anschlaege.de.", // TO FILL
-      sectionLabel: "Product",
+      sectionLabel: "Cultural",
       width: 4,
       pull: 1,
       images: [
@@ -538,26 +540,26 @@ export default function ProjectsPage() {
         {
           src: "/projectImages/P7/abi8d.jpg",
           alt: "ABI Video 2",
-          width: 4,
+          width: 5,
           pull: 2,
         },
         {
           src: "/projectImages/P7/abi8c.jpg",
           alt: "ABI Video 3",
-          width: 5,
-          pull: 2,
+          width: 4,
+          pull: 1,
         },
         {
           src: "/projectImages/P7/abi8b.jpg",
           alt: "ABI Video 3",
-          width: 5,
+          width: 4,
           pull: 2,
         },
         {
           src: "/projectImages/P7/abi6b.jpg",
           alt: "ABI Video 3",
           width: 5,
-          pull: 2,
+          pull: 1,
         },
       ],
     },
@@ -723,9 +725,10 @@ export default function ProjectsPage() {
   ];
 
   // Filter projects based on selected section
-  const filteredProjects = selectedSection
-    ? projects.filter((project) => project.sectionLabel === selectedSection)
-    : projects;
+  const filteredProjects =
+    selectedSection && selectedSection !== "All"
+      ? projects.filter((project) => project.sectionLabel === selectedSection)
+      : projects;
 
   return (
     <div className={styles.page}>
@@ -736,7 +739,7 @@ export default function ProjectsPage() {
         <HeaderBar
           headline="Hej! I'm Slawomir Jakub Krzyzak"
           subheadline="Web Design and Development Projects"
-          sections={["Business", "Cultural"]}
+          sections={["All", "Business", "Cultural"]}
           selectedSection={selectedSection}
           onSectionClick={handleSectionClick}
         />
@@ -746,7 +749,7 @@ export default function ProjectsPage() {
           ))}
         </div>
       </main>
-      <footer className={styles.footer}></footer>
+      <Footer />
     </div>
   );
 }
