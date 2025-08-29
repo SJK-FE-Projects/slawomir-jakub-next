@@ -143,7 +143,88 @@ export default function ProjectsPage() {
     },
     {
       id: "2",
-      title: "Creative Museum 2.0. by BadischesLandes Museum", // TO FILL
+      title: "hermaid", // previously id 3
+      roles: "UI Design & Development", // TO FILL
+      year: "2024",
+      description: `hermaid is a digital health app designed to support women navigating menopause by combining AI assisted self learning, symptom tracking, and expert consultations into one holistic platform. The redesign focused on crafting a clear information architecture, intuitive user flows, and visually coherent screen designs across mobile devices—all tailored to foster trust, accessibility, and long‑term engagement. The goal was to present menopause not as a medical issue, but as a journey supported through science based content, personalized recommendations, and seamless access to certified hormone experts. The result: a modern, professional wellness platform that empowers users and vouches for their hormonal health in a scalable and empathetic way.`,
+      sectionLabel: "Product",
+      width: 4,
+      pull: 1,
+      images: [
+        {
+          src: "/projectImages/P12/hm1.jpg",
+          alt: "P12 Image 1",
+          width: 6,
+          pull: 1,
+        },
+        {
+          src: "/projectImages/P12/hm2.jpg",
+          alt: "P12 Image 2",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P12/hm3.jpg",
+          alt: "P12 Image 3",
+          width: 4,
+          pull: 3,
+        },
+      ],
+    },
+    {
+      id: "3",
+      title: "RedBull Advanced Technologies", // TO FILL
+      roles: "UX Design, Screen Design, Hand-offs", // TO FILL
+      year: "2025", // TO FILL
+      description:
+        "Red Bull Advanced Technologies is the engineering arm of Red Bull Racing, applying Formula 1 expertise to groundbreaking projects in automotive, aerospace, and advanced mobility. The redesigned website showcases this innovation through a streamlined site architecture, intuitive user journeys, and a bold, performance-driven visual design. Clear content structure and responsive layouts support a growing portfolio of high-impact projects. The result is a modern digital platform that reflects the precision, ambition, and technological edge of the RBAT brand. Project on behalf of diesdas.digital agency.", // TO FILL
+      sectionLabel: "Business",
+      width: 4,
+      pull: 1,
+      images: [
+        // TODO: Replace with actual filenames from /public/projectImages/P13
+        // Example placeholders:
+        {
+          src: "/projectImages/P13/rbat0.jpg",
+          alt: "P13 Image 1",
+          width: 5,
+          pull: 1,
+        },
+        {
+          src: "/projectImages/P13/rbat0a.jpg",
+          alt: "P13 Image 2",
+          width: 4,
+          pull: 3,
+        },
+        {
+          src: "/projectImages/P13/rbat1.jpg",
+          alt: "P13 Image 3",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P13/rbat2.jpg",
+          alt: "P13 Image 3",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P13/rbat3.jpg",
+          alt: "P13 Image 3",
+          width: 4,
+          pull: 2,
+        },
+        {
+          src: "/projectImages/P13/rbat4.jpg",
+          alt: "P13 Image 3",
+          width: 4,
+          pull: 2,
+        },
+      ],
+    },
+    {
+      id: "4",
+      title: "Creative Museum 2.0. by BadischesLandes Museum", // previously id 2
       roles: "UX/UI Design, Development", // TO FILL
       year: "2022—2023",
       description:
@@ -202,40 +283,10 @@ export default function ProjectsPage() {
         },
       ],
     },
-    {
-      id: "3",
-      title: "hermaid", // TO FILL
-      roles: "UI Design & Development", // TO FILL
-      year: "2024",
-      description: `hermaid is a digital health app designed to support women navigating menopause by combining AI assisted self learning, symptom tracking, and expert consultations into one holistic platform. The redesign focused on crafting a clear information architecture, intuitive user flows, and visually coherent screen designs across mobile devices—all tailored to foster trust, accessibility, and long‑term engagement. The goal was to present menopause not as a medical issue, but as a journey supported through science based content, personalized recommendations, and seamless access to certified hormone experts. The result: a modern, professional wellness platform that empowers users and vouches for their hormonal health in a scalable and empathetic way.`,
-      sectionLabel: "Product",
-      width: 4,
-      pull: 1,
-      images: [
-        {
-          src: "/projectImages/P12/hm1.jpg",
-          alt: "P12 Image 1",
-          width: 6,
-          pull: 1,
-        },
-        {
-          src: "/projectImages/P12/hm2.jpg",
-          alt: "P12 Image 2",
-          width: 4,
-          pull: 2,
-        },
-        {
-          src: "/projectImages/P12/hm3.jpg",
-          alt: "P12 Image 3",
-          width: 4,
-          pull: 3,
-        },
-      ],
-    },
 
     {
-      id: "2",
-      title: "Documenta '15", // TO FILL
+      id: "6",
+      title: "Documenta '15", // previously duplicate id 2
       roles: "Screen Design", // TO FILL
       year: "2021",
       description:
@@ -271,7 +322,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "4",
+      id: "7",
       title: "Jugend im Museum", // TO FILL
       roles: "Design System / WebFlow / UX / UI", // TO FILL
       year: "2023",
@@ -326,7 +377,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "5",
+      id: "8",
       title:
         "Zukunftszentrum für Europäische Transformation und Deutsche Einheit in Jena", // TO FILL
       roles: " Screen Design / Lay-Outing / Branding / Workshop Facilitation ", // TO FILL
@@ -382,7 +433,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "6",
+      id: "9",
       title: "suissimage", // TO FILL
       roles: "Screen Design / UX Conept", // TO FILL
       year: "2021",
@@ -419,7 +470,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "7",
+      id: "10",
       title: "Kleist Museum Frankfurt Oder", // TO FILL
       roles: "Screen Design / UX Concept", // TO FILL
       year: "2022",
@@ -468,7 +519,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "8",
+      id: "11",
       title: "August Bebel Instutut Berlin", // TO FILL
       roles: "Screen Design / UX Concept / Design System", // TO FILL
       year: "2024",
@@ -511,7 +562,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "9",
+      id: "12",
       title: "ROC Berlin", // TO FILL
       roles: "Branding / Design System / Screen Design", // TO FILL
       year: "2024",
@@ -578,7 +629,7 @@ export default function ProjectsPage() {
       ],
     },
     {
-      id: "10",
+      id: "13",
       title: "Berlinische Galerie", // TO FILL
       roles: "Layouting", // TO FILL
       year: "2024",

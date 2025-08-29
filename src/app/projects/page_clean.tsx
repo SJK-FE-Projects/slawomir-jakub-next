@@ -113,7 +113,7 @@ export default function ProjectsPage() {
   const projects: Project[] = [
     {
       id: "1",
-      title: "PORSCHE",
+      title: "PORSCHE 222",
       roles: "UX / Screen Design / Web Flow",
       year: "2024",
       description:
