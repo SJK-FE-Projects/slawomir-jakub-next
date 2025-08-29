@@ -478,7 +478,7 @@ export default function ProjectsPage() {
       year: "2022",
       description:
         "Comprehensive branding project for Kleist Museum in Frankfurt. Design of UI components and guidelines for various media. Developing extensive web flow and screen design for the text-oriented literature project. Project developed on behalf of design office anschlaege.de.", // TO FILL
-      sectionLabel: "Business",
+      sectionLabel: "Cultural",
       width: 4,
       pull: 1,
       images: [
