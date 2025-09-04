@@ -57,21 +57,45 @@ const TextBlock = React.forwardRef<HTMLDivElement, TextBlockProps>(
         return (
           <div
             ref={ref}
-            className={`${styles.block} ${className ?? ""}`}
+            className={`$ {
+                            styles.block
+                        }
+
+                        $ {
+                            className ?? ""
+                        }
+
+                        `}
             id={id}
           >
+            {" "}
             <div className={styles.sectionButtonContainer}>
-              <SectionButton text={sectionLabel} selected={false} />
-            </div>
+              {" "}
+              <SectionButton text={sectionLabel} selected={false} />{" "}
+            </div>{" "}
             <div className={styles.contentContainer}>
+              {" "}
+              <img
+                src="/projectImages/Slawomir_S.jpg"
+                alt="Profile"
+                style={{
+                  flexShrink: 0,
+                  width: "200px",
+                  height: "auto",
+                  objectFit: "cover",
+                  maxHeight: "300px",
+                }}
+              />{" "}
               {props.text.map((text, index) => (
                 <div
                   key={index}
                   className="textLarge"
-                  dangerouslySetInnerHTML={{ __html: text }}
+                  dangerouslySetInnerHTML={{
+                    __html: text,
+                  }}
                 />
               ))}
-            </div>
+            </div>{" "}
           </div>
         );
       }
@@ -80,27 +104,42 @@ const TextBlock = React.forwardRef<HTMLDivElement, TextBlockProps>(
         return (
           <div
             ref={ref}
-            className={`${styles.block} ${className ?? ""}`}
+            className={`$ {
+                            styles.block
+                        }
+
+                        $ {
+                            className ?? ""
+                        }
+
+                        `}
             id={id}
           >
+            {" "}
             <div className={styles.sectionButtonContainer}>
-              <SectionButton text={sectionLabel} selected={false} />
-            </div>
+              {" "}
+              <SectionButton text={sectionLabel} selected={false} />{" "}
+            </div>{" "}
             <div className={styles.contentContainer}>
+              {" "}
               {props.items.map((item, index) => (
                 <div key={index} className={styles.dateItem}>
-                  <div className="textLarge">{item.title}</div>
+                  {" "}
+                  <div className="textLarge"> {item.title}</div>{" "}
                   <div className={styles.meta}>
-                    <div className="textRegular">{item.date}</div>
-                    <div className="textRegular">{item.company}</div>
-                  </div>
+                    {" "}
+                    <div className="textRegular"> {item.date}</div>{" "}
+                    <div className="textRegular"> {item.company}</div>{" "}
+                  </div>{" "}
                   <div
                     className="textDefault"
-                    dangerouslySetInnerHTML={{ __html: item.description }}
-                  />
+                    dangerouslySetInnerHTML={{
+                      __html: item.description,
+                    }}
+                  />{" "}
                 </div>
               ))}
-            </div>
+            </div>{" "}
           </div>
         );
       }
@@ -109,23 +148,37 @@ const TextBlock = React.forwardRef<HTMLDivElement, TextBlockProps>(
         return (
           <div
             ref={ref}
-            className={`${styles.block} ${className ?? ""}`}
+            className={`$ {
+                            styles.block
+                        }
+
+                        $ {
+                            className ?? ""
+                        }
+
+                        `}
             id={id}
           >
+            {" "}
             <div className={styles.sectionButtonContainer}>
-              <SectionButton text={sectionLabel} selected={false} />
-            </div>
+              {" "}
+              <SectionButton text={sectionLabel} selected={false} />{" "}
+            </div>{" "}
             <div className={styles.contentContainer}>
+              {" "}
               {props.items.map((item, index) => (
                 <div key={index} className={styles.skillItem}>
-                  <div className="textLarge">{item.title}</div>
+                  {" "}
+                  <div className="textLarge"> {item.title}</div>{" "}
                   <div
                     className="textDefault"
-                    dangerouslySetInnerHTML={{ __html: item.description }}
-                  />
+                    dangerouslySetInnerHTML={{
+                      __html: item.description,
+                    }}
+                  />{" "}
                 </div>
               ))}
-            </div>
+            </div>{" "}
           </div>
         );
       }

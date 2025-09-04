@@ -7,7 +7,12 @@ import MenuButton from "../components/MenuButton";
 import HeaderBar from "../components/HeaderBar";
 import MediaElement from "../components/MediaElement";
 import { useFluidElement } from "../hooks/useFluidLoading";
-import Footer from "../components/Footer";
+import dynamic from "next/dynamic";
+
+// Dynamically import Footer to prevent hydration issues
+const Footer = dynamic(() => import("../components/Footer"), {
+  ssr: false,
+});
 
 type Project = {
   id: string;
@@ -228,7 +233,7 @@ export default function ProjectsPage() {
       id: "4",
       title: "Creative Museum 2.0. by BadischesLandes Museum", // previously id 2
       roles: "UX/UI Design, Development", // TO FILL
-      year: "2022—2023",
+      year: "2023",
       description:
         "Designed with anschlaege.de for the Badisches Landesmuseum, Creative Museum is a digital participatory platform aimed at digitally curious and younger audiences as well as broader under‑represented visitor groups. The concept centers on user‑generated content, campaign‑based interactions, voting, feedback loops and gamified mechanics (points, badges, levels), creating a dynamic social feed that empowers users as curators, co‑creators and civic contributors. Concept development flowed through co‑design workshops, wireframing and screen design, resulting in dev‑ready hand‑off for implementation. Credits: anschlaege.de × Badisches Landesmuseum", // TO FILL
       sectionLabel: "Business",
@@ -724,11 +729,34 @@ export default function ProjectsPage() {
     // },
   ];
 
-  // Filter projects based on selected section
-  const filteredProjects =
-    selectedSection && selectedSection !== "All"
-      ? projects.filter((project) => project.sectionLabel === selectedSection)
-      : projects;
+  // Build dynamic year labels (chronological: earliest -> latest)
+  const yearLabels = Array.from(new Set(projects.map((p) => p.year))).sort(
+    (a, b) => {
+      const extract = (y: string) => {
+        const m = y.match(/\d{4}/);
+        return m ? parseInt(m[0], 10) : Number.POSITIVE_INFINITY;
+      };
+      const na = extract(a);
+      const nb = extract(b);
+      if (na !== nb) return na - nb;
+      return a.localeCompare(b);
+    }
+  );
+
+  const sections = ["All", "Business", "Cultural", ...yearLabels];
+  const yearSet = new Set(yearLabels);
+
+  // Updated filtering: distinguishes between category and year
+  let filteredProjects: Project[];
+  if (!selectedSection || selectedSection === "All") {
+    filteredProjects = projects;
+  } else if (yearSet.has(selectedSection)) {
+    filteredProjects = projects.filter((p) => p.year === selectedSection);
+  } else {
+    filteredProjects = projects.filter(
+      (p) => p.sectionLabel === selectedSection
+    );
+  }
 
   return (
     <div className={styles.page}>
@@ -739,7 +767,7 @@ export default function ProjectsPage() {
         <HeaderBar
           headline="Hej! I'm Slawomir Jakub Krzyzak"
           subheadline="Web Design and Development Projects"
-          sections={["All", "Business", "Cultural"]}
+          sections={sections}
           selectedSection={selectedSection}
           onSectionClick={handleSectionClick}
         />

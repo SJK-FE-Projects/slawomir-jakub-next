@@ -105,6 +105,17 @@
     }
 }
 
+/* Large variant specific styling */
+.contentContainerLarge {
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
 /* regular text */
 .textRegular {
     font-size: 16px;
