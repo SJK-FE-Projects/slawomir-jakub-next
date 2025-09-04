@@ -73,19 +73,10 @@ const TextBlock = React.forwardRef<HTMLDivElement, TextBlockProps>(
               {" "}
               <SectionButton text={sectionLabel} selected={false} />{" "}
             </div>{" "}
-            <div className={styles.contentContainer}>
+            <div className={styles.contentContainerLarge}>
               {" "}
-              <img
-                src="/projectImages/Slawomir_S.jpg"
-                alt="Profile"
-                style={{
-                  flexShrink: 0,
-                  width: "200px",
-                  height: "auto",
-                  objectFit: "cover",
-                  maxHeight: "300px",
-                }}
-              />{" "}
+              {/* <img src="/projectImages/Slawomir_S.jpg" alt="Profile" />{" "}
+              <div className={styles.textContainer}> */}
               {props.text.map((text, index) => (
                 <div
                   key={index}
@@ -95,6 +86,7 @@ const TextBlock = React.forwardRef<HTMLDivElement, TextBlockProps>(
                   }}
                 />
               ))}
+              {/* </div> */}
             </div>{" "}
           </div>
         );

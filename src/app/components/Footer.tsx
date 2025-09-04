@@ -3,7 +3,12 @@ import React from "react";
 const Footer: React.FC = () => {
   const handleScrollTop = () => {
     if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      try {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch (error) {
+        // Fallback for older browsers
+        window.scrollTo(0, 0);
+      }
     }
   };
 
@@ -15,6 +20,7 @@ const Footer: React.FC = () => {
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
+        zIndex: 1,
       }}
     >
       <h3
