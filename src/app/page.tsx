@@ -5,8 +5,9 @@ import MenuButton from "./components/MenuButton";
 import HeaderBar from "./components/HeaderBar";
 import Footer from "./components/Footer";
 import SectionButton from "./components/SectionButton";
+import SectionsNavBar from "./components/SectionsNavBar";
 import { useFluidElement } from "./hooks/useFluidLoading";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 
 // Helper to generate anchor id from label
 const toSectionId = (label: string) =>
@@ -56,8 +57,13 @@ export default function Home() {
     return (
       <div className={styles.contentGrid} id={id}>
         {/* Section button takes width2 pull1 (columns 1-2) */}
-        <div className={`${styles.width2} ${styles.pull1}`}>
-          <SectionButton text={sectionLabel} selected={false} />
+
+        <div className={`${styles.width2} ${styles.pull1}  `}>
+          <SectionButton
+            text={sectionLabel}
+            selected={false}
+            className={styles.stickySectionButton}
+          />
         </div>
 
         {/* Content takes width4 pull3 (columns 3-6) */}
@@ -113,54 +119,21 @@ export default function Home() {
     );
   };
 
-  // Section anchor ids in order
-  const sectionIds = [
-    "professional-summary",
-    "professional-experience",
-    "education-training",
-    "technical-skills",
-    "selected-clients",
-  ];
-  const sectionLabels = [
-    "Professional Summary",
-    "Professional Experience",
-    "Education & Training",
-    "Technical Skills",
-    "Selected Clients",
-  ];
-
-  // Track which section is active
-  const [activeSection, setActiveSection] = useState<string | null>(
-    sectionLabels[0]
+  const sectionLabels = useMemo(
+    () => [
+      "Professional Summary",
+      "Professional Experience",
+      "Education & Training",
+      "Technical Skills",
+      "Selected Clients",
+    ],
+    []
   );
 
-  useEffect(() => {
-    const handleScroll = () => {
-      let found = false;
-
-      for (let i = 0; i < sectionIds.length; i++) {
-        const el = document.getElementById(sectionIds[i]);
-
-        if (el) {
-          const rect = el.getBoundingClientRect();
-
-          if (rect.top <= 120 && rect.bottom > 120) {
-            setActiveSection(sectionLabels[i]);
-            found = true;
-            break;
-          }
-        }
-      }
-
-      if (!found) setActiveSection(null);
-    };
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [sectionIds, sectionLabels]); // ✅ Add missing dependencies
+  // Track which section is selected
+  const [selectedSection, setSelectedSection] = useState<string | null>(
+    sectionLabels[0]
+  );
 
   // TextBlocks data array - simplified structure
   const textBlocks: TextBlockProps[] = [
@@ -376,39 +349,29 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      {" "}
       <main className={styles.main}>
-        {" "}
         <div className={styles.menuButton}>
-          {" "}
-          <MenuButton />{" "}
-        </div>{" "}
+          <MenuButton />
+        </div>
         <HeaderBar
           headline="Hej! I'm Slawomir Jakub Krzyzak"
           subheadline="Web Designer and Developer. Born in PL. Made in EU."
+          sections={[]}
+        />
+        <SectionsNavBar
           sections={sectionLabels}
-          selectedSection={activeSection}
-          onSectionClick={(section) => {
-            if (!section) return;
-            const anchor = document.getElementById(toSectionId(section));
-
-            if (anchor) {
-              anchor.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
-            }
-
-            setActiveSection(section);
-          }}
-        />{" "}
+          selectedSection={selectedSection}
+          onSectionClick={setSelectedSection}
+          mode="anchor"
+          navbarHeight={80}
+        />
         {/* Content wrapper following projects pattern */}
         <div className={styles.contentContainer}>
           {textBlocks.map((textBlock) => (
             <TextBlockContainer key={textBlock.id} textBlock={textBlock} />
           ))}
-        </div>{" "}
-      </main>{" "}
+        </div>
+      </main>
       <Footer />
     </div>
   );

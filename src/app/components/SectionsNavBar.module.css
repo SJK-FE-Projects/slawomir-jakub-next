@@ -1,0 +1,19 @@
+.sectionsNavBar {
+    position: sticky;
+    top: 72px;
+    z-index: 1000;
+    width: 100%;
+    background: white;
+    padding: 1rem 0;
+    border: none;
+}
+
+.sectionButtonsWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+}

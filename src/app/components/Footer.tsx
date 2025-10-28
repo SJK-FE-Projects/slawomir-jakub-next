@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     if (typeof window !== "undefined") {
       try {
         window.scrollTo({ top: 0, behavior: "smooth" });
-      } catch (error) {
+      } catch {
         // Fallback for older browsers
         window.scrollTo(0, 0);
       }

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import SectionButton from "../components/SectionButton";
+import SectionsNavBar from "../components/SectionsNavBar";
 import styles from "./projects.module.css";
 import MenuButton from "../components/MenuButton";
 import HeaderBar from "../components/HeaderBar";
@@ -767,9 +768,13 @@ export default function ProjectsPage() {
         <HeaderBar
           headline="Hej! I'm Slawomir Jakub Krzyzak"
           subheadline="Web Design and Development Projects"
+          sections={[]}
+        />
+        <SectionsNavBar
           sections={sections}
           selectedSection={selectedSection}
           onSectionClick={handleSectionClick}
+          mode="filter"
         />
         <div className={styles.projectsContainer}>
           {filteredProjects.map((project) => (

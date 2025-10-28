@@ -9,7 +9,9 @@
 .headlines {
     padding: 1rem 2rem;
     display: flex;
-    width: auto;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
 }
 
 .stickyMenu {
@@ -21,17 +23,5 @@
     display: flex;
     gap: 2rem;
     padding: 1rem 2rem;
-    border-bottom: 1px solid #eee;
     background: white;
-}
-
-.sectionButtonsWrapper {
-    display: flex;
-    flex-direction: row;
-    ;
-    gap: 1rem;
-    justify-content: center;
-    margin: 1rem 0;
-    width: 100%;
-    flex-wrap: wrap;
 }

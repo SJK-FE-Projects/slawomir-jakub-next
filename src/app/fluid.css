@@ -63,6 +63,8 @@
     transform: translateY(-100px);
 }
 
+
+
 @keyframes nabokiup {
     0% {
         -webkit-transform: translateX(-8px) translateY(150px);

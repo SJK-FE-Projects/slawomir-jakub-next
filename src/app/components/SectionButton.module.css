@@ -51,3 +51,13 @@
 
 
 }
+
+.sectionButton[data-clickable="false"] {
+    cursor: default;
+    pointer-events: none;
+}
+
+.sectionButton[data-clickable="false"] {
+    cursor: default;
+    pointer-events: none;
+}

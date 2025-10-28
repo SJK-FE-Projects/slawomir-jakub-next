@@ -7,19 +7,23 @@
 
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 1rem;
     padding: 0.5rem 0;
     width: 100%;
+    position: sticky;
+    top: 72px;
+    background: white;
+    z-index: 1500;
 }
 
 .navWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
     width: 100%;
     flex-wrap: wrap;
 }
