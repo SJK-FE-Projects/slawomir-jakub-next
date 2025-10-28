@@ -51,7 +51,7 @@ export default function ProjectsPage() {
           ref={contentRef as React.RefObject<HTMLDivElement>}
           className={`${styles[`width${project.width}`]} ${
             styles[`pull${project.pull}`]
-          } section`}
+          } section fluid`}
         >
           <div className="textCaption"> — {project.year}</div>
           <div className={styles.factsContent}>
@@ -78,7 +78,7 @@ export default function ProjectsPage() {
                 ref={imgRef as React.RefObject<HTMLDivElement>}
                 className={`${styles[`width${img.width || 3}`]} ${
                   styles[`pull${img.pull || 1}`]
-                } section`}
+                } section fluid`}
               >
                 <MediaElement
                   src={img.src}

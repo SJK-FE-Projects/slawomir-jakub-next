@@ -1,15 +1,11 @@
 "use client";
 
 import styles from "./page.module.css";
-import "./fluid.css";
 import MenuButton from "./components/MenuButton";
 import HeaderBar from "./components/HeaderBar";
 import Footer from "./components/Footer";
-
-import TextBlock, { TextBlockProps } from "./components/TextBlock";
-
+import SectionButton from "./components/SectionButton";
 import { useFluidElement } from "./hooks/useFluidLoading";
-
 import React, { useState, useEffect, useCallback } from "react";
 
 // Helper to generate anchor id from label
@@ -19,20 +15,100 @@ const toSectionId = (label: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
+// TextBlock types - declared directly in page like Project type in projects page
+type BaseProps = {
+  sectionLabel: string;
+  className?: string;
+  id?: string;
+};
+
+type LargeProps = BaseProps & {
+  variant: "large";
+  text: string[];
+};
+
+type DateProps = BaseProps & {
+  variant: "date";
+  items: Array<{
+    title: string;
+    date: string;
+    company: string;
+    description: string;
+  }>;
+};
+
+type SkillsProps = BaseProps & {
+  variant: "skills";
+  items: Array<{
+    title: string;
+    description: string;
+  }>;
+};
+
+type TextBlockProps = LargeProps | DateProps | SkillsProps;
+
 export default function Home() {
-  // Component for single TextBlock with fluid animation - following ProjectContainer pattern
+  // Inline TextBlock component - using projects page grid system like ProjectContainer
   const TextBlockContainer = ({ textBlock }: { textBlock: TextBlockProps }) => {
     const contentRef = useFluidElement();
+    const { sectionLabel, id } = textBlock;
 
     return (
-      <div className={styles.textBlockGrid} id={textBlock.id}>
-        {" "}
-        {/* TextBlock content with fluid animation - same pattern as ProjectContainer */}
-        <TextBlock
+      <div className={styles.contentGrid} id={id}>
+        {/* Section button takes width2 pull1 (columns 1-2) */}
+        <div className={`${styles.width2} ${styles.pull1}`}>
+          <SectionButton text={sectionLabel} selected={false} />
+        </div>
+
+        {/* Content takes width4 pull3 (columns 3-6) */}
+        <div
           ref={contentRef as React.RefObject<HTMLDivElement>}
-          {...textBlock}
-          className="section"
-        />{" "}
+          className={`${styles.width4} ${styles.pull3} section fluid`}
+        >
+          {textBlock.variant === "large" && Array.isArray(textBlock.text) && (
+            <div className={styles.textContent}>
+              {textBlock.text.map((text: string, index: number) => (
+                <div
+                  key={index}
+                  className="textLarge"
+                  dangerouslySetInnerHTML={{ __html: text }}
+                />
+              ))}
+            </div>
+          )}
+
+          {textBlock.variant === "date" && Array.isArray(textBlock.items) && (
+            <div className={styles.textContent}>
+              {textBlock.items.map((item, index) => (
+                <div key={index} className={styles.dateItem}>
+                  <div className="textLarge">{item.title}</div>
+                  <div className={styles.meta}>
+                    <div className="textRegular">{item.date}</div>
+                    <div className="textRegular">{item.company}</div>
+                  </div>
+                  <div
+                    className="textDefault"
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {textBlock.variant === "skills" && Array.isArray(textBlock.items) && (
+            <div className={styles.textContent}>
+              {textBlock.items.map((item, index) => (
+                <div key={index} className={styles.skillItem}>
+                  <div className="textLarge">{item.title}</div>
+                  <div
+                    className="textDefault"
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     );
   };
@@ -328,7 +404,6 @@ export default function Home() {
         />{" "}
         {/* Content wrapper following projects pattern */}
         <div className={styles.contentContainer}>
-          {" "}
           {textBlocks.map((textBlock) => (
             <TextBlockContainer key={textBlock.id} textBlock={textBlock} />
           ))}
