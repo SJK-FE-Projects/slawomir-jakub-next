@@ -37,7 +37,7 @@ const checkVisible = () => {
 
 		// Same conditions as the reference
 		if (
-			((itemTop + itemHeight * 0.7 - scrollTop) >= 0 &&
+			((itemTop + itemHeight * 0.99 - scrollTop) >= 0 &&
 				itemTop <= (scrollTop + windowHeight)) ||
 			scrollTop === 0
 		) {
@@ -47,7 +47,7 @@ const checkVisible = () => {
 			item.classList.remove('active');
 		}
 
-		if ((itemTop + itemHeight * 0.7 - scrollTop) < 100 && scrollTop > 0) {
+		if ((itemTop + itemHeight * 0.99 - scrollTop) < 100 && scrollTop > 0) {
 			item.classList.add('top');
 			item.classList.remove('bottom', 'active');
 		}
