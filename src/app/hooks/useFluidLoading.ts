@@ -42,19 +42,15 @@ const checkVisible = () => {
 			scrollTop === 0
 		) {
 			item.classList.add('active');
-			item.classList.remove('bottom', 'top');
+			item.classList.remove('bottom');
 		} else {
 			item.classList.remove('active');
 		}
 
-		if ((itemTop + itemHeight * 0.99 - scrollTop) < 100 && scrollTop > 0) {
-			item.classList.add('top');
-			item.classList.remove('bottom', 'active');
-		}
 
 		if (itemTop > scrollTop + windowHeight) {
 			item.classList.add('bottom');
-			item.classList.remove('top', 'active');
+			item.classList.remove('active');
 		}
 	});
 };
