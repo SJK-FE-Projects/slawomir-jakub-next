@@ -34,16 +34,6 @@ const HeaderBar: React.FC<HeaderBarProps> = ({
         <h1>{headline}</h1>
         <h2>{subheadline}</h2>
       </div>
-      <div className={styles.sectionButtonsContainer}>
-        {sections.map((section, idx) => (
-          <SectionButton
-            key={idx}
-            text={section}
-            selected={selectedSection === section}
-            onClick={() => handleSectionClick(section)}
-          />
-        ))}
-      </div>
     </nav>
   );
 };

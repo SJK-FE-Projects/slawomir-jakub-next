@@ -52,16 +52,14 @@ const SectionsNavBar: React.FC<SectionsNavBarProps> = ({
 
   return (
     <div className={styles.sectionsNavBar}>
-      <div className={styles.sectionButtonsWrapper}>
-        {sections.map((section, idx) => (
-          <SectionButton
-            key={idx}
-            text={section}
-            selected={selectedSection === section}
-            onClick={() => handleSectionClick(section)}
-          />
-        ))}
-      </div>
+      {sections.map((section, idx) => (
+        <SectionButton
+          key={idx}
+          text={section}
+          selected={selectedSection === section}
+          onClick={() => handleSectionClick(section)}
+        />
+      ))}
     </div>
   );
 };

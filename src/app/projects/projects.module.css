@@ -1,7 +1,7 @@
 .page {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
 }
 
@@ -11,6 +11,18 @@
     align-items: flex-start;
     gap: 1rem;
     padding-top: 80px;
+    width: 100%;
+}
+
+.sectionButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: sticky;
+    z-index: 2000;
+    top: 1rem;
+    right: 1rem;
+    gap: 1rem;
     width: 100%;
 }
 
@@ -29,14 +41,19 @@
     margin-block: 6rem;
 }
 
-/* Usunięte margin-top classes - teraz używamy tylko gap dla odstępów */
-/* Projekty będą miały równe odstępy dzięki gap */
+.projectHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
 
 .projectGrid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: auto;
-    gap: 1rem;
+    gap: 2rem;
     width: 100%;
 }
 

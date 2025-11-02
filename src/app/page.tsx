@@ -62,7 +62,7 @@ export default function Home() {
           <SectionButton
             text={sectionLabel}
             selected={false}
-            className={styles.stickySectionButton}
+            // className={styles.stickySectionButton}
           />
         </div>
 
@@ -358,13 +358,16 @@ export default function Home() {
           subheadline="Web Designer and Developer. Born in PL. Made in EU."
           sections={[]}
         />
-        <SectionsNavBar
-          sections={sectionLabels}
-          selectedSection={selectedSection}
-          onSectionClick={setSelectedSection}
-          mode="anchor"
-          navbarHeight={80}
-        />
+        <div className={styles.sectionButtons}>
+          <SectionsNavBar
+            sections={sectionLabels}
+            selectedSection={selectedSection}
+            onSectionClick={setSelectedSection}
+            mode="anchor"
+            navbarHeight={80}
+          />
+        </div>
+
         {/* Content wrapper following projects pattern */}
         <div className={styles.contentContainer}>
           {textBlocks.map((textBlock) => (

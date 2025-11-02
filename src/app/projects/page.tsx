@@ -54,12 +54,14 @@ export default function ProjectsPage() {
             styles[`pull${project.pull}`]
           } section fluid`}
         >
-          <div className="textCaption"> — {project.year}</div>
-          <div className={styles.factsContent}>
-            <span className="textCaption">{project.roles}</span>
-            <SectionButton text={project.sectionLabel} selected={false} />
+          <div className={styles.projectHeader}>
+            <div className="textCaption"> — {project.year}</div>
+            <div className={styles.factsContent}>
+              <span className="textCaption">{project.roles}</span>
+              <SectionButton text={project.sectionLabel} selected={false} />
+            </div>
+            <div className="textRegular">{project.title}</div>
           </div>
-          <div className="textRegular">{project.title}</div>
           <div
             className="textDefault"
             dangerouslySetInnerHTML={{
@@ -770,12 +772,14 @@ export default function ProjectsPage() {
           subheadline="Web Design and Development Projects"
           sections={[]}
         />
-        <SectionsNavBar
-          sections={sections}
-          selectedSection={selectedSection}
-          onSectionClick={handleSectionClick}
-          mode="filter"
-        />
+        <div className={styles.sectionButtons}>
+          <SectionsNavBar
+            sections={sections}
+            selectedSection={selectedSection}
+            onSectionClick={handleSectionClick}
+            mode="filter"
+          />
+        </div>
         <div className={styles.projectsContainer}>
           {filteredProjects.map((project) => (
             <ProjectContainer key={project.id} project={project} />
