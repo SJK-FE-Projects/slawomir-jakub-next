@@ -19,7 +19,6 @@
     flex-direction: row;
     align-items: flex-start;
     position: sticky;
-    z-index: 2000;
     top: 1rem;
     right: 1rem;
     gap: 1rem;

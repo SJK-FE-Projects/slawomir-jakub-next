@@ -27,7 +27,6 @@
     flex-direction: row;
     align-items: flex-start;
     position: sticky;
-    z-index: 2000;
     top: 122px;
     /* Removed right: 1rem - not needed for sticky */
     gap: 1rem;
