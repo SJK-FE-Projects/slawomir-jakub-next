@@ -356,7 +356,6 @@ export default function Home() {
         <HeaderBar
           headline="Hej! I'm Slawomir Jakub Krzyzak"
           subheadline="Web Designer and Developer. Born in PL. Made in EU."
-          sections={[]}
         />
         <div className={styles.sectionButtons}>
           <SectionsNavBar
