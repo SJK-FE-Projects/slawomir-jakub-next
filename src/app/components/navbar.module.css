@@ -13,15 +13,3 @@
     align-items: start;
     justify-content: start;
 }
-
-.stickyMenu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 2000;
-    display: flex;
-    gap: 2rem;
-    padding: 1rem 2rem;
-    background: white;
-}
