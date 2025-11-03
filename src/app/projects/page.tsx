@@ -770,7 +770,6 @@ export default function ProjectsPage() {
         <HeaderBar
           headline="Hej! I'm Slawomir Jakub Krzyzak"
           subheadline="Web Design and Development Projects"
-          sections={[]}
         />
         <div className={styles.sectionButtons}>
           <SectionsNavBar
