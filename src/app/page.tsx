@@ -142,8 +142,8 @@ export default function Home() {
       variant: "large",
       sectionLabel: "Professional Summary",
       text: [
-        "Curious and innovative Fullstack (Frontend) Developer, and <span class='smallCaps'>ui</span> Designer with 5 years of expertise in responsive web design, design systems and React.js, Next.js, JavaScript/TypeScript and <span class='smallCaps'>html5/css3</span>.",
-        "Skilled in creating user-centric designs and dynamic user interfaces for international clients. Experienced in Agile development, version control with Git, and <span class='smallCaps'>ui</span> component libraries.",
+        "UI/Product Designer and Web (Frontend) Developer with 5+ years of expertise in responsive web design, design systems and React, NextJS, JavaScript/TypeScript and HTML5/CSS3.",
+        "Skilled in creating user-centric designs and dynamic user interfaces for international clients. Experienced in Agile development, version control with Git, and UI component libraries.",
       ],
     },
 
@@ -157,7 +157,7 @@ export default function Home() {
           date: "11.2024 — ",
           company: "diesdas.digital, Berlin (DE)",
           description:
-            "Utilizing <span class='smallCaps'>html5</span>, <span class='smallCaps'>css3</span>, TypeScript, and JavaScript frameworks such as Next.js to build responsive and dynamic user interfaces for clients like: RedBull, Deutscher Bühnenverein and others. Employing GitHub for version control, and tools like ESLint and Prettier for maintaining code quality and consistency. Built reusable <span class='smallCaps'>ui</span> components with Storybook, accelerating development by 25%. Architected and implemented <span class='smallCaps'>ssr</span> and <span class='smallCaps'>ssg</span> workflows in Next.js for Wooga's June's Journey gaming platform, boosting <span class='smallCaps'>seo</span> and initial-load performance. Developed custom Sanity <span class='smallCaps'>cms</span> page-section panels. Defined and maintained Sanity schemas with TypeScript types.",
+            "Utilizing HTML5, CSS3, TypeScript, and JavaScript frameworks such as NextJS to build responsive and dynamic user interfaces for clients like: RedBull, Deutscher Bühnenverein and others. Employing GitHub for version control, and tools like ESLint and Prettier for maintaining code quality and consistency. Built reusable UI components with Storybook, accelerating development by 25%. Architected and implemented SSR and SSG workflows in NextJS for Wooga's June's Journey gaming platform, boosting SEO and initial-load performance. Developed custom Sanity CMS page-section panels. Defined and maintained Sanity schemas with TypeScript types.",
         },
 
         {
@@ -165,7 +165,7 @@ export default function Home() {
           date: "07.2024 — 12.2024",
           company: "for startups: Hermaid, Hope For Man, (DE)",
           description:
-            "Successfully delivered frontend templates using Tailwind <span class='smallCaps'>css</span>, AlpineJS, and Blade components within Laravel, cutting frontend integration time by 30%. Enhanced user interaction by building React components using TypeScript, Ant Design, and styled-components, resulting in a 20% increase in user engagement.",
+            "Successfully delivered frontend templates using Tailwind CSS, AlpineJS, and Blade components within Laravel, cutting frontend integration time by 30%. Enhanced user interaction by building React components using TypeScript, Ant Design, and styled-components, resulting in a 20% increase in user engagement.",
         },
 
         {
@@ -179,9 +179,9 @@ export default function Home() {
         {
           title: "Freelance Web Designer",
           date: "2019 — 2021",
-          company: "with agencies: cdlx, Formdusche, STANHEMA, WHYBRAND, (DE)",
+          company: "with agencies: CDLX, Formdusche, STANHEMA, WHYBRAND, (DE)",
           description:
-            "Designed responsive layouts, JS animations, dynamic modules, branding, and <span class='smallCaps'>ui</span> elements.",
+            "Designed responsive layouts, JS animations, dynamic modules, branding, and UI elements.",
         },
       ],
     },
@@ -258,42 +258,39 @@ export default function Home() {
         {
           title: "Frontend",
           description:
-            "<span class='smallCaps'>html5</span>, <span class='smallCaps'>css3</span>, <span class='smallCaps'>sass/less</span>, JavaScript <span class='smallCaps'>(es6+)</span>, TypeScript, React.js, Next.js, Vue.js, Tailwind css, Material <span class='smallCaps'>ui</span>, Mantine, Bootstrap, Storybook, Headless Web-Apps, eCommerce",
+            "HTML5, CSS3, SASS/LESS, JavaScript(ES6), TypeScript, React, NextJS, VueJS, Tailwind CSS, Material UI, Mantine, Bootstrap, Storybook, Headless Web-Apps, eCommerce",
         },
 
         {
           title: "Design & UX",
           description:
-            "Figma, Adobe cc, <span class='smallCaps'>ui/ux</span> Design, Prototyping, Responsive Design, User Flows, Wireframing",
+            "Figma, Adobe CC, UX/UI Design, Prototyping, Responsive Design, User Flows, Wireframing",
         },
 
         {
           title: "Soft skills",
-          description:
-            "<span class='smallCaps'>agile/scrum</span>, Team Collaboration, Workshop Facilitation",
+          description: "Agile/SCRUM, Team Collaboration, Workshop Facilitation",
         },
 
         {
           title: "Backend",
           description:
-            "Node.js, <span class='smallCaps'>json</span> Server, <span class='smallCaps'>rest api</span>, <span class='smallCaps'>crud</span>, <span class='smallCaps'>jwt</span> Authentication, Continuous Learning, Code Review, Git, GitHub, Deployment (Netlify, Vercel), <span class='smallCaps'>mern</span> Stack (Mongodb, Express, React, Node.js)",
+            "NodeJS, JSON Server, REST API, CRUD, JWT Authentication, Continuous Learning, Code Review, Git, GitHub, Deployment (Netlify, Vercel), MERN Stack (Mongodb, Express, React, NodeJS)",
         },
 
         {
           title: "DevOps",
-          description: "GitLab <span class='smallCaps'>ci/cd</span>, Docker",
+          description: "GitLab CI/CD, Docker",
         },
 
         {
           title: "Languages",
-          description:
-            "English (<span class='smallCaps'>c1</span>), German (<span class='smallCaps'>c1</span>), Polish (<span class='smallCaps'>c2</span>)",
+          description: "English (C1), German (C1, Polish (C2)",
         },
 
         {
           title: "Performance & Testing",
-          description:
-            "Performance, Core Web Vitals, <span class='smallCaps'>ai</span> DevTools",
+          description: "Performance, Core Web Vitals, AI DevTools",
         },
       ],
     },
