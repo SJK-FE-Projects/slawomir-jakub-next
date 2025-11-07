@@ -360,7 +360,7 @@ export default function Home() {
             selectedSection={selectedSection}
             onSectionClick={setSelectedSection}
             mode="anchor"
-            navbarHeight={80}
+            navbarHeight={96}
           />
         </div>
 

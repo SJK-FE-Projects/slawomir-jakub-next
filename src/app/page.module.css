@@ -27,13 +27,13 @@
     flex-direction: row;
     align-items: flex-start;
     position: sticky;
-    top: 122px;
-    /* Removed right: 1rem - not needed for sticky */
+    top: 5rem;
     gap: 1rem;
     width: 100%;
-    /* Optional: add background to cover content when scrolling */
-    padding: 1rem 0;
-    /* Optional: add some padding */
+    justify-content: flex-start;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    z-index: 9999;
 }
 
 /* Change contentContainer to match projectsContainer pattern */
