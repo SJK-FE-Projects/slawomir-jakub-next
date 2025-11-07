@@ -5,4 +5,5 @@
     justify-content: flex-start;
     width: auto;
     padding: 0;
+    flex-wrap: wrap;
 }
