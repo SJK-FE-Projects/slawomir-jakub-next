@@ -32,7 +32,7 @@
     width: 100%;
     justify-content: flex-start;
     padding-right: 1rem;
-    z-index: 9999;
+    z-index: 1000;
 }
 
 /* Change contentContainer to match projectsContainer pattern */
@@ -265,9 +265,9 @@
         margin-bottom: 0.5rem;
     }
 
-    /* .stickySectionButton {
-        position: static;
-    } */
+    .sectionButtons {
+        top: 5rem;
+    }
 
     .textContent {
         grid-column: unset !important;
