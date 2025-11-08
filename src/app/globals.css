@@ -20,6 +20,13 @@
     --cod-black-transparent: rgba(22, 22, 22, 0.12);
     --cod-black: #161616;
     --alabaster-gray: #F8F8F8;
+    --navbar-height: 6rem; /* Desktop: 96px */
+}
+
+@media (max-width: 768px) {
+    :root {
+        --navbar-height: 5rem; /* Mobile: 80px */
+    }
 }
 
 /* Layout Components */

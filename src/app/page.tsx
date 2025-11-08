@@ -135,6 +135,19 @@ export default function Home() {
     sectionLabels[0]
   );
 
+  // Get navbar height from CSS variable
+  const getNavbarHeight = () => {
+    if (typeof window !== "undefined") {
+      const rootStyles = getComputedStyle(document.documentElement);
+      const navbarHeightRem = rootStyles
+        .getPropertyValue("--navbar-height")
+        .trim();
+      // Convert rem to px (assuming 1rem = 16px)
+      return parseFloat(navbarHeightRem) * 16;
+    }
+    return 96; // fallback
+  };
+
   // TextBlocks data array - simplified structure
   const textBlocks: TextBlockProps[] = [
     {
@@ -360,7 +373,7 @@ export default function Home() {
             selectedSection={selectedSection}
             onSectionClick={setSelectedSection}
             mode="anchor"
-            navbarHeight={96}
+            navbarHeight={getNavbarHeight()}
           />
         </div>
 
