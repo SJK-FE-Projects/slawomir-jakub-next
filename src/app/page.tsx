@@ -62,7 +62,7 @@ export default function Home() {
           <SectionButton
             text={sectionLabel}
             selected={false}
-            // className={styles.stickySectionButton}
+            className={styles.stickySectionButton}
           />
         </div>
 

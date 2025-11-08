@@ -21,6 +21,7 @@ const Footer: React.FC = () => {
         alignItems: "center",
         width: "100%",
         zIndex: 1,
+        marginTop: "12rem",
       }}
     >
       <h3
