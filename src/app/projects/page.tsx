@@ -80,6 +80,9 @@ export default function ProjectsPage() {
                     className={`${styles[`width${img.width || 3}`]} ${
                       styles[`pull${img.pull || 1}`]
                     } section fluid`}
+                    style={{
+                      minHeight: "400px",
+                    }}
                   >
                     <MediaElement
                       src={img.src}
@@ -92,7 +95,7 @@ export default function ProjectsPage() {
                         objectFit: "cover",
                         borderRadius: "1rem",
                       }}
-                      priority
+                      priority={false}
                     />
                   </div>
                 );
@@ -109,7 +112,7 @@ export default function ProjectsPage() {
       loading: () => (
         <div className={styles.projectGrid}>
           <div className={`${styles.width4} ${styles.pull1}`}>
-            <div className={styles.skeleton}>Loading project...</div>
+            <div className={styles.skeleton}></div>
           </div>
         </div>
       ),
