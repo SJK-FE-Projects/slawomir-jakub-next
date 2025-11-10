@@ -9,11 +9,7 @@ import HeaderBar from "../components/HeaderBar";
 import MediaElement from "../components/MediaElement";
 import { useFluidElement } from "../hooks/useFluidLoading";
 import dynamic from "next/dynamic";
-
-// Dynamically import Footer to prevent hydration issues
-const Footer = dynamic(() => import("../components/Footer"), {
-  ssr: false,
-});
+import Footer from "../components/Footer";
 
 type Project = {
   id: string;
@@ -41,70 +37,85 @@ export default function ProjectsPage() {
     setSelectedSection(section);
   };
 
-  // Component for single project with fluid animation
-  const ProjectContainer = ({ project }: { project: Project }) => {
-    const contentRef = useFluidElement();
+  // ✅ Lazy load ProjectContainer - każdy projekt ładuje się osobno gdy wchodzi w viewport
+  const ProjectContainer = dynamic<{ project: Project }>(
+    () =>
+      Promise.resolve(({ project }: { project: Project }) => {
+        const contentRef = useFluidElement();
 
-    return (
-      <div className={styles.projectGrid} id={project.id}>
-        {/* Project content with fluid animation */}
-        <div
-          ref={contentRef as React.RefObject<HTMLDivElement>}
-          className={`${styles[`width${project.width}`]} ${
-            styles[`pull${project.pull}`]
-          } section fluid`}
-        >
-          <div className={styles.projectHeader}>
-            <div className="textCaption"> — {project.year}</div>
-            <div className={styles.factsContent}>
-              <span className="textCaption">{project.roles}</span>
-              <SectionButton text={project.sectionLabel} selected={false} />
-            </div>
-            <div className="textRegular">{project.title}</div>
-          </div>
-          <div
-            className="textDefault"
-            dangerouslySetInnerHTML={{
-              __html: project.description,
-            }}
-          />
-        </div>
-
-        {/* Each image gets its own grid position and fluid animation */}
-        {project.images.map((img, idx) => {
-          const ImageWithFluidAnimation = () => {
-            const imgRef = useFluidElement();
-
-            return (
-              <div
-                key={`${project.id}-img-${idx}`}
-                ref={imgRef as React.RefObject<HTMLDivElement>}
-                className={`${styles[`width${img.width || 3}`]} ${
-                  styles[`pull${img.pull || 1}`]
-                } section fluid`}
-              >
-                <MediaElement
-                  src={img.src}
-                  alt={img.alt}
-                  width={800}
-                  height={600}
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    objectFit: "cover",
-                    borderRadius: "1rem",
-                  }}
-                  priority
-                />
+        return (
+          <div className={styles.projectGrid} id={project.id}>
+            {/* Project content with fluid animation */}
+            <div
+              ref={contentRef as React.RefObject<HTMLDivElement>}
+              className={`${styles[`width${project.width}`]} ${
+                styles[`pull${project.pull}`]
+              } section fluid`}
+            >
+              <div className={styles.projectHeader}>
+                <div className="textCaption"> — {project.year}</div>
+                <div className={styles.factsContent}>
+                  <span className="textCaption">{project.roles}</span>
+                  <SectionButton text={project.sectionLabel} selected={false} />
+                </div>
+                <div className="textRegular">{project.title}</div>
               </div>
-            );
-          };
+              <div
+                className="textDefault"
+                dangerouslySetInnerHTML={{
+                  __html: project.description,
+                }}
+              />
+            </div>
 
-          return <ImageWithFluidAnimation key={`${project.id}-img-${idx}`} />;
-        })}
-      </div>
-    );
-  };
+            {/* Each image gets its own grid position and fluid animation */}
+            {project.images.map((img, idx) => {
+              const ImageWithFluidAnimation = () => {
+                const imgRef = useFluidElement();
+
+                return (
+                  <div
+                    key={`${project.id}-img-${idx}`}
+                    ref={imgRef as React.RefObject<HTMLDivElement>}
+                    className={`${styles[`width${img.width || 3}`]} ${
+                      styles[`pull${img.pull || 1}`]
+                    } section fluid`}
+                  >
+                    <MediaElement
+                      src={img.src}
+                      alt={img.alt}
+                      width={800}
+                      height={600}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        objectFit: "cover",
+                        borderRadius: "1rem",
+                      }}
+                      priority
+                    />
+                  </div>
+                );
+              };
+
+              return (
+                <ImageWithFluidAnimation key={`${project.id}-img-${idx}`} />
+              );
+            })}
+          </div>
+        );
+      }),
+    {
+      loading: () => (
+        <div className={styles.projectGrid}>
+          <div className={`${styles.width4} ${styles.pull1}`}>
+            <div className={styles.skeleton}>Loading project...</div>
+          </div>
+        </div>
+      ),
+      ssr: false,
+    }
+  );
 
   // All 10 projects data with real media files
   const projects: Project[] = [
