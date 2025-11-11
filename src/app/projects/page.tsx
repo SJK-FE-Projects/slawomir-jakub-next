@@ -178,7 +178,7 @@ export default function ProjectsPage() {
         {
           src: "/projectImages/P12/hm1a.jpg",
           alt: "P12 Image 1",
-          width: 6,
+          width: 5,
           pull: 1,
         },
         {
@@ -340,7 +340,7 @@ export default function ProjectsPage() {
         {
           src: "/projectImages/P2/doc4.mp4",
           alt: "Documenta Video 4",
-          width: 6,
+          width: 5,
           pull: 1,
         },
       ],

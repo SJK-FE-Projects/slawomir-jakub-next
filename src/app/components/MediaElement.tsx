@@ -48,6 +48,9 @@ export default function MediaElement({
         autoPlay
         loop
         preload="metadata"
+        controls={false}
+        disablePictureInPicture
+        disableRemotePlayback
       >
         <source src={src} type="video/mp4" />
         {/* Fallback text */}
