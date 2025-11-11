@@ -39,13 +39,9 @@ export default function ProjectsPage() {
 
   // Component dla pojedynczego obrazka z animacją
   const ProjectImage = ({
-    projectId,
     img,
-    idx,
   }: {
-    projectId: string;
     img: { src: string; alt: string; width?: number; pull?: number };
-    idx: number;
   }) => {
     const imgRef = useFluidElement();
 
@@ -116,12 +112,7 @@ export default function ProjectsPage() {
 
             {/* Each image gets its own grid position and fluid animation */}
             {project.images.map((img, idx) => (
-              <ProjectImage
-                key={`${project.id}-img-${idx}`}
-                projectId={project.id}
-                img={img}
-                idx={idx}
-              />
+              <ProjectImage key={`${project.id}-img-${idx}`} img={img} />
             ))}
           </div>
         );
