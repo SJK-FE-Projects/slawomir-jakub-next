@@ -37,74 +37,92 @@ export default function ProjectsPage() {
     setSelectedSection(section);
   };
 
+  // Component dla pojedynczego obrazka z animacją
+  const ProjectImage = ({
+    projectId,
+    img,
+    idx,
+  }: {
+    projectId: string;
+    img: { src: string; alt: string; width?: number; pull?: number };
+    idx: number;
+  }) => {
+    const imgRef = useFluidElement();
+
+    return (
+      <div
+        ref={imgRef as React.RefObject<HTMLDivElement>}
+        className={`${styles[`width${img.width || 3}`]} ${
+          styles[`pull${img.pull || 1}`]
+        } section fluid`}
+        style={{
+          minHeight: "400px",
+        }}
+      >
+        <MediaElement
+          src={img.src}
+          alt={img.alt}
+          width={800}
+          height={600}
+          style={{
+            width: "100%",
+            height: "auto",
+            objectFit: "cover",
+            borderRadius: "1rem",
+          }}
+          priority={false}
+        />
+      </div>
+    );
+  };
+
+  // Component dla contentu projektu z animacją
+  const ProjectContent = ({ project }: { project: Project }) => {
+    const contentRef = useFluidElement();
+
+    return (
+      <div
+        ref={contentRef as React.RefObject<HTMLDivElement>}
+        className={`${styles[`width${project.width}`]} ${
+          styles[`pull${project.pull}`]
+        } section fluid`}
+      >
+        <div className={styles.projectHeader}>
+          <div className="textCaption"> — {project.year}</div>
+          <div className={styles.factsContent}>
+            <span className="textCaption">{project.roles}</span>
+            <SectionButton text={project.sectionLabel} selected={false} />
+          </div>
+          <div className="textRegular">{project.title}</div>
+        </div>
+        <div
+          className="textDefault"
+          dangerouslySetInnerHTML={{
+            __html: project.description,
+          }}
+        />
+      </div>
+    );
+  };
+
   // ✅ Lazy load ProjectContainer - każdy projekt ładuje się osobno gdy wchodzi w viewport
   const ProjectContainer = dynamic<{ project: Project }>(
     () =>
       Promise.resolve(({ project }: { project: Project }) => {
-        const contentRef = useFluidElement();
-
         return (
           <div className={styles.projectGrid} id={project.id}>
             {/* Project content with fluid animation */}
-            <div
-              ref={contentRef as React.RefObject<HTMLDivElement>}
-              className={`${styles[`width${project.width}`]} ${
-                styles[`pull${project.pull}`]
-              } section fluid`}
-            >
-              <div className={styles.projectHeader}>
-                <div className="textCaption"> — {project.year}</div>
-                <div className={styles.factsContent}>
-                  <span className="textCaption">{project.roles}</span>
-                  <SectionButton text={project.sectionLabel} selected={false} />
-                </div>
-                <div className="textRegular">{project.title}</div>
-              </div>
-              <div
-                className="textDefault"
-                dangerouslySetInnerHTML={{
-                  __html: project.description,
-                }}
-              />
-            </div>
+            <ProjectContent project={project} />
 
             {/* Each image gets its own grid position and fluid animation */}
-            {project.images.map((img, idx) => {
-              const ImageWithFluidAnimation = () => {
-                const imgRef = useFluidElement();
-
-                return (
-                  <div
-                    key={`${project.id}-img-${idx}`}
-                    ref={imgRef as React.RefObject<HTMLDivElement>}
-                    className={`${styles[`width${img.width || 3}`]} ${
-                      styles[`pull${img.pull || 1}`]
-                    } section fluid`}
-                    style={{
-                      minHeight: "400px",
-                    }}
-                  >
-                    <MediaElement
-                      src={img.src}
-                      alt={img.alt}
-                      width={800}
-                      height={600}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        objectFit: "cover",
-                        borderRadius: "1rem",
-                      }}
-                      priority={false}
-                    />
-                  </div>
-                );
-              };
-
-              return (
-                <ImageWithFluidAnimation key={`${project.id}-img-${idx}`} />
-              );
-            })}
+            {project.images.map((img, idx) => (
+              <ProjectImage
+                key={`${project.id}-img-${idx}`}
+                projectId={project.id}
+                img={img}
+                idx={idx}
+              />
+            ))}
           </div>
         );
       }),
