@@ -8,7 +8,7 @@ import MenuButton from "../components/MenuButton";
 import HeaderBar from "../components/HeaderBar";
 import MediaElement from "../components/MediaElement";
 import { useFluidElement } from "../hooks/useFluidLoading";
-import dynamic from "next/dynamic";
+import { useInView } from "react-intersection-observer";
 import Footer from "../components/Footer";
 
 type Project = {
@@ -102,10 +102,15 @@ export default function ProjectsPage() {
   };
 
   // ✅ Lazy load ProjectContainer - każdy projekt ładuje się osobno gdy wchodzi w viewport
-  const ProjectContainer = dynamic<{ project: Project }>(
-    () =>
-      Promise.resolve(({ project }: { project: Project }) => {
-        return (
+  const ProjectContainer = ({ project }: { project: Project }) => {
+    const { ref, inView } = useInView({
+      triggerOnce: true, // Załaduj tylko raz
+      threshold: 0.1, // 10% widoczności wystarczy
+    });
+
+    return (
+      <div ref={ref}>
+        {inView ? (
           <div className={styles.projectGrid} id={project.id}>
             {/* Project content with fluid animation */}
             <ProjectContent project={project} />
@@ -115,19 +120,17 @@ export default function ProjectsPage() {
               <ProjectImage key={`${project.id}-img-${idx}`} img={img} />
             ))}
           </div>
-        );
-      }),
-    {
-      loading: () => (
-        <div className={styles.projectGrid}>
-          <div className={`${styles.width4} ${styles.pull1}`}>
-            <div className={styles.skeleton}></div>
+        ) : (
+          // Placeholder podczas ładowania - dopasowany do wysokości projektu
+          <div className={styles.projectGrid}>
+            <div className={`${styles.width4} ${styles.pull1}`}>
+              <div className={styles.skeleton}></div>
+            </div>
           </div>
-        </div>
-      ),
-      ssr: false,
-    }
-  );
+        )}
+      </div>
+    );
+  };
 
   // All 10 projects data with real media files
   const projects: Project[] = [
