@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import SectionButton from "./components/SectionButton";
 import SectionsNavBar from "./components/SectionsNavBar";
 import { useFluidElement } from "./hooks/useFluidLoading";
+import { useSectionObserver } from "./hooks/useSectionObserver";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 
 // Helper to generate anchor id from label
@@ -61,7 +62,7 @@ export default function Home() {
         <div className={`${styles.width2} ${styles.pull1}  `}>
           <SectionButton
             text={sectionLabel}
-            selected={false}
+            selected={selectedSection === sectionLabel}
             className={styles.stickySectionButton}
           />
         </div>
@@ -130,13 +131,18 @@ export default function Home() {
     []
   );
 
+  const sectionIds = useMemo(
+    () => sectionLabels.map((label) => toSectionId(label)),
+    [sectionLabels]
+  );
+
   // Track which section is selected
   const [selectedSection, setSelectedSection] = useState<string | null>(
     sectionLabels[0]
   );
 
   // Get navbar height from CSS variable
-  const getNavbarHeight = () => {
+  const getNavbarHeight = useCallback(() => {
     if (typeof window !== "undefined") {
       const rootStyles = getComputedStyle(document.documentElement);
       const navbarHeightRem = rootStyles
@@ -146,7 +152,25 @@ export default function Home() {
       return parseFloat(navbarHeightRem) * 16;
     }
     return 96; // fallback
-  };
+  }, []);
+
+  // Use section observer hook
+  const activeSection = useSectionObserver({
+    sectionIds,
+    offsetTop: getNavbarHeight(),
+  });
+
+  // Auto-update selectedSection when scrolling
+  useEffect(() => {
+    if (activeSection) {
+      const activeSectionLabel = sectionLabels.find(
+        (label) => toSectionId(label) === activeSection
+      );
+      if (activeSectionLabel) {
+        setSelectedSection(activeSectionLabel);
+      }
+    }
+  }, [activeSection, sectionLabels]);
 
   // TextBlocks data array - simplified structure
   const textBlocks: TextBlockProps[] = [
@@ -331,31 +355,6 @@ export default function Home() {
       ],
     },
   ];
-
-  // Before:
-  // useEffect(() => {
-  //   const onResize = () => {
-  //     // uses values like width, height, someState, etc.
-  //   };
-  //   window.addEventListener("resize", onResize);
-  //   return () => window.removeEventListener("resize", onResize);
-  // }, []); // missing dependencies
-
-  // After: memoize handler with proper dependencies
-  const onResize = useCallback(
-    () => {
-      // ...existing code that uses width/height/someState/refs...
-    },
-    [
-      // add actual dependencies used inside onResize, e.g.:
-      // width, height, someState
-    ]
-  );
-
-  useEffect(() => {
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, [onResize]);
 
   return (
     <div className={styles.page}>
