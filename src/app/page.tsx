@@ -62,7 +62,7 @@ export default function Home() {
         <div className={`${styles.width2} ${styles.pull1}  `}>
           <SectionButton
             text={sectionLabel}
-            selected={false}
+            selected={selectedSection === sectionLabel}
             className={styles.stickySectionButton}
           />
         </div>
@@ -141,7 +141,7 @@ export default function Home() {
   );
 
   // Get navbar height from CSS variable
-  const getNavbarHeight = () => {
+  const getNavbarHeight = useCallback(() => {
     if (typeof window !== "undefined") {
       const rootStyles = getComputedStyle(document.documentElement);
       const navbarHeightRem = rootStyles
@@ -151,7 +151,13 @@ export default function Home() {
       return parseFloat(navbarHeightRem) * 16;
     }
     return 96; // fallback
-  };
+  }, []);
+
+  // Section observer - adds 'active' class to buttons when section is 30%+ visible
+  useSectionActiveClass({
+    sectionIds,
+    offsetTop: getNavbarHeight(),
+  });
 
   // Section observer - adds 'active' class to buttons when section is 30%+ visible
   useSectionActiveClass({
@@ -342,31 +348,6 @@ export default function Home() {
       ],
     },
   ];
-
-  // Before:
-  // useEffect(() => {
-  //   const onResize = () => {
-  //     // uses values like width, height, someState, etc.
-  //   };
-  //   window.addEventListener("resize", onResize);
-  //   return () => window.removeEventListener("resize", onResize);
-  // }, []); // missing dependencies
-
-  // After: memoize handler with proper dependencies
-  const onResize = useCallback(
-    () => {
-      // ...existing code that uses width/height/someState/refs...
-    },
-    [
-      // add actual dependencies used inside onResize, e.g.:
-      // width, height, someState
-    ]
-  );
-
-  useEffect(() => {
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, [onResize]);
 
   return (
     <div className={styles.page}>
