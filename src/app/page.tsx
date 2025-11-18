@@ -159,12 +159,6 @@ export default function Home() {
     offsetTop: getNavbarHeight(),
   });
 
-  // Section observer - adds 'active' class to buttons when section is 30%+ visible
-  useSectionActiveClass({
-    sectionIds,
-    offsetTop: getNavbarHeight(),
-  });
-
   // TextBlocks data array - simplified structure
   const textBlocks: TextBlockProps[] = [
     {
