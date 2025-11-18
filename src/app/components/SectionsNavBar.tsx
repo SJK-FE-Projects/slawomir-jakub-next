@@ -58,6 +58,10 @@ const SectionsNavBar: React.FC<SectionsNavBarProps> = ({
           text={section}
           selected={selectedSection === section}
           onClick={() => handleSectionClick(section)}
+          data-section={section
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, "")}
         />
       ))}
     </div>

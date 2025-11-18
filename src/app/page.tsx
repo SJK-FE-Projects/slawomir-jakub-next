@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import SectionButton from "./components/SectionButton";
 import SectionsNavBar from "./components/SectionsNavBar";
 import { useFluidElement } from "./hooks/useFluidLoading";
-import { useSectionObserver } from "./hooks/useSectionObserver";
+import { useSectionActiveClass } from "./hooks/useSectionActiveClass";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 
 // Helper to generate anchor id from label
@@ -131,14 +131,13 @@ export default function Home() {
     []
   );
 
+  // Track which section is selected (only for manual clicks)
+  const [selectedSection, setSelectedSection] = useState<string | null>(null);
+
+  // Generate section IDs from labels
   const sectionIds = useMemo(
     () => sectionLabels.map((label) => toSectionId(label)),
     [sectionLabels]
-  );
-
-  // Track which section is selected
-  const [selectedSection, setSelectedSection] = useState<string | null>(
-    sectionLabels[0]
   );
 
   // Get navbar height from CSS variable
@@ -154,23 +153,11 @@ export default function Home() {
     return 96; // fallback
   }, []);
 
-  // Use section observer hook
-  const activeSection = useSectionObserver({
+  // Section observer - adds 'active' class to buttons when section is 30%+ visible
+  useSectionActiveClass({
     sectionIds,
     offsetTop: getNavbarHeight(),
   });
-
-  // Auto-update selectedSection when scrolling
-  useEffect(() => {
-    if (activeSection) {
-      const activeSectionLabel = sectionLabels.find(
-        (label) => toSectionId(label) === activeSection
-      );
-      if (activeSectionLabel) {
-        setSelectedSection(activeSectionLabel);
-      }
-    }
-  }, [activeSection, sectionLabels]);
 
   // TextBlocks data array - simplified structure
   const textBlocks: TextBlockProps[] = [
