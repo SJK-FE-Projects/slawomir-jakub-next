@@ -48,12 +48,9 @@ export default function ProjectsPage() {
     return (
       <div
         ref={imgRef as React.RefObject<HTMLDivElement>}
-        className={`${styles[`width${img.width || 3}`]} ${
-          styles[`pull${img.pull || 1}`]
-        } section fluid`}
-        style={{
-          minHeight: "400px",
-        }}
+        className={`${styles.projectImage} ${
+          styles[`width${img.width || 3}`]
+        } ${styles[`pull${img.pull || 1}`]} section fluid`}
       >
         <MediaElement
           src={img.src}

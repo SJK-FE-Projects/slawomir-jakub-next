@@ -271,3 +271,13 @@
         transform: none !important;
     }
 }
+
+.projectImage {
+    min-height: 400px;
+}
+
+@media (max-width: 768px) {
+    .projectImage {
+        min-height: auto;
+    }
+}
