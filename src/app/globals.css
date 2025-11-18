@@ -279,3 +279,9 @@ a {
         gap: 0.5rem !important;
     }
 }
+
+/* Section button active state - added by Intersection Observer */
+button.active {
+    background: #000 !important;
+    color: #fff !important;
+}
