@@ -8,7 +8,7 @@ import SectionButton from "./components/SectionButton";
 import SectionsNavBar from "./components/SectionsNavBar";
 import { useFluidElement } from "./hooks/useFluidLoading";
 import { useSectionActiveClass } from "./hooks/useSectionActiveClass";
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 
 // Helper to generate anchor id from label
 const toSectionId = (label: string) =>
