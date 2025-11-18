@@ -88,13 +88,13 @@ export default function Home() {
             <div className={styles.textContent}>
               {textBlock.items.map((item, index) => (
                 <div key={index} className={styles.dateItem}>
+                  <div className="textCaption">{item.date}</div>
                   <div className="textLarge">{item.title}</div>
                   <div className={styles.meta}>
-                    <div className="textRegular">{item.date}</div>
-                    <div className="textRegular">{item.company}</div>
+                    <div className="textDefault">{item.company}</div>
                   </div>
                   <div
-                    className="textDefault"
+                    className="textCaption"
                     dangerouslySetInnerHTML={{ __html: item.description }}
                   />
                 </div>
