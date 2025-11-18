@@ -29,7 +29,7 @@ export const useSectionActiveClass = ({
 		let currentActiveId: string | null = null;
 
 		const observer = new IntersectionObserver(
-			(entries) => {
+			() => {
 				// On any intersection change, check ALL sections
 				const viewportHeight = window.innerHeight;
 				const fiftyVh = viewportHeight * 0.5;
