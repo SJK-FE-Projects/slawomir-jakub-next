@@ -9,6 +9,8 @@ type UseSectionActiveClassOptions = {
 	offsetTop?: number;
 	/** CSS selector for section buttons to apply 'active' class */
 	buttonSelector?: string;
+	/** Whether observer should be active */
+	enabled?: boolean;
 };
 
 /**
@@ -20,9 +22,17 @@ export const useSectionActiveClass = ({
 	sectionIds,
 	offsetTop = 100,
 	buttonSelector = ".stickySectionButton",
+	enabled = true,
 }: UseSectionActiveClassOptions) => {
 	useEffect(() => {
 		if (typeof window === "undefined" || typeof document === "undefined") return;
+
+		if (!enabled) {
+			document.querySelectorAll(`[data-section]`).forEach((btn) => {
+				btn.classList.remove("active");
+			});
+			return;
+		}
 
 		console.log("🔍 useSectionActiveClass initialized with:", sectionIds);
 
@@ -137,5 +147,5 @@ export const useSectionActiveClass = ({
 		return () => {
 			observer.disconnect();
 		};
-	}, [sectionIds, offsetTop, buttonSelector]);
+	}, [sectionIds, offsetTop, buttonSelector, enabled]);
 };

@@ -3,15 +3,19 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    background: #ffffff;
 }
 
 .main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
-    padding-top: 80px;
+    gap: 64px;
+    padding-top: 128px;
+    padding-inline: 0.5rem;
     width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
     /* position: relative; */
     /* Important for sticky children */
 }
@@ -20,6 +24,122 @@
     position: fixed;
     z-index: 2000;
     top: 1rem;
+}
+
+.introSection,
+.projectsSection,
+.resumeSection {
+    width: 100%;
+}
+
+.introSection {
+    margin-top: 0;
+}
+
+.introGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    width: 100%;
+}
+
+.introContent {
+    grid-column: 1 / span 5;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 72rem;
+}
+
+.introContent p {
+    margin: 0;
+}
+
+.projectsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 0;
+}
+
+.projectCardsRow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 0;
+    overflow-x: clip;
+    padding-bottom: 0.5rem;
+    min-height: 23rem;
+}
+
+.projectCardItem {
+    flex: 0 0 auto;
+    width: min(42vw, 400px);
+    transform-origin: center bottom;
+}
+
+.projectCardItem+.projectCardItem {
+    margin-left: -4.5rem;
+}
+
+.projectCardItem:nth-child(1) {
+    transform: translateY(1.8rem) rotate(-1.5deg);
+    z-index: 1;
+}
+
+.projectCardItem:nth-child(2) {
+    transform: translateY(0) rotate(0.8deg);
+    z-index: 4;
+}
+
+.projectCardItem:nth-child(3) {
+    transform: translateY(3.1rem) rotate(-0.6deg);
+    z-index: 3;
+}
+
+.projectCardItem:nth-child(4) {
+    transform: translateY(0.9rem) rotate(1.4deg);
+    z-index: 2;
+}
+
+.projectCardImage {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+}
+
+.projectsMoreLink {
+    width: fit-content;
+}
+
+.textBlocksStack {
+    width: 100%;
+}
+
+.resumeBlocksGrid {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+}
+
+.resumeColumn {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: 64px;
+    min-width: 0;
+}
+
+.resumeBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.resumeSection {
+    margin-top: 0;
 }
 
 .sectionButtons {
@@ -234,6 +354,37 @@
     .main {
         padding-top: 120px;
         /* More space for mobile menu */
+    }
+
+    .introGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .introLabel,
+    .introContent {
+        grid-column: 1 / -1;
+    }
+
+    .projectCardItem {
+        width: min(72vw, 320px);
+        transform: none;
+    }
+
+    .projectCardItem+.projectCardItem {
+        margin-left: -2rem;
+    }
+
+    .projectCardsRow {
+        overflow-x: auto;
+        min-height: auto;
+    }
+
+    .resumeBlocksGrid {
+        flex-direction: column;
+    }
+
+    .resumeColumn {
+        width: 100%;
     }
 
     .contentContainer {

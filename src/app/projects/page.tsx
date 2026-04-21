@@ -1,15 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import SectionButton from "../components/SectionButton";
 import SectionsNavBar from "../components/SectionsNavBar";
 import styles from "./projects.module.css";
 import MenuButton from "../components/MenuButton";
 import HeaderBar from "../components/HeaderBar";
-import MediaElement from "../components/MediaElement";
-import { useFluidElement } from "../hooks/useFluidLoading";
-import { useInView } from "react-intersection-observer";
 import Footer from "../components/Footer";
+import ProjectPrevieewElement from "../components/ProjectPrevieewElement";
 
 type Project = {
   id: string;
@@ -35,98 +32,6 @@ export default function ProjectsPage() {
 
   const handleSectionClick = (section: string | null) => {
     setSelectedSection(section);
-  };
-
-  // Component dla pojedynczego obrazka z animacją
-  const ProjectImage = ({
-    img,
-  }: {
-    img: { src: string; alt: string; width?: number; pull?: number };
-  }) => {
-    const imgRef = useFluidElement();
-
-    return (
-      <div
-        ref={imgRef as React.RefObject<HTMLDivElement>}
-        className={`${styles.projectImage} ${
-          styles[`width${img.width || 3}`]
-        } ${styles[`pull${img.pull || 1}`]} section fluid`}
-      >
-        <MediaElement
-          src={img.src}
-          alt={img.alt}
-          width={800}
-          height={600}
-          style={{
-            width: "100%",
-            height: "auto",
-            objectFit: "cover",
-            borderRadius: "1rem",
-          }}
-          priority={false}
-        />
-      </div>
-    );
-  };
-
-  // Component dla contentu projektu z animacją
-  const ProjectContent = ({ project }: { project: Project }) => {
-    const contentRef = useFluidElement();
-
-    return (
-      <div
-        ref={contentRef as React.RefObject<HTMLDivElement>}
-        className={`${styles[`width${project.width}`]} ${
-          styles[`pull${project.pull}`]
-        } section fluid`}
-      >
-        <div className={styles.projectHeader}>
-          <div className="textCaption"> — {project.year}</div>
-          <div className={styles.factsContent}>
-            <span className="textCaption">{project.roles}</span>
-            <SectionButton text={project.sectionLabel} selected={false} />
-          </div>
-          <div className="textRegular">{project.title}</div>
-        </div>
-        <div
-          className="textDefault"
-          dangerouslySetInnerHTML={{
-            __html: project.description,
-          }}
-        />
-      </div>
-    );
-  };
-
-  // ✅ Lazy load ProjectContainer - każdy projekt ładuje się osobno gdy wchodzi w viewport
-  const ProjectContainer = ({ project }: { project: Project }) => {
-    const { ref, inView } = useInView({
-      triggerOnce: true, // Załaduj tylko raz
-      threshold: 0.1, // 10% widoczności wystarczy
-    });
-
-    return (
-      <div ref={ref}>
-        {inView ? (
-          <div className={styles.projectGrid} id={project.id}>
-            {/* Project content with fluid animation */}
-            <ProjectContent project={project} />
-
-            {/* Each image gets its own grid position and fluid animation */}
-            {project.images.map((img, idx) => (
-              <ProjectImage key={`${project.id}-img-${idx}`} img={img} />
-            ))}
-          </div>
-        ) : (
-          // Placeholder podczas ładowania - dopasowany do wysokości projektu
-          <div className={styles.projectGrid}>
-            <div className={`${styles.width4} ${styles.pull1}`}>
-              <div className={styles.skeleton}></div>
-            </div>
-          </div>
-        )}
-      </div>
-    );
   };
 
   // All 10 projects data with real media files
@@ -766,7 +671,7 @@ export default function ProjectsPage() {
       const nb = extract(b);
       if (na !== nb) return na - nb;
       return a.localeCompare(b);
-    }
+    },
   );
 
   const sections = ["All", "Business", "Cultural", ...yearLabels];
@@ -780,7 +685,7 @@ export default function ProjectsPage() {
     filteredProjects = projects.filter((p) => p.year === selectedSection);
   } else {
     filteredProjects = projects.filter(
-      (p) => p.sectionLabel === selectedSection
+      (p) => p.sectionLabel === selectedSection,
     );
   }
 
@@ -804,7 +709,14 @@ export default function ProjectsPage() {
         </div>
         <div className={styles.projectsContainer}>
           {filteredProjects.map((project) => (
-            <ProjectContainer key={project.id} project={project} />
+            <div key={project.id} className={styles.projectPreviewItem}>
+              <ProjectPrevieewElement
+                id={project.id}
+                title={project.title}
+                sectionLabel={project.sectionLabel}
+                media={project.images[0]}
+              />
+            </div>
           ))}
         </div>
       </main>

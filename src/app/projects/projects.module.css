@@ -32,12 +32,18 @@
 }
 
 .projectsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 6rem;
-    /* Konsystentny odstęp między wszystkimi projektami */
+    column-count: 2;
+    column-gap: 2rem;
     width: 100%;
     margin-block: 6rem;
+}
+
+.projectPreviewItem {
+    display: inline-block;
+    min-width: 0;
+    width: 100%;
+    margin-bottom: 80px;
+    break-inside: avoid;
 }
 
 .projectHeader {
@@ -56,78 +62,7 @@
     width: 100%;
 }
 
-/* width 2 */
-.width2.pull1 {
-    grid-column: 1 / span 2;
-}
-
-.width2.pull2 {
-    grid-column: 2 / span 2;
-}
-
-.width2.pull3 {
-    grid-column: 3 / span 2;
-}
-
-.width2.pull4 {
-    grid-column: 4 / span 2;
-}
-
-.width2.pull5 {
-    grid-column: 5 / span 2;
-}
-
-/* width 3 */
-.width3.pull1 {
-    grid-column: 1 / span 3;
-}
-
-.width3.pull2 {
-    grid-column: 2 / span 3;
-}
-
-.width3.pull3 {
-    grid-column: 3 / span 3;
-}
-
-.width3.pull4 {
-    grid-column: 4 / span 3;
-}
-
-/* width 4 */
-.width4.pull1 {
-    grid-column: 1 / span 4;
-}
-
-.width4.pull2 {
-    grid-column: 2 / span 4;
-}
-
-.width4.pull3 {
-    grid-column: 3 / span 4;
-}
-
-/* width 5 */
-.width5.pull1 {
-    grid-column: 1 / span 5;
-}
-
-.width5.pull2 {
-    grid-column: 2 / span 5;
-}
-
-/* width 6 */
-.width6.pull1 {
-    grid-column: 1 / span 6;
-}
-
-.width6.pull2 {
-    grid-column: 2 / span 6;
-}
-
-.width6.pull3 {
-    grid-column: 3 / span 6;
-}
+/* width and pull positioning rules disabled */
 
 .factsContent {
     display: flex;
@@ -219,10 +154,13 @@
     }
 
     .projectsContainer {
+        column-count: 1;
         margin-top: 3rem;
         /* Reduced margin on mobile */
-        gap: 3rem;
-        /* Smaller gap between projects */
+    }
+
+    .projectPreviewItem {
+        margin-bottom: 3rem;
     }
 
     .projectGrid {
@@ -232,7 +170,9 @@
         gap: 0.5rem !important;
     }
 
-    /* Reset all grid positioning for mobile - everything becomes single column */
+    /*
+    width and pull positioning reset rules disabled
+
     .width2,
     .width3,
     .width4,
@@ -241,6 +181,7 @@
         grid-column: unset !important;
         width: 100% !important;
     }
+    */
 
     .factsContent {
         flex-direction: row !important;
