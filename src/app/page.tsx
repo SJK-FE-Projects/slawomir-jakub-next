@@ -327,20 +327,19 @@ export default function Home() {
       sectionLabel: "Selected Clients",
       items: [
         {
-          title: "UI/UX & Product Design",
-          description:
-            "EU: Deloitte, Maison Veuve Clicquot, Nederlandse Loterij, RADA Royal Academy of Dramatic Art, Scottish Ballet, Zeiss, RedBull",
+          title: "EU",
+          description: "Deloitte, Scottish Ballet, Zeiss, RedBull",
         },
 
         {
-          title: "Design Systems & Tools",
+          title: "DE",
           description:
-            "DE: AlephAlpha, Berlinische Galerie, Deutscher Buhnenverein, Documenta '15, Gemaldegalerie Berlin, Porsche, Tilda App",
+            "AlephAlpha, Deutscher Bühnenverein, Documenta '15, Gemäldegalerie Berlin, Porsche",
         },
 
         {
-          title: "Languages",
-          description: "PL: Art Station Foundations, Bank PKO",
+          title: "PL",
+          description: "Art Station Foundations, Bank PKO",
         },
       ],
     },
