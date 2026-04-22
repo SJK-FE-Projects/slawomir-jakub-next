@@ -25,9 +25,9 @@ export default function Home() {
   const sectionLabels = useMemo(
     () => [
       "Professional Summary",
+      "Technical Skills",
       "Professional Experience",
       "Education & Training",
-      "Technical Skills",
       "Selected Clients",
     ],
     [],
@@ -96,7 +96,7 @@ export default function Home() {
     },
 
     {
-      id: toSectionId(sectionLabels[1]),
+      id: toSectionId(sectionLabels[2]),
       variant: "date",
       sectionLabel: "Professional Experience",
       items: [
@@ -199,7 +199,7 @@ export default function Home() {
     },
 
     {
-      id: toSectionId(sectionLabels[2]),
+      id: toSectionId(sectionLabels[3]),
       variant: "date",
       sectionLabel: "Education",
       items: [
@@ -286,7 +286,7 @@ export default function Home() {
     },
 
     {
-      id: toSectionId(sectionLabels[3]),
+      id: toSectionId(sectionLabels[1]),
       variant: "skills",
       sectionLabel: "Skills",
       items: [
@@ -317,6 +317,14 @@ export default function Home() {
         {
           title: "Languages",
           description: "English (C1), German (C1), Polish (C2)",
+        },
+      ],
+      columns: [
+        {
+          items: ["UI/UX & Product Design", "Methodologies & Soft Skills"],
+        },
+        {
+          items: ["Web Development", "Design Systems & Tools", "Languages"],
         },
       ],
     },

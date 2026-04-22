@@ -31,6 +31,9 @@ type SkillsProps = BaseProps & {
     title: string;
     description: string;
   }>;
+  columns?: Array<{
+    items: string[];
+  }>;
 };
 
 export type TextBlockProps = LargeProps | DateProps | SkillsProps;
@@ -84,19 +87,44 @@ function TextBlockContainer({
           </div>
         )}
 
-        {textBlock.variant === "skills" && Array.isArray(textBlock.items) && (
-          <div className={styles.textContent}>
-            {textBlock.items.map((item, index) => (
-              <div key={index} className={styles.skillItem}>
-                <div className="textLarge">{item.title}</div>
-                <div
-                  className="textDefault"
-                  dangerouslySetInnerHTML={{ __html: item.description }}
-                />
-              </div>
-            ))}
-          </div>
-        )}
+        {textBlock.variant === "skills" &&
+          Array.isArray(textBlock.items) &&
+          (textBlock.columns ? (
+            <div className={`${styles.textContent} ${styles.skillsColumns}`}>
+              {textBlock.columns.map((column, columnIndex) => (
+                <div key={columnIndex} className={styles.skillsColumn}>
+                  {column.items.map((title) => {
+                    const item = textBlock.items.find(
+                      (entry) => entry.title === title,
+                    );
+                    if (!item) return null;
+
+                    return (
+                      <div key={item.title} className={styles.skillItem}>
+                        <div className="textLarge">{item.title}</div>
+                        <div
+                          className="textDefault"
+                          dangerouslySetInnerHTML={{ __html: item.description }}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className={styles.textContent}>
+              {textBlock.items.map((item, index) => (
+                <div key={index} className={styles.skillItem}>
+                  <div className="textLarge">{item.title}</div>
+                  <div
+                    className="textDefault"
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
       </section>
     );
   }
@@ -165,29 +193,58 @@ export default function TextBlocks({
   variant = "default",
 }: TextBlocksProps) {
   if (variant === "resume") {
-    const leftColumnCases = cases.filter((_, index) => index % 2 === 0);
-    const rightColumnCases = cases.filter((_, index) => index % 2 !== 0);
+    const fullWidthCases = cases.filter(
+      (textBlock) =>
+        textBlock.variant === "skills" && textBlock.sectionLabel === "Skills",
+    );
+    const columnCases = cases.filter(
+      (textBlock) =>
+        !(
+          textBlock.variant === "skills" && textBlock.sectionLabel === "Skills"
+        ),
+    );
+    const selectedClientsCases = columnCases.filter(
+      (textBlock) => textBlock.sectionLabel === "Selected Clients",
+    );
+    const nonSelectedClientsCases = columnCases.filter(
+      (textBlock) => textBlock.sectionLabel !== "Selected Clients",
+    );
+    const leftColumnCases = nonSelectedClientsCases.filter(
+      (_, index) => index % 2 === 0,
+    );
+    const rightColumnCases = [
+      ...nonSelectedClientsCases.filter((_, index) => index % 2 !== 0),
+      ...selectedClientsCases,
+    ];
 
     return (
-      <div className={styles.resumeBlocksGrid}>
-        <div className={styles.resumeColumn}>
-          {leftColumnCases.map((textBlock) => (
-            <TextBlockContainer
-              key={textBlock.id}
-              textBlock={textBlock}
-              variant={variant}
-            />
-          ))}
-        </div>
+      <div className={styles.textBlocksStack}>
+        {fullWidthCases.map((textBlock) => (
+          <div key={textBlock.id} className={styles.resumeFullWidthBlock}>
+            <TextBlockContainer textBlock={textBlock} variant={variant} />
+          </div>
+        ))}
 
-        <div className={styles.resumeColumn}>
-          {rightColumnCases.map((textBlock) => (
-            <TextBlockContainer
-              key={textBlock.id}
-              textBlock={textBlock}
-              variant={variant}
-            />
-          ))}
+        <div className={styles.resumeBlocksGrid}>
+          <div className={styles.resumeColumn}>
+            {leftColumnCases.map((textBlock) => (
+              <TextBlockContainer
+                key={textBlock.id}
+                textBlock={textBlock}
+                variant={variant}
+              />
+            ))}
+          </div>
+
+          <div className={styles.resumeColumn}>
+            {rightColumnCases.map((textBlock) => (
+              <TextBlockContainer
+                key={textBlock.id}
+                textBlock={textBlock}
+                variant={variant}
+              />
+            ))}
+          </div>
         </div>
       </div>
     );
