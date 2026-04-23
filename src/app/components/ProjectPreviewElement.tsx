@@ -22,11 +22,13 @@ export default function ProjectPreviewElement({
   title,
   sectionLabel,
   media,
-  href = "/project",
+  href,
 }: ProjectPreviewElementProps) {
+  const targetHref = href ?? `/projects/${encodeURIComponent(id)}`;
+
   return (
     <Link
-      href={href}
+      href={targetHref}
       className={styles.previewLink}
       aria-label={`Open ${title}`}
     >

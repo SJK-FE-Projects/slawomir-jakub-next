@@ -196,17 +196,7 @@ function TextBlockContainer({
   return (
     <div className={styles.contentGrid} id={id}>
       {" "}
-      <div
-        className={`$ {
-                styles.width2
-            }
-
-            $ {
-                styles.pull1
-            }
-
-            `}
-      >
+      <div className={`${styles.width2} ${styles.pull1}`}>
         {" "}
         <SectionButton
           text={sectionLabel}
@@ -214,17 +204,7 @@ function TextBlockContainer({
           className={styles.stickySectionButton}
         />{" "}
       </div>{" "}
-      <div
-        className={`$ {
-                styles.width4
-            }
-
-            $ {
-                styles.pull3
-            }
-
-            section fluid`}
-      >
+      <div className={`${styles.width4} ${styles.pull3} section fluid`}>
         {" "}
         {textBlock.variant === "large" && Array.isArray(textBlock.text) && (
           <div className={styles.textContent}>

@@ -16,7 +16,7 @@ export default function MediaElement({
   src,
   alt,
   width = 800,
-  height = 600,
+  height,
   style,
   priority = false,
   className = "",
@@ -30,10 +30,11 @@ export default function MediaElement({
   };
 
   const mediaType = getMediaType(src);
+  const hasFixedAspectRatio = typeof height === "number";
 
   const wrapperStyle: React.CSSProperties = {
     width: "100%",
-    aspectRatio: `${width} / ${height}`,
+    ...(hasFixedAspectRatio ? { aspectRatio: `${width} / ${height}` } : {}),
     ...style,
   };
 
@@ -44,7 +45,7 @@ export default function MediaElement({
     >
       {mediaType === "video" ? (
         <video
-          className={styles.media}
+          className={`${styles.media} ${!hasFixedAspectRatio ? styles.mediaIntrinsic : ""}`.trim()}
           muted
           playsInline
           autoPlay
@@ -57,7 +58,7 @@ export default function MediaElement({
           <source src={src} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-      ) : (
+      ) : hasFixedAspectRatio ? (
         <Image
           src={src}
           alt={alt}
@@ -65,6 +66,13 @@ export default function MediaElement({
           sizes="100vw"
           priority={priority}
           className={styles.media}
+        />
+      ) : (
+        <img
+          src={src}
+          alt={alt}
+          className={`${styles.media} ${styles.mediaIntrinsic}`.trim()}
+          loading={priority ? "eager" : "lazy"}
         />
       )}
     </div>
