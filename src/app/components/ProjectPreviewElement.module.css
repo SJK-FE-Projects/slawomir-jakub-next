@@ -1,43 +1,71 @@
 .previewLink {
-  display: block;
-  width: 100%;
-  color: inherit;
-  text-decoration: none;
+    display: block;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
 }
 
 .previewLink:hover {
-  opacity: 0.92;
+    opacity: 0.92;
 }
 
 .preview {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
 }
 
 .previewMedia {
-  width: 100%;
-  border-radius: 1rem;
-  overflow: hidden;
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
 }
 
 .mediaElement {
-  display: block;
+    display: block;
 }
 
 .previewContent {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    width: 100%;
+}
+
+.titleText {
+    position: relative;
+    margin: 0;
+    padding-left: 0;
+    transition: padding-left 180ms ease;
+}
+
+.titleArrow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1rem;
+    text-align: center;
+    line-height: inherit;
+    opacity: 0;
+    transform: translateX(-0.2rem);
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.previewLink:hover .titleText {
+    padding-left: 2rem;
+}
+
+.previewLink:hover .titleArrow {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 @media (max-width: 768px) {
-  .previewContent {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
+    .previewContent {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
 }

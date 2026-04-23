@@ -44,7 +44,9 @@ export default function ProjectPreviewElement({
         </div>
 
         <div className={styles.previewContent}>
-          <h2 className="textLarge">{title}</h2>
+          <h2 className={`textLarge ${styles.titleText}`}>
+            <span className={styles.titleArrow}>→</span> {title}
+          </h2>
           <SectionButton text={sectionLabel} selected={false} />
         </div>
       </article>
