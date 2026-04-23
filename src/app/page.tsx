@@ -331,7 +331,7 @@ export default function Home() {
 
     {
       id: toSectionId(sectionLabels[4]),
-      variant: "skills",
+      variant: "clients",
       sectionLabel: "Selected Clients",
       items: [
         {

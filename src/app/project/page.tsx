@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import MediaElement from "../components/MediaElement";
-import SectionButton from "../components/SectionButton";
+import ProjectDetailsContent from "../components/ProjectDetailsContent";
 import styles from "./project.module.css";
 
 const project = {
@@ -9,6 +9,8 @@ const project = {
   year: "2022",
   roles: "UX Design / Screen Design / Visual Design",
   sectionLabel: "Business",
+  width: 4,
+  pull: 1,
   description:
     "Web flow and screen design for PORSCHE. The backlog UI of the rental system for test drives.",
   media: [
@@ -54,14 +56,7 @@ export default function ProjectPage() {
             {" "}
             Back to projects{" "}
           </Link>{" "}
-          <div className={styles.projectMeta}>
-            {" "}
-            <div className="textCaption"> {project.year}</div>{" "}
-            <SectionButton text={project.sectionLabel} selected={false} />{" "}
-          </div>{" "}
-          <h1 className="textLarge"> {project.title}</h1>{" "}
-          <div className="textCaption"> {project.roles}</div>{" "}
-          <p className="textDefault"> {project.description}</p>{" "}
+          <ProjectDetailsContent project={project} />{" "}
         </div>{" "}
         <div className={styles.rightColumn}>
           {" "}

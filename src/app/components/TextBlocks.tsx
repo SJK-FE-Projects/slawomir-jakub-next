@@ -17,6 +17,7 @@ type LargeProps = BaseProps & {
 
 type DateProps = BaseProps & {
   variant: "date";
+
   items: Array<{
     title: string;
     date: string;
@@ -27,16 +28,31 @@ type DateProps = BaseProps & {
 
 type SkillsProps = BaseProps & {
   variant: "skills";
+
   items: Array<{
     title: string;
     description: string;
   }>;
+
   columns?: Array<{
     items: string[];
   }>;
 };
 
-export type TextBlockProps = LargeProps | DateProps | SkillsProps;
+type ClientsProps = BaseProps & {
+  variant: "clients";
+
+  items: Array<{
+    title: string;
+    description: string;
+  }>;
+};
+
+export type TextBlockProps =
+  | LargeProps
+  | DateProps
+  | SkillsProps
+  | ClientsProps;
 
 type TextBlocksProps = {
   cases: TextBlockProps[];
@@ -51,48 +67,72 @@ function TextBlockContainer({
   variant: "default" | "resume";
 }) {
   const { sectionLabel, id } = textBlock;
+  const isSkillsSection =
+    textBlock.variant === "skills" && sectionLabel === "Skills";
 
   if (variant === "resume") {
     return (
       <section className={styles.resumeBlock} id={id}>
+        {" "}
         <SectionButton
           text={sectionLabel}
           selected={false}
           className={styles.stickySectionButton}
-        />
-
+        />{" "}
         {textBlock.variant === "large" && Array.isArray(textBlock.text) && (
           <div className={styles.textContent}>
+            {" "}
             {textBlock.text.map((text: string, index: number) => (
               <div
                 key={index}
                 className="textLarge"
-                dangerouslySetInnerHTML={{ __html: text }}
+                dangerouslySetInnerHTML={{
+                  __html: text,
+                }}
               />
             ))}
           </div>
         )}
-
         {textBlock.variant === "date" && Array.isArray(textBlock.items) && (
           <div className={styles.textContent}>
+            {" "}
             {textBlock.items.map((item, index) => (
               <div key={index} className={styles.dateItem}>
-                <div className="textCaption">{item.date}</div>
-                <div className="textLarge">{item.title}</div>
+                {" "}
+                <div className="textCaption"> {item.date}</div>{" "}
+                <div className="textLarge"> {item.title}</div>{" "}
                 <div className={styles.meta}>
-                  <div className="textDefault">{item.company}</div>
-                </div>
+                  {" "}
+                  <div className="textDefault"> {item.company}</div>{" "}
+                </div>{" "}
               </div>
             ))}
           </div>
         )}
-
         {textBlock.variant === "skills" &&
           Array.isArray(textBlock.items) &&
-          (textBlock.columns ? (
+          (isSkillsSection ? (
             <div className={`${styles.textContent} ${styles.skillsColumns}`}>
-              {textBlock.columns.map((column, columnIndex) => (
+              {" "}
+              {(
+                textBlock.columns ?? [
+                  {
+                    items: [
+                      "UI/UX & Product Design",
+                      "Methodologies & Soft Skills",
+                    ],
+                  },
+                  {
+                    items: [
+                      "Web Development",
+                      "Design Systems & Tools",
+                      "Languages",
+                    ],
+                  },
+                ]
+              ).map((column, columnIndex) => (
                 <div key={columnIndex} className={styles.skillsColumn}>
+                  {" "}
                   {column.items.map((title) => {
                     const item = textBlock.items.find(
                       (entry) => entry.title === title,
@@ -101,11 +141,14 @@ function TextBlockContainer({
 
                     return (
                       <div key={item.title} className={styles.skillItem}>
-                        <div className="textLarge">{item.title}</div>
+                        {" "}
+                        <div className="textLarge"> {item.title}</div>{" "}
                         <div
                           className="textDefault"
-                          dangerouslySetInnerHTML={{ __html: item.description }}
-                        />
+                          dangerouslySetInnerHTML={{
+                            __html: item.description,
+                          }}
+                        />{" "}
                       </div>
                     );
                   })}
@@ -114,76 +157,146 @@ function TextBlockContainer({
             </div>
           ) : (
             <div className={styles.textContent}>
+              {" "}
               {textBlock.items.map((item, index) => (
                 <div key={index} className={styles.skillItem}>
-                  <div className="textLarge">{item.title}</div>
+                  {" "}
+                  <div className="textLarge"> {item.title}</div>{" "}
                   <div
                     className="textDefault"
-                    dangerouslySetInnerHTML={{ __html: item.description }}
-                  />
+                    dangerouslySetInnerHTML={{
+                      __html: item.description,
+                    }}
+                  />{" "}
                 </div>
               ))}
             </div>
           ))}
+        {textBlock.variant === "clients" && Array.isArray(textBlock.items) && (
+          <div className={styles.textContent}>
+            {" "}
+            {textBlock.items.map((item, index) => (
+              <div key={index} className={styles.skillItem}>
+                {" "}
+                <div className="textLarge"> {item.title}</div>{" "}
+                <div
+                  className="textDefault"
+                  dangerouslySetInnerHTML={{
+                    __html: item.description,
+                  }}
+                />{" "}
+              </div>
+            ))}
+          </div>
+        )}
       </section>
     );
   }
 
   return (
     <div className={styles.contentGrid} id={id}>
-      <div className={`${styles.width2} ${styles.pull1}  `}>
+      {" "}
+      <div
+        className={`$ {
+                styles.width2
+            }
+
+            $ {
+                styles.pull1
+            }
+
+            `}
+      >
+        {" "}
         <SectionButton
           text={sectionLabel}
           selected={false}
           className={styles.stickySectionButton}
-        />
-      </div>
+        />{" "}
+      </div>{" "}
+      <div
+        className={`$ {
+                styles.width4
+            }
 
-      <div className={`${styles.width4} ${styles.pull3} section fluid`}>
+            $ {
+                styles.pull3
+            }
+
+            section fluid`}
+      >
+        {" "}
         {textBlock.variant === "large" && Array.isArray(textBlock.text) && (
           <div className={styles.textContent}>
+            {" "}
             {textBlock.text.map((text: string, index: number) => (
               <div
                 key={index}
                 className="textLarge"
-                dangerouslySetInnerHTML={{ __html: text }}
+                dangerouslySetInnerHTML={{
+                  __html: text,
+                }}
               />
             ))}
           </div>
         )}
-
         {textBlock.variant === "date" && Array.isArray(textBlock.items) && (
           <div className={styles.textContent}>
+            {" "}
             {textBlock.items.map((item, index) => (
               <div key={index} className={styles.dateItem}>
-                <div className="textCaption">{item.date}</div>
-                <div className="textLarge">{item.title}</div>
+                {" "}
+                <div className="textCaption"> {item.date}</div>{" "}
+                <div className="textLarge"> {item.title}</div>{" "}
                 <div className={styles.meta}>
-                  <div className="textDefault">{item.company}</div>
-                </div>
+                  {" "}
+                  <div className="textDefault"> {item.company}</div>{" "}
+                </div>{" "}
                 <div
                   className="textCaption"
-                  dangerouslySetInnerHTML={{ __html: item.description }}
-                />
+                  dangerouslySetInnerHTML={{
+                    __html: item.description,
+                  }}
+                />{" "}
               </div>
             ))}
           </div>
         )}
-
         {textBlock.variant === "skills" && Array.isArray(textBlock.items) && (
           <div className={styles.textContent}>
+            {" "}
             {textBlock.items.map((item, index) => (
               <div key={index} className={styles.skillItem}>
-                <div className="textLarge">{item.title}</div>
+                {" "}
+                <div className="textLarge"> {item.title}</div>{" "}
                 <div
                   className="textDefault"
-                  dangerouslySetInnerHTML={{ __html: item.description }}
-                />
+                  dangerouslySetInnerHTML={{
+                    __html: item.description,
+                  }}
+                />{" "}
               </div>
             ))}
           </div>
         )}
-      </div>
+        {textBlock.variant === "clients" && Array.isArray(textBlock.items) && (
+          <div className={styles.textContent}>
+            {" "}
+            {textBlock.items.map((item, index) => (
+              <div key={index} className={styles.skillItem}>
+                {" "}
+                <div className="textLarge"> {item.title}</div>{" "}
+                <div
+                  className="textDefault"
+                  dangerouslySetInnerHTML={{
+                    __html: item.description,
+                  }}
+                />{" "}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>{" "}
     </div>
   );
 }
@@ -198,10 +311,7 @@ export default function TextBlocks({
         textBlock.variant === "skills" && textBlock.sectionLabel === "Skills",
     );
     const columnCases = cases.filter(
-      (textBlock) =>
-        !(
-          textBlock.variant === "skills" && textBlock.sectionLabel === "Skills"
-        ),
+      (textBlock) => !fullWidthCases.includes(textBlock),
     );
     const selectedClientsCases = columnCases.filter(
       (textBlock) => textBlock.sectionLabel === "Selected Clients",
@@ -219,14 +329,17 @@ export default function TextBlocks({
 
     return (
       <div className={styles.textBlocksStack}>
+        {" "}
         {fullWidthCases.map((textBlock) => (
           <div key={textBlock.id} className={styles.resumeFullWidthBlock}>
-            <TextBlockContainer textBlock={textBlock} variant={variant} />
+            {" "}
+            <TextBlockContainer textBlock={textBlock} variant={variant} />{" "}
           </div>
         ))}
-
         <div className={styles.resumeBlocksGrid}>
+          {" "}
           <div className={styles.resumeColumn}>
+            {" "}
             {leftColumnCases.map((textBlock) => (
               <TextBlockContainer
                 key={textBlock.id}
@@ -234,9 +347,9 @@ export default function TextBlocks({
                 variant={variant}
               />
             ))}
-          </div>
-
+          </div>{" "}
           <div className={styles.resumeColumn}>
+            {" "}
             {rightColumnCases.map((textBlock) => (
               <TextBlockContainer
                 key={textBlock.id}
@@ -244,8 +357,8 @@ export default function TextBlocks({
                 variant={variant}
               />
             ))}
-          </div>
-        </div>
+          </div>{" "}
+        </div>{" "}
       </div>
     );
   }
@@ -254,6 +367,7 @@ export default function TextBlocks({
 
   return (
     <div className={wrapperClass}>
+      {" "}
       {cases.map((textBlock) => (
         <TextBlockContainer
           key={textBlock.id}

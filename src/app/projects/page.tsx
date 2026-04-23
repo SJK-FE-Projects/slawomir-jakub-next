@@ -6,7 +6,7 @@ import styles from "./projects.module.css";
 import MenuButton from "../components/MenuButton";
 import HeaderBar from "../components/HeaderBar";
 import Footer from "../components/Footer";
-import ProjectPrevieewElement from "../components/ProjectPrevieewElement";
+import ProjectPreviewElement from "../components/ProjectPreviewElement";
 
 type Project = {
   id: string;
@@ -710,7 +710,7 @@ export default function ProjectsPage() {
         <div className={styles.projectsContainer}>
           {filteredProjects.map((project) => (
             <div key={project.id} className={styles.projectPreviewItem}>
-              <ProjectPrevieewElement
+              <ProjectPreviewElement
                 id={project.id}
                 title={project.title}
                 sectionLabel={project.sectionLabel}

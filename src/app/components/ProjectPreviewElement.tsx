@@ -2,14 +2,14 @@ import React from "react";
 import Link from "next/link";
 import MediaElement from "./MediaElement";
 import SectionButton from "./SectionButton";
-import styles from "./ProjectPrevieewElement.module.css";
+import styles from "./ProjectPreviewElement.module.css";
 
 type ProjectPreviewMedia = {
   src: string;
   alt: string;
 };
 
-type ProjectPrevieewElementProps = {
+type ProjectPreviewElementProps = {
   id: string;
   title: string;
   sectionLabel: string;
@@ -17,13 +17,13 @@ type ProjectPrevieewElementProps = {
   href?: string;
 };
 
-export default function ProjectPrevieewElement({
+export default function ProjectPreviewElement({
   id,
   title,
   sectionLabel,
   media,
   href = "/project",
-}: ProjectPrevieewElementProps) {
+}: ProjectPreviewElementProps) {
   return (
     <Link
       href={href}

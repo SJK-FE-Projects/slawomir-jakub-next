@@ -140,7 +140,12 @@
 
 .resumeFullWidthBlock {
     width: 100%;
+    display: block;
     margin-bottom: 64px;
+}
+
+.resumeFullWidthBlock .resumeBlock {
+    width: 100%;
 }
 
 .resumeSection {
@@ -289,7 +294,7 @@
 .skillsColumns {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 1rem;
+    column-gap: calc(1rem + 4rem);
     row-gap: 1.25rem;
     align-items: stretch;
 }
@@ -447,9 +452,9 @@
     }
 
     .skillsColumns {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         row-gap: 1rem;
-        column-gap: 0;
+        column-gap: 0.75rem;
     }
 
     .skillsColumn {

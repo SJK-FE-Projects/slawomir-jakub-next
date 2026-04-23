@@ -25,6 +25,49 @@
   width: fit-content;
 }
 
+.detailsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.projectTitle {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 3.25rem);
+  line-height: 0.95;
+  font-weight: 400;
+}
+
+.metaList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: minmax(5rem, auto) minmax(0, 1fr);
+  column-gap: 1rem;
+  align-items: start;
+}
+
+.metaLabel {
+  width: fit-content;
+}
+
+.metaValue {
+  min-width: 0;
+  font-size: clamp(1.05rem, 1.25vw, 1.25rem);
+  line-height: 1.15;
+}
+
+.projectDescription {
+  margin: 0;
+  font-size: clamp(1.05rem, 1.4vw, 1.4rem);
+  line-height: 1.15;
+  max-width: 42rem;
+}
+
 .projectMeta {
   display: flex;
   align-items: center;
@@ -38,13 +81,12 @@
   gap: 1rem;
   overflow-y: auto;
   padding-right: 0.5rem;
-  scroll-snap-type: y proximity;
 }
 
 .mediaSlide {
-  scroll-snap-align: start;
   border-radius: 1rem;
   overflow: hidden;
+  width: 100%;
 }
 
 .media {
