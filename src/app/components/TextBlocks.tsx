@@ -272,8 +272,19 @@ export default function TextBlocks({
     const columnCases = cases.filter(
       (textBlock) => textBlock.variant !== "skills",
     );
-    const leftColumnCases = columnCases.filter((_, index) => index % 2 === 0);
-    const rightColumnCases = columnCases.filter((_, index) => index % 2 !== 0);
+    const selectedClientsCases = columnCases.filter(
+      (textBlock) => textBlock.variant === "clients",
+    );
+    const nonSelectedClientsCases = columnCases.filter(
+      (textBlock) => textBlock.variant !== "clients",
+    );
+    const leftColumnCases = nonSelectedClientsCases.filter(
+      (_, index) => index % 2 === 0,
+    );
+    const rightColumnCases = [
+      ...nonSelectedClientsCases.filter((_, index) => index % 2 !== 0),
+      ...selectedClientsCases,
+    ];
 
     return (
       <div className={styles.textBlocksStack}>
