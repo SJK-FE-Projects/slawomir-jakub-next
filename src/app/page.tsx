@@ -288,7 +288,7 @@ export default function Home() {
     {
       id: toSectionId(sectionLabels[1]),
       variant: "skills",
-      sectionLabel: "Skills",
+      sectionLabel: "Technical Skills",
       items: [
         {
           title: "UI/UX & Product Design",

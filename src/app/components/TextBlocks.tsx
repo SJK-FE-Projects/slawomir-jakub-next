@@ -67,8 +67,7 @@ function TextBlockContainer({
   variant: "default" | "resume";
 }) {
   const { sectionLabel, id } = textBlock;
-  const isSkillsSection =
-    textBlock.variant === "skills" && sectionLabel === "Skills";
+  const isSkillsSection = textBlock.variant === "skills";
 
   if (variant === "resume") {
     return (
@@ -287,17 +286,16 @@ export default function TextBlocks({
 }: TextBlocksProps) {
   if (variant === "resume") {
     const fullWidthCases = cases.filter(
-      (textBlock) =>
-        textBlock.variant === "skills" && textBlock.sectionLabel === "Skills",
+      (textBlock) => textBlock.variant === "skills",
     );
     const columnCases = cases.filter(
       (textBlock) => !fullWidthCases.includes(textBlock),
     );
     const selectedClientsCases = columnCases.filter(
-      (textBlock) => textBlock.sectionLabel === "Selected Clients",
+      (textBlock) => textBlock.variant === "clients",
     );
     const nonSelectedClientsCases = columnCases.filter(
-      (textBlock) => textBlock.sectionLabel !== "Selected Clients",
+      (textBlock) => textBlock.variant !== "clients",
     );
     const leftColumnCases = nonSelectedClientsCases.filter(
       (_, index) => index % 2 === 0,
