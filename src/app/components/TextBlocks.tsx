@@ -67,7 +67,6 @@ function TextBlockContainer({
   variant: "default" | "resume";
 }) {
   const { sectionLabel, id } = textBlock;
-  const isSkillsSection = textBlock.variant === "skills";
 
   if (variant === "resume") {
     return (
@@ -108,69 +107,51 @@ function TextBlockContainer({
             ))}
           </div>
         )}
-        {textBlock.variant === "skills" &&
-          Array.isArray(textBlock.items) &&
-          (isSkillsSection ? (
-            <div className={`${styles.textContent} ${styles.skillsColumns}`}>
-              {" "}
-              {(
-                textBlock.columns ?? [
-                  {
-                    items: [
-                      "UI/UX & Product Design",
-                      "Methodologies & Soft Skills",
-                    ],
-                  },
-                  {
-                    items: [
-                      "Web Development",
-                      "Design Systems & Tools",
-                      "Languages",
-                    ],
-                  },
-                ]
-              ).map((column, columnIndex) => (
-                <div key={columnIndex} className={styles.skillsColumn}>
-                  {" "}
-                  {column.items.map((title) => {
-                    const item = textBlock.items.find(
-                      (entry) => entry.title === title,
-                    );
-                    if (!item) return null;
+        {textBlock.variant === "skills" && Array.isArray(textBlock.items) && (
+          <div className={styles.skillsTextContent}>
+            {" "}
+            {(
+              textBlock.columns ?? [
+                {
+                  items: [
+                    "UI/UX & Product Design",
+                    "Methodologies & Soft Skills",
+                  ],
+                },
+                {
+                  items: [
+                    "Web Development",
+                    "Design Systems & Tools",
+                    "Languages",
+                  ],
+                },
+              ]
+            ).map((column, columnIndex) => (
+              <div key={columnIndex} className={styles.skillsColumn}>
+                {" "}
+                {column.items.map((title) => {
+                  const item = textBlock.items.find(
+                    (entry) => entry.title === title,
+                  );
+                  if (!item) return null;
 
-                    return (
-                      <div key={item.title} className={styles.skillItem}>
-                        {" "}
-                        <div className="textLarge"> {item.title}</div>{" "}
-                        <div
-                          className="textDefault"
-                          dangerouslySetInnerHTML={{
-                            __html: item.description,
-                          }}
-                        />{" "}
-                      </div>
-                    );
-                  })}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className={styles.textContent}>
-              {" "}
-              {textBlock.items.map((item, index) => (
-                <div key={index} className={styles.skillItem}>
-                  {" "}
-                  <div className="textLarge"> {item.title}</div>{" "}
-                  <div
-                    className="textDefault"
-                    dangerouslySetInnerHTML={{
-                      __html: item.description,
-                    }}
-                  />{" "}
-                </div>
-              ))}
-            </div>
-          ))}
+                  return (
+                    <div key={item.title} className={styles.skillItem}>
+                      {" "}
+                      <div className="textLarge"> {item.title}</div>{" "}
+                      <div
+                        className="textDefault"
+                        dangerouslySetInnerHTML={{
+                          __html: item.description,
+                        }}
+                      />{" "}
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        )}
         {textBlock.variant === "clients" && Array.isArray(textBlock.items) && (
           <div className={styles.textContent}>
             {" "}
@@ -289,21 +270,10 @@ export default function TextBlocks({
       (textBlock) => textBlock.variant === "skills",
     );
     const columnCases = cases.filter(
-      (textBlock) => !fullWidthCases.includes(textBlock),
+      (textBlock) => textBlock.variant !== "skills",
     );
-    const selectedClientsCases = columnCases.filter(
-      (textBlock) => textBlock.variant === "clients",
-    );
-    const nonSelectedClientsCases = columnCases.filter(
-      (textBlock) => textBlock.variant !== "clients",
-    );
-    const leftColumnCases = nonSelectedClientsCases.filter(
-      (_, index) => index % 2 === 0,
-    );
-    const rightColumnCases = [
-      ...nonSelectedClientsCases.filter((_, index) => index % 2 !== 0),
-      ...selectedClientsCases,
-    ];
+    const leftColumnCases = columnCases.filter((_, index) => index % 2 === 0);
+    const rightColumnCases = columnCases.filter((_, index) => index % 2 !== 0);
 
     return (
       <div className={styles.textBlocksStack}>

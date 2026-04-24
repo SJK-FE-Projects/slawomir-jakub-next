@@ -284,6 +284,18 @@
     width: 100%;
 }
 
+.skillsTextContent {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: calc(1rem + (var(--text-block-padding) * 2));
+    row-gap: 1.25rem;
+    align-items: stretch;
+    background-color: var(--Neutral-Alabaster-Gray, #F8F8F8);
+    padding: var(--text-block-padding);
+    border-radius: 8px;
+    width: 100%;
+}
+
 .dateItem {
     display: flex;
     flex-direction: column;
@@ -294,6 +306,13 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+
+.skillsColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-width: 0;
 }
 
 .skillsColumns {
