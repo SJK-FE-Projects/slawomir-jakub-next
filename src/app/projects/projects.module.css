@@ -9,8 +9,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
-    padding-top: 80px;
+    gap: var(--gap-4);
+    padding-top: var(--gap-6);
     width: 100%;
 }
 
@@ -32,18 +32,23 @@
 }
 
 .projectsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 6rem;
-    /* Konsystentny odstęp między wszystkimi projektami */
+    column-count: 2;
+    column-gap: var(--gap-1-5);
     width: 100%;
-    margin-block: 6rem;
+    /* margin-block: 6rem; */}
+
+.projectPreviewItem {
+    display: inline-block;
+    min-width: 0;
+    width: 100%;
+    margin-bottom: var(--gap-5);
+    break-inside: avoid;
 }
 
 .projectHeader {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--gap-0-5);
     margin-bottom: 1rem;
 }
 
@@ -56,78 +61,7 @@
     width: 100%;
 }
 
-/* width 2 */
-.width2.pull1 {
-    grid-column: 1 / span 2;
-}
-
-.width2.pull2 {
-    grid-column: 2 / span 2;
-}
-
-.width2.pull3 {
-    grid-column: 3 / span 2;
-}
-
-.width2.pull4 {
-    grid-column: 4 / span 2;
-}
-
-.width2.pull5 {
-    grid-column: 5 / span 2;
-}
-
-/* width 3 */
-.width3.pull1 {
-    grid-column: 1 / span 3;
-}
-
-.width3.pull2 {
-    grid-column: 2 / span 3;
-}
-
-.width3.pull3 {
-    grid-column: 3 / span 3;
-}
-
-.width3.pull4 {
-    grid-column: 4 / span 3;
-}
-
-/* width 4 */
-.width4.pull1 {
-    grid-column: 1 / span 4;
-}
-
-.width4.pull2 {
-    grid-column: 2 / span 4;
-}
-
-.width4.pull3 {
-    grid-column: 3 / span 4;
-}
-
-/* width 5 */
-.width5.pull1 {
-    grid-column: 1 / span 5;
-}
-
-.width5.pull2 {
-    grid-column: 2 / span 5;
-}
-
-/* width 6 */
-.width6.pull1 {
-    grid-column: 1 / span 6;
-}
-
-.width6.pull2 {
-    grid-column: 2 / span 6;
-}
-
-.width6.pull3 {
-    grid-column: 3 / span 6;
-}
+/* width and pull positioning rules disabled */
 
 .factsContent {
     display: flex;
@@ -219,20 +153,25 @@
     }
 
     .projectsContainer {
+        column-count: 1;
         margin-top: 3rem;
         /* Reduced margin on mobile */
-        gap: 3rem;
-        /* Smaller gap between projects */
+    }
+
+    .projectPreviewItem {
+        margin-bottom: var(--gap-1-5);
     }
 
     .projectGrid {
         display: flex !important;
         flex-direction: column !important;
         grid-template-columns: none !important;
-        gap: 0.5rem !important;
+        gap: var(--gap-0-5) !important;
     }
 
-    /* Reset all grid positioning for mobile - everything becomes single column */
+    /*
+    width and pull positioning reset rules disabled
+
     .width2,
     .width3,
     .width4,
@@ -241,17 +180,18 @@
         grid-column: unset !important;
         width: 100% !important;
     }
+    */
 
     .factsContent {
         flex-direction: row !important;
-        gap: 0.5rem !important;
+        gap: var(--gap-0-5) !important;
         align-items: baseline !important;
     }
 
     /* Disable fluid loading transforms on mobile for better performance */
     .section {
         transform: none !important;
-        gap: 0.5rem !important;
+        gap: var(--gap-0-5) !important;
     }
 
     .sectionButtons {

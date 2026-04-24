@@ -1,0 +1,89 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    overflow: visible;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 0;
+    overflow-x: scroll;
+    overflow-y: visible;
+    min-height: 0;
+    padding-bottom: 3.6rem;
+}
+
+.card {
+    position: relative;
+    flex: 0 0 auto;
+    width: fit-content;
+    height: 500px;
+    transform-origin: center bottom;
+}
+
+.card>span {
+    display: block !important;
+    width: auto !important;
+    height: 100% !important;
+}
+
+.card+.card {
+    margin-left: -4.5rem;
+}
+
+.card:nth-child(1) {
+    transform: translateY(1.8rem) rotate(-1.5deg);
+    z-index: 1;
+}
+
+.card:nth-child(2) {
+    transform: translateY(0) rotate(0.8deg);
+    z-index: 4;
+}
+
+.card:nth-child(3) {
+    transform: translateY(3.1rem) rotate(-0.6deg);
+    z-index: 3;
+}
+
+.card:nth-child(4) {
+    transform: translateY(0.9rem) rotate(1.4deg);
+    z-index: 2;
+}
+
+.image {
+    object-fit: cover;
+    border-radius: 0.75rem;
+    width: auto !important;
+    height: 100% !important;
+}
+
+.link {
+    width: fit-content;
+}
+
+@media (max-width: 768px) {
+    .row {
+        overflow-x: auto;
+        min-height: auto;
+        padding-bottom: 0.5rem;
+    }
+
+    .card {
+        width: fit-content;
+        height: 380px;
+        transform: none;
+    }
+
+    .card>span {
+        height: 100% !important;
+    }
+
+    .card+.card {
+        margin-left: -2rem;
+    }
+}

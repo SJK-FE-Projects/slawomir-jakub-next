@@ -1,0 +1,18 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.media {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.mediaIntrinsic {
+    height: auto;
+    object-fit: contain;
+}

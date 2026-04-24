@@ -1,0 +1,151 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.overlayInner {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--gap-1-5);
+    min-height: calc(100vh - 3rem);
+    height: auto;
+    padding: 5rem 1.5rem 1.5rem;
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.16);
+}
+
+.closeButtonWrapper {
+    grid-column: 1 / -1;
+    position: sticky;
+    top: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 10;
+    padding-right: 0;
+    margin-bottom: 0;
+}
+
+.closeButton {
+    width: fit-content;
+}
+
+
+
+.detailsContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1-5);
+    position: sticky;
+    top: 1.5rem;
+
+}
+
+.projectTitle {
+    margin: 0;
+    font-size: clamp(2rem, 3vw, 3.25rem);
+    line-height: 0.95;
+    font-weight: 400;
+}
+
+.metaList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);
+}
+
+.metaRow {
+    display: grid;
+    grid-template-columns: minmax(5rem, auto) minmax(0, 1fr);
+    column-gap: var(--gap-1);
+    align-items: center;
+}
+
+.metaLabel {
+    width: fit-content;
+}
+
+.metaValue {
+    min-width: 0;
+    font-size: clamp(1.05rem, 1.25vw, 1.25rem);
+    line-height: 1.15;
+}
+
+.projectDescription {
+    margin: 0;
+    font-size: clamp(1.05rem, 1.4vw, 1.4rem);
+    line-height: 1.15;
+    max-width: 42rem;
+    position: sticky;
+}
+
+.projectMeta {
+    display: flex;
+    flex-direction: row !important;
+    align-items: baseline;
+    gap: var(--gap-1-5);
+}
+
+.rightColumn {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1-5);
+    padding: 0;
+    align-items: end;
+}
+
+.mediaSlide {
+    border-radius: 1.25rem;
+    overflow: hidden;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.media {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 900px) {
+    .overlay {
+        padding: 0.75rem;
+    }
+
+    .overlayInner {
+        grid-template-columns: 1fr;
+        min-height: calc(100vh - 1.5rem);
+        height: auto;
+        padding: var(--gap-1-5);
+        gap: var(--gap-1-5);
+        border-radius: 1.5rem;
+    }
+
+    .leftColumn {
+        gap: var(--gap-1-5);
+        padding: 0.5rem 0.5rem 0.5rem;
+    }
+
+    .rightColumn {
+        padding: 0 0.5rem 0.75rem;
+    }
+
+    .closeButtonWrapper {
+        top: 0.75rem;
+        padding: 0 0.5rem 0 0;
+        margin-bottom: 0.75rem;
+    }
+
+    .closeButton {
+        width: fit-content;
+    }
+}

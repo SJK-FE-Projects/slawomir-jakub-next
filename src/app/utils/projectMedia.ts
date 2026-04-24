@@ -40,11 +40,12 @@ export const getProjectMedia = (projectId: string): MediaItem[] => {
 	const projectMediaMap: Record<string, { folder: string, files: string[], settings: Array<{ width?: number, pull?: number, alt?: string }> }> = {
 		"1": {
 			folder: "P1",
-			files: ["Porsche1-2.jpg", "PorscheLogin2.mp4", "Porsche2A-2.jpg", "PorscheIcons2.mp4"],
+			files: ["PorscheLogin.mp4", "Porsche1.jpg", "Porsche2.jpg", "Porsche3.jpg", "PorscheIcons.mp4"],
 			settings: [
 				{ width: 5, pull: 1, alt: "Porsche UI Design" },
 				{ width: 4, pull: 3, alt: "Porsche Login Animation" },
 				{ width: 4, pull: 1, alt: "Porsche Interface" },
+				{ width: 4, pull: 3, alt: "Porsche Design System" },
 				{ width: 3, pull: 2, alt: "Porsche Icons Animation" },
 			]
 		},
