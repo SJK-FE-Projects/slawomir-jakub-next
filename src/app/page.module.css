@@ -10,8 +10,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 64px;
-    padding-top: 128px;
+    gap: var(--gap-4);
+    padding-top: var(--gap-6);
     width: 100%;
     /* position: relative; */
     /* Important for sticky children */
@@ -45,7 +45,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    width: 100%;
+    max-width: 72rem;
 }
 
 .introContent p {
