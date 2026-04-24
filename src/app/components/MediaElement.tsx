@@ -34,7 +34,7 @@ export default function MediaElement({
 
   const wrapperStyle: React.CSSProperties = {
     width: "100%",
-    ...(hasFixedAspectRatio ? { aspectRatio: `${width} / ${height}` } : {}),
+    height: "100%",
     ...style,
   };
 

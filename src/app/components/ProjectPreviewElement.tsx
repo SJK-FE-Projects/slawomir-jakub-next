@@ -38,8 +38,6 @@ export default function ProjectPreviewElement({
             <MediaElement
               src={media.src}
               alt={media.alt}
-              width={1200}
-              height={800}
               className={styles.mediaElement}
             />
           ) : null}
