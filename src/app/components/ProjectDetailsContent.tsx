@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useFluidElement } from "../hooks/useFluidLoading";
 import layoutStyles from "../page.module.css";
 import SectionButton from "./SectionButton";
 import styles from "../projects/[projectId]/detail.module.css";
@@ -23,12 +22,9 @@ type ProjectDetailsContentProps = {
 export default function ProjectDetailsContent({
   project,
 }: ProjectDetailsContentProps) {
-  const contentRef = useFluidElement();
-
   return (
     <div
-      ref={contentRef as React.RefObject<HTMLDivElement>}
-      className={`${layoutStyles[`width${project.width}`]} ${layoutStyles[`pull${project.pull}`]} section fluid ${styles.detailsContent}`}
+      className={`${layoutStyles[`width${project.width}`]} ${layoutStyles[`pull${project.pull}`]} ${styles.detailsContent}`}
     >
       <h1 className={styles.projectTitle}>{project.title}</h1>
 
