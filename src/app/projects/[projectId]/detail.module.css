@@ -44,6 +44,7 @@
     gap: 1.5rem;
     position: sticky;
     top: 1.5rem;
+
 }
 
 .projectTitle {
@@ -85,8 +86,8 @@
 
 .projectMeta {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: row;
+    align-items: baseline;
     gap: 1rem;
 }
 
@@ -94,7 +95,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    padding: 0 0.5rem 1rem 0;
+    padding: 0;
 }
 
 .mediaSlide {
