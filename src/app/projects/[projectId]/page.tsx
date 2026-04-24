@@ -27,10 +27,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   return (
     <div className={styles.overlay}>
       <div className={styles.overlayInner}>
-        <div className={styles.leftColumn}>
+        <div className={styles.closeButtonWrapper}>
           <Link href="/projects" className={styles.closeButton}>
             <SectionButton text="Close" selected={false} />
           </Link>
+        </div>
+
+        <div className={styles.leftColumn}>
           <ProjectDetailsContent project={project} />
         </div>
 

@@ -33,7 +33,7 @@
 
 .projectsContainer {
     column-count: 2;
-    column-gap: 2rem;
+    column-gap: var(--gap-1-5);
     width: 100%;
     margin-block: 6rem;
 }
@@ -42,14 +42,14 @@
     display: inline-block;
     min-width: 0;
     width: 100%;
-    margin-bottom: 80px;
+    margin-bottom: var(--gap-5);
     break-inside: avoid;
 }
 
 .projectHeader {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--gap-0-5);
     margin-bottom: 1rem;
 }
 
@@ -160,14 +160,14 @@
     }
 
     .projectPreviewItem {
-        margin-bottom: 3rem;
+        margin-bottom: var(--gap-1-5);
     }
 
     .projectGrid {
         display: flex !important;
         flex-direction: column !important;
         grid-template-columns: none !important;
-        gap: 0.5rem !important;
+        gap: var(--gap-0-5) !important;
     }
 
     /*
@@ -185,14 +185,14 @@
 
     .factsContent {
         flex-direction: row !important;
-        gap: 0.5rem !important;
+        gap: var(--gap-0-5) !important;
         align-items: baseline !important;
     }
 
     /* Disable fluid loading transforms on mobile for better performance */
     .section {
         transform: none !important;
-        gap: 0.5rem !important;
+        gap: var(--gap-0-5) !important;
     }
 
     .sectionButtons {
