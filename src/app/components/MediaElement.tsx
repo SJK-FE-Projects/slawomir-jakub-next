@@ -5,7 +5,6 @@ import styles from "./MediaElement.module.css";
 type MediaElementProps = {
   src: string;
   alt: string;
-  width?: number;
   height?: number;
   style?: React.CSSProperties;
   priority?: boolean;
@@ -15,7 +14,6 @@ type MediaElementProps = {
 export default function MediaElement({
   src,
   alt,
-  width = 800,
   height,
   style,
   priority = false,

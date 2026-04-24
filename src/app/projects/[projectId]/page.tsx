@@ -40,7 +40,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <div className={styles.rightColumn}>
           {project.images.map((item, index) => (
             <div key={`${item.src}-${index}`} className={styles.mediaSlide}>
-              <MediaElement src={item.src} alt={item.alt} width={item.width} />
+              <MediaElement src={item.src} alt={item.alt} />
             </div>
           ))}
         </div>
