@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styles from "../../project/project.module.css";
+import styles from "./detail.module.css";
 import ProjectDetailsContent from "../../components/ProjectDetailsContent";
 import MediaElement from "../../components/MediaElement";
 import SectionButton from "../../components/SectionButton";

@@ -4,7 +4,7 @@ import React from "react";
 import { useFluidElement } from "../hooks/useFluidLoading";
 import layoutStyles from "../page.module.css";
 import SectionButton from "./SectionButton";
-import styles from "../project/project.module.css";
+import styles from "../projects/[projectId]/detail.module.css";
 
 export type ProjectDetailsContentProject = {
   title: string;
