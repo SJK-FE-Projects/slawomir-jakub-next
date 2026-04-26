@@ -37,7 +37,7 @@ export default function ProjectDetailsContent({
             selected={false}
             className={styles.metaLabel}
           />
-          <div className={styles.metaValue}>— {project.year}</div>
+          <div className={styles.metaValue}>{project.year}</div>
         </div>
 
         <div className={styles.metaRow}>

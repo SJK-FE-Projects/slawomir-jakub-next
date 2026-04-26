@@ -150,16 +150,21 @@
     .main {
         padding-top: 120px;
         /* More space for mobile menu */
+        gap: var(--gap-3);
     }
 
     .projectsContainer {
         column-count: 1;
         margin-top: 3rem;
-        /* Reduced margin on mobile */
+        column-gap: 0;
     }
 
     .projectPreviewItem {
-        margin-bottom: var(--gap-1-5);
+        margin-bottom: var(--gap-3);
+    }
+
+    .projectPreviewItem:last-child {
+        margin-bottom: 0;
     }
 
     .projectGrid {
