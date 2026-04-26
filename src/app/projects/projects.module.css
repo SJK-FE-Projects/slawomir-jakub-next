@@ -19,8 +19,8 @@
     flex-direction: row;
     align-items: flex-start;
     position: sticky;
-    top: 6rem;
-    gap: 1rem;
+    top: var(--gap-6);
+    gap: var(--gap-1);
     width: 100%;
     z-index: 1000;
 }
@@ -28,7 +28,7 @@
 .menuButton {
     position: fixed;
     z-index: 2000;
-    top: 1rem;
+    top: var(--gap-1);
 }
 
 .projectsContainer {
@@ -49,7 +49,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--gap-0-5);
-    margin-bottom: 1rem;
+    margin-bottom: var(--gap-1);
 }
 
 
@@ -57,7 +57,7 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: auto;
-    gap: 1rem;
+    gap: var(--gap-1);
     width: 100%;
 }
 
@@ -150,16 +150,21 @@
     .main {
         padding-top: 120px;
         /* More space for mobile menu */
+        gap: var(--gap-3);
     }
 
     .projectsContainer {
         column-count: 1;
-        margin-top: 3rem;
-        /* Reduced margin on mobile */
+        margin-top: var(--gap-3);
+        column-gap: 0;
     }
 
     .projectPreviewItem {
-        margin-bottom: var(--gap-1-5);
+        margin-bottom: var(--gap-3);
+    }
+
+    .projectPreviewItem:last-child {
+        margin-bottom: 0;
     }
 
     .projectGrid {
@@ -195,7 +200,7 @@
     }
 
     .sectionButtons {
-        top: 5rem;
+        top: var(--gap-5);
     }
 
     .temp-1,

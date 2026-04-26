@@ -2,7 +2,7 @@
     position: fixed;
     inset: 0;
     z-index: 5000;
-    padding: 1.5rem;
+    padding: var(--page-gutter);
     background: rgba(0, 0, 0, 0.18);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -14,10 +14,10 @@
     position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--gap-1-5);
-    min-height: calc(100vh - 3rem);
+    gap: var(--page-gutter);
+    min-height: calc(100vh - (2 * var(--page-gutter)));
     height: auto;
-    padding: 5rem 1.5rem 1.5rem;
+    padding: var(--gap-5) var(--page-gutter) var(--page-gutter);
     border-radius: 2rem;
     background: rgba(255, 255, 255, 0.96);
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.16);
@@ -26,7 +26,7 @@
 .closeButtonWrapper {
     grid-column: 1 / -1;
     position: sticky;
-    top: 1.5rem;
+    top: var(--gap-1-5);
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -46,7 +46,7 @@
     flex-direction: column;
     gap: var(--gap-1-5);
     position: sticky;
-    top: 1.5rem;
+    top: var(--gap-1-5);
 
 }
 
@@ -98,7 +98,7 @@
 .rightColumn {
     display: flex;
     flex-direction: column;
-    gap: var(--gap-1-5);
+    gap: var(--page-gutter);
     padding: 0;
     align-items: end;
 }
@@ -118,31 +118,31 @@
 
 @media (max-width: 900px) {
     .overlay {
-        padding: 0.75rem;
+        padding: var(--page-gutter);
     }
 
     .overlayInner {
         grid-template-columns: 1fr;
-        min-height: calc(100vh - 1.5rem);
+        min-height: calc(100vh - (2 * var(--page-gutter)));
         height: auto;
-        padding: var(--gap-1-5);
-        gap: var(--gap-1-5);
+        padding: var(--page-gutter);
+        gap: var(--page-gutter);
         border-radius: 1.5rem;
     }
 
     .leftColumn {
-        gap: var(--gap-1-5);
-        padding: 0.5rem 0.5rem 0.5rem;
+        gap: var(--page-gutter);
+        padding: 0;
     }
 
     .rightColumn {
-        padding: 0 0.5rem 0.75rem;
+        padding: 0;
     }
 
     .closeButtonWrapper {
-        top: 0.75rem;
-        padding: 0 0.5rem 0 0;
-        margin-bottom: 0.75rem;
+        top: var(--gap-0-75);
+        padding: 0;
+        margin-bottom: var(--gap-0-75);
     }
 
     .closeButton {
