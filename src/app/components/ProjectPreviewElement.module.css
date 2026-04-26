@@ -44,11 +44,6 @@
     transition: padding-left 180ms ease;
 }
 
-.previewLabel {
-    align-self: baseline;
-    padding-top: 0;
-    padding-bottom: 0;
-}
 
 .titleArrow {
     position: absolute;
@@ -63,7 +58,7 @@
 }
 
 .previewLink:hover .titleText {
-    padding-left: 2rem;
+    padding-left: var(--gap-2);
 }
 
 .previewLink:hover .titleArrow {
@@ -76,9 +71,10 @@
         flex-direction: row;
         align-items: baseline;
         justify-content: space-between;
-        gap: var(--gap-0-5);}
+        gap: var(--gap-0-5);
+    }
 
-	.previewLink:hover .titleText {
-    padding-left: 1rem;
-}
+    .previewLink:hover .titleText {
+        padding-left: var(--gap-1-5);
+    }
 }

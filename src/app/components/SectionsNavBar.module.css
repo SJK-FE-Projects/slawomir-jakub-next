@@ -1,7 +1,7 @@
 .sectionsNavBar {
     display: flex !important;
     flex-direction: row !important;
-    gap: 1rem;
+    gap: var(--gap-1);
     justify-content: flex-start;
     width: auto;
     padding: 0;

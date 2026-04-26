@@ -14,7 +14,7 @@
     overflow-x: scroll;
     overflow-y: visible;
     min-height: 0;
-    padding-bottom: 3.6rem;
+    padding-bottom: var(--gap-3-6);
 }
 
 .card {
@@ -32,7 +32,7 @@
 }
 
 .card+.card {
-    margin-left: -4.5rem;
+    margin-left: calc(var(--gap-4-5) * -1);
 }
 
 .card:nth-child(1) {
@@ -70,7 +70,7 @@
     .row {
         overflow-x: auto;
         min-height: auto;
-        padding-bottom: 0.5rem;
+        padding-bottom: var(--gap-0-5);
     }
 
     .card {
@@ -84,6 +84,6 @@
     }
 
     .card+.card {
-        margin-left: -2rem;
+        margin-left: calc(var(--gap-2) * -1);
     }
 }

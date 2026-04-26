@@ -7,7 +7,7 @@
 }
 
 .headlines {
-    padding: 1rem 2rem;
+    padding: var(--gap-1) var(--gap-2);
     display: flex;
     width: 100%;
     align-items: start;

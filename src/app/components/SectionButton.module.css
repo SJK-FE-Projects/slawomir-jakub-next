@@ -2,9 +2,9 @@
     display: flex;
     width: fit-content;
     align-self: flex-start;
-    padding: 8px 16px;
+    padding: var(--gap-0-5) var(--gap-1);
     align-items: center;
-    gap: 22px;
+    gap: var(--gap-1-5);
     border-radius: 104px;
     backdrop-filter: blur(5px);
     background: var(--neutral-cod-black-12, rgba(22, 22, 22, 0.12));
@@ -44,8 +44,8 @@
 
 @media (max-width: 768px) {
     .sectionButton {
-        padding: 8px 16px;
-        gap: 1rem;
+        padding: var(--gap-0-5) var(--gap-1);
+        gap: var(--gap-1);
         /* text-wrap: nowrap; */
     }
 
