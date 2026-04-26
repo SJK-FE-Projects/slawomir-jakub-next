@@ -7,6 +7,8 @@ import styles from "../projects/[projectId]/detail.module.css";
 
 export type ProjectDetailsContentProject = {
   title: string;
+  client: string;
+  agency?: string;
   year: string;
   roles: string;
   sectionLabel: string;
@@ -49,12 +51,23 @@ export default function ProjectDetailsContent({
 
         <div className={styles.metaRow}>
           <SectionButton
-            text="Project"
+            text="Client"
             selected={false}
             className={styles.metaLabel}
           />
-          <div className={styles.metaValue}>{project.title}</div>
+          <div className={styles.metaValue}>{project.client}</div>
         </div>
+
+        {project.agency ? (
+          <div className={styles.metaRow}>
+            <SectionButton
+              text="Agency"
+              selected={false}
+              className={styles.metaLabel}
+            />
+            <div className={styles.metaValue}>{project.agency}</div>
+          </div>
+        ) : null}
       </div>
 
       <p
