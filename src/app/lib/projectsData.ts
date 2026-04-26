@@ -1,6 +1,8 @@
 export type Project = {
 	id: string;
 	title: string;
+	client: string;
+	agency?: string;
 	roles: string;
 	year: string;
 	description: string;
@@ -16,14 +18,16 @@ export type Project = {
 };
 
 // Single source of truth for all projects
+
 export const projects: Project[] = [
 	{
 		id: "1",
-		title: "PORSCHE",
+		title: "Operations Dashboard for Porsche",
+		client: "Porsche",
 		roles: "UX Design / Screen Design / Visual Design",
 		year: "2022",
 		description:
-			"Web flow and screen design for PORSCHE. The backlog UI of the rental system for test drives.",
+			"Designed the web flow and interface system for Porsche's internal test-drive rental operations, focusing on staff who manage vehicle pickup, return, and location control under time pressure. The main challenge was reducing errors in barcode and key scanning and making fallback actions explicit when scans fail. I mapped the operational workflow end to end, then designed clear table hierarchies, status indicators, and decision-focused modals, such as retry scan versus manual booking number input. The result was a robust, high-clarity back-office UI that supports faster handling, fewer handover mistakes, and better traceability across locations.",
 		sectionLabel: "Business",
 		width: 4,
 		pull: 1,
@@ -62,10 +66,12 @@ export const projects: Project[] = [
 	},
 	{
 		id: "2",
-		title: "hermaid",
+		title: "Hermaid Care Journey Platform",
+		client: "Hermaid",
 		roles: "UI Design & Development",
 		year: "2024",
-		description: `hermaid is a digital health app designed to support women navigating menopause by combining AI assisted self learning, symptom tracking, and expert consultations into one holistic platform. The redesign focused on crafting a clear information architecture, intuitive user flows, and visually coherent screen designs across mobile devices—all tailored to foster trust, accessibility, and long‑term engagement. The goal was to present menopause not as a medical issue, but as a journey supported through science based content, personalized recommendations, and seamless access to certified hormone experts. The result: a modern, professional wellness platform that empowers users and vouches for their hormonal health in a scalable and empathetic way.`,
+		description:
+			"Hermaid is a digital health platform for women navigating menopause, with a parallel value stream for HR and corporate stakeholders. The core UX challenge was combining education, symptom tracking, tele-consultation, and structured care journeys without overwhelming users. I led information architecture and screen design across desktop and mobile, including appointment booking flows, guided questionnaires, insights and journal areas, and post-session feedback loops. The solution balanced medical credibility with empathetic UX, making complex care pathways understandable, actionable, and suitable for long-term engagement.",
 		sectionLabel: "Business",
 		width: 4,
 		pull: 1,
@@ -92,11 +98,13 @@ export const projects: Project[] = [
 	},
 	{
 		id: "3",
-		title: "RedBull Advanced Technologies",
+		title: "Engineering Portfolio Website for Red Bull Advanced Technologies",
+		client: "Red Bull Advanced Technologies",
+		agency: "diesdas.digital",
 		roles: "UX Design, Screen Design, Dev-ready Hand-off",
 		year: "2025",
 		description:
-			"Red Bull Advanced Technologies is the engineering arm of Red Bull Racing, applying Formula 1 expertise to groundbreaking projects in automotive, aerospace, and advanced mobility. The redesigned website showcases this innovation through a streamlined site architecture, intuitive user journeys, and a bold, performance-driven visual design. Clear content structure and responsive layouts support a growing portfolio of high-impact projects. The result is a modern digital platform that reflects the precision, ambition, and technological edge of the RBAT brand. Project on behalf of diesdas.digital agency.",
+			"UX and screen design for a high-performance brand platform presenting Red Bull Advanced Technologies' engineering work across mobility and innovation domains. The challenge was to unify brand spectacle with practical navigation for different audiences: fans, partners, media, and talent. I developed page structures and responsive layouts that foreground key narratives such as projects, races, careers, and expertise while preserving premium visual impact. The outcome is a clear, scalable web experience that supports both storytelling and conversion-oriented journeys like recruitment and project discovery. Project delivered on behalf of diesdas.digital.",
 		sectionLabel: "Business",
 		width: 4,
 		pull: 1,
@@ -141,11 +149,13 @@ export const projects: Project[] = [
 	},
 	{
 		id: "4",
-		title: "Creative Museum 2.0. by BadischesLandes Museum",
-		roles: "UX/UI Design, Development",
+		title: "Creative Museum Participatory Platform",
+		client: "Badisches Landesmuseum",
+		agency: "anschlaege.de",
+		roles: "UX/UI Design, Design System, Development",
 		year: "2023",
 		description:
-			"Designed with anschlaege.de for the Badisches Landesmuseum, Creative Museum is a digital participatory platform aimed at digitally curious and younger audiences as well as broader under‑represented visitor groups. The concept centers on user‑generated content, campaign‑based interactions, voting, feedback loops and gamified mechanics (points, badges, levels), creating a dynamic social feed that empowers users as curators, co‑creators and civic contributors. Concept development flowed through co‑design workshops, wireframing and screen design, resulting in dev‑ready hand‑off for implementation. Credits: anschlaege.de × Badisches Landesmuseum",
+			"Co-designed a participatory digital platform for Badisches Landesmuseum that invites younger and underrepresented audiences to create, share, and vote on cultural content. The central problem was turning passive museum consumption into active contribution while keeping participation simple and motivating. Through workshops, user journeys, wireframes, and UI iterations, we shaped a feed-based, campaign-driven product with gamified mechanics, profile progression, and lightweight creation tools including media and audio contribution flows. The final concept positions visitors as co-creators and strengthens continuous engagement beyond a one-time museum visit. Credits: anschlaege.de x Badisches Landesmuseum.",
 		sectionLabel: "Business",
 		width: 4,
 		pull: 1,
@@ -203,10 +213,12 @@ export const projects: Project[] = [
 	{
 		id: "6",
 		title: "Documenta '15",
+		client: "Documenta 15",
+		agency: "StanHema",
 		roles: "Screen Design",
 		year: "2021",
 		description:
-			"Layouting and UI animations for the branding project of fifteenth edition of Documenta developed by and on behalf of StanHema agency in Berlin.",
+			"Created screen layouts and motion-focused digital assets for a branding context linked to the fifteenth edition of Documenta, developed on behalf of StanHema. The challenge was translating a strong cultural identity into animated digital expressions that remained readable across channels and devices. My process centered on visual rhythm, typographic timing, and modular layout systems that support campaign consistency. The result was a cohesive set of UI and animation components that extended the brand language into dynamic media touchpoints.",
 		width: 4,
 		pull: 1,
 		sectionLabel: "Cultural",
@@ -239,11 +251,13 @@ export const projects: Project[] = [
 	},
 	{
 		id: "7",
-		title: "Jugend im Museum",
+		title: "Program Discovery Experience for Jugend im Museum",
+		client: "Jugend im Museum",
+		agency: "anschlaege.de",
 		roles: "Design System / WebFlow / UX / UI",
 		year: "2023",
 		description:
-			"Design system and screen design for Jugend im Museum in Berlin. Developed for and on behalf of design office anschlaege.de.",
+			"Designed a web and design-system foundation for Jugend im Museum, serving children, teens, parents, educators, and partner institutions. The main UX problem was navigation complexity across diverse offerings such as courses, school formats, projects, and association content. I developed clearer category architecture, filter interactions, and reusable UI patterns to support both fast discovery and deeper editorial browsing. The outcome is a more inclusive and maintainable platform that helps users find relevant programs faster and supports ongoing content growth. Developed on behalf of anschlaege.de.",
 		sectionLabel: "Cultural",
 		width: 4,
 		pull: 1,
@@ -294,12 +308,13 @@ export const projects: Project[] = [
 	},
 	{
 		id: "8",
-		title:
-			"Zukunftszentrum für Europäische Transformation und Deutsche Einheit in Jena",
+		title: "Campaign System for Zukunftszentrum Jena",
+		client: "Stadt Jena",
+		agency: "anschlaege.de",
 		roles: " Screen Design / Lay-Outing / Branding / Workshop Facilitation ",
 		year: "2023",
 		description:
-			"Workshops, branding and screen design for the campaign of city council of Jena for the German Center of Future. Developed on behalf of design office anschlaege.de.",
+			"Contributed to campaign design and digital storytelling for Jena's Zukunftszentrum initiative, including workshop-driven concept work, visual identity assets, and social-first screen outputs. The core challenge was communicating historical transformation in a format that feels relevant and participatory for contemporary audiences. I translated workshop insights into narrative modules and platform-specific visuals, including social post formats that highlight personal testimonies and civic voices. The result was a coherent campaign language connecting institutional goals with accessible public communication. Developed on behalf of anschlaege.de.",
 		sectionLabel: "Cultural",
 		width: 4,
 		pull: 1,
@@ -350,11 +365,13 @@ export const projects: Project[] = [
 	},
 	{
 		id: "9",
-		title: "suissimage",
+		title: "Swissimage Industry Support Platform",
+		client: "Swissimage",
+		agency: "formdusche",
 		roles: "Screen Design / UX Conept",
 		year: "2021",
 		description:
-			"UI & UX Design for the pitch project of swiss cinematographic cooperative. Developed on behalf of formdusche design office.",
+			"UI and UX concept with screen design for a platform in the Swiss cinematographic sector, developed with formdusche. The core goal was to support industry professionals with clear access to relevant information, practical guidance, and support resources. I designed user flows and content structures that make key services easier to find, reduce navigation friction, and improve clarity in content-dense interfaces. The outcome was a focused platform direction centered on professional needs, everyday usability, and fast access to help.",
 		sectionLabel: "Cultural",
 		width: 4,
 		pull: 1,
@@ -387,11 +404,13 @@ export const projects: Project[] = [
 	},
 	{
 		id: "10",
-		title: "Kleist Museum Frankfurt Oder",
+		title: "Content Platform for Kleist Museum",
+		client: "Kleist Museum Frankfurt (Oder)",
+		agency: "anschlaege.de",
 		roles: "Screen Design / UX Concept",
 		year: "2022",
 		description:
-			"Comprehensive branding project for Kleist Museum in Frankfurt. Design of UI components and guidelines for various media. Developing extensive web flow and screen design for the text-oriented literature project. Project developed on behalf of design office anschlaege.de.",
+			"Developed UX concept and screen design for a text-heavy editorial museum platform where content depth and accessibility are equally critical. The challenge was to preserve literary richness while improving scanability, orientation, and cross-linking between exhibitions, events, and educational material. I created component and layout patterns for long-form pages, modular media inserts, and clearer thematic navigation. The resulting direction supports broader audience access to complex cultural content without diluting institutional tone. Project developed on behalf of anschlaege.de.",
 		sectionLabel: "Cultural",
 		width: 4,
 		pull: 1,
@@ -436,11 +455,13 @@ export const projects: Project[] = [
 	},
 	{
 		id: "11",
-		title: "August Bebel Instutut Berlin",
+		title: "Program Hub for August Bebel Institut",
+		client: "August Bebel Institut",
+		agency: "anschlaege.de",
 		roles: "Screen Design / UX Concept / Design System",
 		year: "2024",
 		description:
-			"Screen design visual communication for August Bebel Institut in Berlin. Developed on behalf of design office anschlaege.de.",
+			"Designed visual communication and digital screen concepts for August Bebel Institut, focused on political education programs and event discovery. The UX challenge was organizing high-volume, frequently changing event content into an experience that works for mobile-first, real-world usage patterns. I developed a design system and responsive views for overview, filtering, category-based browsing, and program detail reading. The result improves program visibility and helps users move quickly from exploration to participation. Developed on behalf of anschlaege.de.",
 		sectionLabel: "Cultural",
 		width: 4,
 		pull: 1,
@@ -479,11 +500,13 @@ export const projects: Project[] = [
 	},
 	{
 		id: "12",
-		title: "ROC Berlin",
+		title: "Rebrand Concept for ROC Berlin",
+		client: "ROC Berlin",
+		agency: "SMITH Berlin",
 		roles: "Branding / Design System / Screen Design",
 		year: "2024",
 		description:
-			"Pitch project for agency SMITH Berlin. Corporate identity, visual communication and web design for rebranding of ROC Berlin.",
+			"Created rebranding concepts for ROC Berlin spanning corporate identity, visual system, and digital and print applications in a pitch context for SMITH Berlin. The challenge was establishing a contemporary, distinctive identity that scales consistently from editorial surfaces to practical business collateral. I defined typographic and compositional rules, then applied them across stationery, brand artifacts, and screen-directed assets to validate real-world flexibility. The outcome is a coherent brand foundation that supports recognition, consistency, and future product communication.",
 		sectionLabel: "Cultural",
 		width: 4,
 		pull: 1,
