@@ -20,8 +20,7 @@
     align-items: flex-start;
     width: 100%;
     box-sizing: border-box;
-    padding-inline-start: var(--gap-6);
-    padding-inline-end: var(--gap-6);
+    padding-inline: var(--gap-6);
     padding-bottom: var(--gap-3-6);
     gap: var(--gap-1);
     isolation: isolate;
