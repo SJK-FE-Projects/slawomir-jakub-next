@@ -55,17 +55,24 @@
 .mobileViewport {
     position: relative;
     width: 100%;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: visible;
     box-sizing: border-box;
     padding-inline: var(--gap-0-5);
     padding-bottom: var(--gap-0-5);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.mobileViewport::-webkit-scrollbar {
+    display: none;
 }
 
 .mobileContainer {
     display: flex;
     align-items: flex-end;
     width: max-content;
-    touch-action: pan-y;
+    touch-action: none;
     cursor: grab;
     will-change: transform;
 }
@@ -78,15 +85,20 @@
     flex: 0 0 auto;
 }
 
-.mobileSlide+.mobileSlide {
-    margin-left: var(--gap-1);
+/* Make mobile slides overlap by applying a negative left margin to
+   every slide except the first. The variable controls overlap size. */
+@media (max-width: 767px) {
+    .mobileSlide:not(:first-child) {
+        margin-left: calc(-1 * var(--mobile-overlap, 56px));
+    }
 }
 
 .mobileCard {
     width: min(320px, 68vw);
     aspect-ratio: 8 / 5;
     height: auto;
-    transform: none;
+    transform: translateY(var(--mobile-offset-y, 0)) rotate(var(--mobile-rotation, 0deg));
+    transform-origin: center bottom;
 }
 
 .image {
