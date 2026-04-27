@@ -12,8 +12,15 @@ type ProjectMiniatureHomeDesktopProps = {
   constraintsRef: RefObject<HTMLDivElement | null>;
 };
 
-const OFFSET_VALUES = ["1.8rem", "0", "3.1rem", "0.9rem", "2.2rem", "0.5rem"];
-const ROTATION_VALUES = [-1.5, 0.8, -0.6, 1.4, -0.9, 0.4];
+const OFFSET_VALUES = [
+  "1.8rem",
+  "-0.5rem",
+  "3.1rem",
+  "1.9rem",
+  "2.2rem",
+  "1.9rem",
+];
+const ROTATION_VALUES = [-2.5, 0.8, -1.6, 1.4, -0.9, 1.9];
 const BASE_Z_INDEX = [1, 4, 3, 2, 2, 1];
 
 export default function ProjectMiniatureHomeDesktop({
