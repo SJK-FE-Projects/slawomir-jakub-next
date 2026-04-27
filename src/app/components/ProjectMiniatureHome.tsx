@@ -1,32 +1,44 @@
+"use client";
+
 import Link from "next/link";
-import Image from "next/image";
+import { useRef } from "react";
+import type { RefObject } from "react";
+
 import styles from "./ProjectMiniatureHome.module.css";
+import useIsClient from "../hooks/useIsClient";
+import { useMediaQuery } from "../hooks/useMediaQuery";
+import ProjectMiniatureHomeDesktop from "./ProjectMiniatureHomeDesktop";
+import ProjectMiniatureHomeMobile from "./ProjectMiniatureHomeMobile";
 
 type ProjectMiniatureHomeProps = {
   cards: string[];
   href: string;
+  parentConstraintsRef?: RefObject<HTMLDivElement | null> | null;
 };
 
 export default function ProjectMiniatureHome({
   cards,
   href,
+  parentConstraintsRef = null,
 }: ProjectMiniatureHomeProps) {
+  const isClient = useIsClient();
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const localConstraintsRef = useRef<HTMLDivElement>(null);
+  const constraintsRef = parentConstraintsRef ?? localConstraintsRef;
+
   return (
     <div className={styles.root}>
-      <div className={styles.row}>
-        {cards.map((src, index) => (
-          <div key={src} className={styles.card}>
-            <Image
-              src={src}
-              alt={`Project card ${index + 1}`}
-              width={800}
-              height={500}
-              sizes="(max-width: 768px) 72vw, 800px"
-              className={styles.image}
-              priority={index === 0}
-            />
-          </div>
-        ))}
+      <div ref={constraintsRef} className={styles.carouselArea}>
+        {!isClient ? (
+          <div className={styles.skeleton} aria-hidden="true" />
+        ) : isDesktop ? (
+          <ProjectMiniatureHomeDesktop
+            cards={cards}
+            constraintsRef={constraintsRef}
+          />
+        ) : (
+          <ProjectMiniatureHomeMobile cards={cards} />
+        )}
       </div>
 
       <Link href={href} className={styles.link}>
