@@ -366,11 +366,11 @@ export default function Home() {
   const resumeBlocks = textBlocks.slice(1);
 
   const projectCards = [
-    "/projectImages/P11/blm1.jpg",
+    "/projectImages/P11/blm8.png",
     "/projectImages/P12/hm1a.jpg",
     "/projectImages/P13/rbat0.jpg",
     "/projectImages/P1/Porsche1.jpg",
-    "/projectImages/P3/Jim3.jpg",
+    "/projectImages/P3/Jim2.jpg",
   ];
 
   return (
