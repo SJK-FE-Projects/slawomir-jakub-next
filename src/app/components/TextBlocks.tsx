@@ -76,6 +76,7 @@ function TextBlockContainer({
           text={sectionLabel}
           selected={false}
           className={styles.stickySectionButton}
+          data-section={id}
         />{" "}
         {textBlock.variant === "large" && Array.isArray(textBlock.text) && (
           <div className={styles.textContent}>
@@ -192,6 +193,7 @@ function TextBlockContainer({
           text={sectionLabel}
           selected={false}
           className={styles.stickySectionButton}
+          data-section={id}
         />{" "}
       </div>{" "}
       <div

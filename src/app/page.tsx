@@ -24,13 +24,22 @@ const toSectionId = (label: string) =>
 export default function Home() {
   const sectionLabels = useMemo(
     () => [
-      "Professional Summary",
+      "Intro",
+      "Projects Overview",
       "Technical Skills",
       "Professional Experience",
       "Education & Training",
       "Selected Clients",
     ],
     [],
+  );
+
+  const sectionIdsByLabel = useMemo(
+    () =>
+      Object.fromEntries(
+        sectionLabels.map((label) => [label, toSectionId(label)]),
+      ),
+    [sectionLabels],
   );
 
   // Track which section is selected (only for manual clicks)
@@ -58,8 +67,8 @@ export default function Home() {
 
   // Generate section IDs from labels
   const sectionIds = useMemo(
-    () => sectionLabels.map((label) => toSectionId(label)),
-    [sectionLabels],
+    () => sectionLabels.map((label) => sectionIdsByLabel[label]),
+    [sectionLabels, sectionIdsByLabel],
   );
 
   // Get navbar height from CSS variable
@@ -80,15 +89,15 @@ export default function Home() {
   useSectionActiveClass({
     sectionIds,
     offsetTop: getNavbarHeight(),
-    enabled: isMobile,
+    enabled: true,
   });
 
   // TextBlocks data array - simplified structure
   const textBlocks: TextBlockProps[] = [
     {
-      id: toSectionId(sectionLabels[0]),
+      id: sectionIdsByLabel["Intro"],
       variant: "large",
-      sectionLabel: "Professional Summary",
+      sectionLabel: "Intro",
       text: [
         "UI/Product Designer and Web (Frontend) Developer with 5+ years of expertise in responsive web design, design systems and React, NextJS, JavaScript/TypeScript and HTML5/CSS3.",
         "Skilled in creating user-centric designs and dynamic user interfaces for international clients. Experienced in Agile development, version control with Git, and UI component libraries.",
@@ -96,7 +105,7 @@ export default function Home() {
     },
 
     {
-      id: toSectionId(sectionLabels[2]),
+      id: sectionIdsByLabel["Professional Experience"],
       variant: "date",
       sectionLabel: "Professional Experience",
       items: [
@@ -199,9 +208,9 @@ export default function Home() {
     },
 
     {
-      id: toSectionId(sectionLabels[3]),
+      id: sectionIdsByLabel["Education & Training"],
       variant: "date",
-      sectionLabel: "Education",
+      sectionLabel: "Education & Training",
       items: [
         {
           title: "Backend Development",
@@ -286,7 +295,7 @@ export default function Home() {
     },
 
     {
-      id: toSectionId(sectionLabels[1]),
+      id: sectionIdsByLabel["Technical Skills"],
       variant: "skills",
       sectionLabel: "Technical Skills",
       items: [
@@ -330,7 +339,7 @@ export default function Home() {
     },
 
     {
-      id: toSectionId(sectionLabels[4]),
+      id: sectionIdsByLabel["Selected Clients"],
       variant: "clients",
       sectionLabel: "Selected Clients",
       items: [
@@ -386,7 +395,7 @@ export default function Home() {
             navbarHeight={getNavbarHeight()}
           />{" "}
         </div>{" "}
-        <section className={styles.introSection}>
+        <section className={styles.introSection} id={sectionIds[0]}>
           {" "}
           <div className={styles.introGrid}>
             {" "}
@@ -406,9 +415,12 @@ export default function Home() {
             </div>{" "}
           </div>{" "}
         </section>{" "}
-        <section className={styles.projectsSection}>
+        <section
+          className={styles.projectsSection}
+          id={sectionIdsByLabel["Projects Overview"]}
+        >
           {" "}
-          <SectionButton text="Projects" selected={false} />{" "}
+          <SectionButton text="Projects Overview" selected={false} />{" "}
           <ProjectMiniatureHome cards={projectCards} href="/projects" />{" "}
         </section>{" "}
         <section className={styles.resumeSection}>
