@@ -24,7 +24,7 @@ const toSectionId = (label: string) =>
 export default function Home() {
   const sectionLabels = useMemo(
     () => [
-      "Professional Summary",
+      "Intro",
       "Technical Skills",
       "Professional Experience",
       "Education & Training",
@@ -88,7 +88,7 @@ export default function Home() {
     {
       id: toSectionId(sectionLabels[0]),
       variant: "large",
-      sectionLabel: "Professional Summary",
+      sectionLabel: "Intro",
       text: [
         "UI/Product Designer and Web (Frontend) Developer with 5+ years of expertise in responsive web design, design systems and React, NextJS, JavaScript/TypeScript and HTML5/CSS3.",
         "Skilled in creating user-centric designs and dynamic user interfaces for international clients. Experienced in Agile development, version control with Git, and UI component libraries.",
