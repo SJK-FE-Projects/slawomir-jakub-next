@@ -1,11 +1,14 @@
 "use client";
 
 import Link from "next/link";
+
 import { useRef } from "react";
+
 import type { RefObject } from "react";
 
 import styles from "./ProjectMiniatureHome.module.css";
 import useIsClient from "../hooks/useIsClient";
+
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import ProjectMiniatureHomeDesktop from "./ProjectMiniatureHomeDesktop";
 import ProjectMiniatureHomeMobile from "./ProjectMiniatureHomeMobile";
@@ -28,7 +31,9 @@ export default function ProjectMiniatureHome({
 
   return (
     <div className={styles.root}>
+      {" "}
       <div ref={constraintsRef} className={styles.carouselArea}>
+        {" "}
         {!isClient ? (
           <div className={styles.skeleton} aria-hidden="true" />
         ) : isDesktop ? (
@@ -39,11 +44,11 @@ export default function ProjectMiniatureHome({
         ) : (
           <ProjectMiniatureHomeMobile cards={cards} />
         )}
-      </div>
-
+      </div>{" "}
       <Link href={href} className={styles.link}>
-        See more →
-      </Link>
+        {" "}
+        See more →{" "}
+      </Link>{" "}
     </div>
   );
 }

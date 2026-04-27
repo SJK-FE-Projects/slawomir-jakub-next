@@ -370,7 +370,7 @@ export default function Home() {
     "/projectImages/P12/hm1a.jpg",
     "/projectImages/P13/rbat0.jpg",
     "/projectImages/P1/Porsche1.jpg",
-    "/projectImages/P11/blm2.jpg",
+    "/projectImages/P3/Jim3.jpg",
   ];
 
   return (
