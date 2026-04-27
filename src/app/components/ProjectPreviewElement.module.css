@@ -18,7 +18,6 @@
 
 .previewMedia {
     width: 100%;
-    min-height: clamp(300px, 50vw, 600px);
     border-radius: 1rem;
     overflow: hidden;
 }
