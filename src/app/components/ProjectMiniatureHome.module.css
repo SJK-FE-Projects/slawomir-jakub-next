@@ -6,53 +6,80 @@
     overflow: visible;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 0;
-    overflow-x: scroll;
-    overflow-y: visible;
-    min-height: 0;
-    padding-bottom: var(--gap-3-6);
+.carouselArea {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    min-height: 32rem;
 }
 
-.card {
+.desktopRow {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline-start: calc(var(--page-gutter) + var(--gap-1-5));
+    padding-inline-end: var(--page-gutter);
+    padding-bottom: var(--gap-3-6);
+    isolation: isolate;
+}
+
+.desktopDragSlot {
     position: relative;
     flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
     width: fit-content;
+    overflow: visible;
+    z-index: 0;
+    touch-action: none;
+    cursor: grab;
+}
+
+.desktopDragSlot+.desktopDragSlot {
+    margin-inline-start: calc(var(--gap-4-5) * -1);
+}
+
+.desktopCard {
+    position: relative;
+    width: auto;
     height: 500px;
+    transform: translateY(var(--offset-y)) rotate(var(--rotation));
     transform-origin: center bottom;
+    user-select: none;
 }
 
-.card>span {
-    display: block !important;
-    width: auto !important;
-    height: 100% !important;
+.desktopDragSlot:active {
+    cursor: grabbing;
 }
 
-.card+.card {
-    margin-left: calc(var(--gap-4-5) * -1);
+.mobileViewport {
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline: var(--page-gutter);
+    padding-bottom: var(--gap-0-5);
 }
 
-.card:nth-child(1) {
-    transform: translateY(1.8rem) rotate(-1.5deg);
-    z-index: 1;
+.mobileContainer {
+    display: flex;
+    align-items: flex-end;
+    width: max-content;
+    max-width: none;
 }
 
-.card:nth-child(2) {
-    transform: translateY(0) rotate(0.8deg);
-    z-index: 4;
+.mobileSlide {
+    flex: 0 0 auto;
 }
 
-.card:nth-child(3) {
-    transform: translateY(3.1rem) rotate(-0.6deg);
-    z-index: 3;
+.mobileSlide+.mobileSlide {
+    margin-left: calc(var(--gap-2) * -1);
 }
 
-.card:nth-child(4) {
-    transform: translateY(0.9rem) rotate(1.4deg);
-    z-index: 2;
+.mobileCard {
+    height: 250px;
+    transform: none;
 }
 
 .image {
@@ -60,6 +87,33 @@
     border-radius: 0.75rem;
     width: auto !important;
     height: 100% !important;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+.progressTrack {
+    position: relative;
+    height: 3px;
+    overflow: hidden;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 3px;
+    background: rgba(112, 112, 112, 0.18);
+}
+
+.progressIndicator {
+    position: absolute;
+    inset: 0;
+    left: -100%;
+    width: 100%;
+    border-radius: 3px;
+    background: #707070;
+}
+
+.skeleton {
+    width: 100%;
+    height: 390px;
 }
 
 .link {
@@ -67,23 +121,24 @@
 }
 
 @media (max-width: 768px) {
-    .row {
-        overflow-x: auto;
+    .carouselArea {
         min-height: auto;
-        padding-bottom: var(--gap-0-5);
     }
 
-    .card {
-        width: fit-content;
-        height: 380px;
-        transform: none;
+    .root {
+        overflow: hidden;
     }
 
-    .card>span {
-        height: 100% !important;
+    .desktopRow,
+    .desktopDragSlot,
+    .desktopCard {
+        display: none;
     }
+}
 
-    .card+.card {
-        margin-left: calc(var(--gap-2) * -1);
+@media (min-width: 768px) {
+    .mobileViewport,
+    .progressTrack {
+        display: none;
     }
 }
