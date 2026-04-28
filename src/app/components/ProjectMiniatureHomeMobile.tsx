@@ -1,11 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {
-  useRef,
-  type CSSProperties,
-  type PointerEvent as ReactPointerEvent,
-} from "react";
+import { useRef, useState, type CSSProperties } from "react";
 import styles from "./ProjectMiniatureHome.module.css";
 
 type ProjectMiniatureHomeMobileProps = {
@@ -18,64 +14,88 @@ const ROTATION_VALUES = [-1.2, 0.8, -0.8, 1.1, -0.6];
 export default function ProjectMiniatureHomeMobile({
   cards,
 }: ProjectMiniatureHomeMobileProps) {
-  const viewportRef = useRef<HTMLDivElement | null>(null);
-  const isDraggingRef = useRef(false);
+  const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const transformRef = useRef<{ [key: number]: { x: number; y: number } }>({});
   const startXRef = useRef(0);
-  const startScrollLeftRef = useRef(0);
-  const activePointerIdRef = useRef<number | null>(null);
+  const startYRef = useRef(0);
+  const startTransformRef = useRef({ x: 0, y: 0 });
+  const rafRef = useRef<number | null>(null);
 
-  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+  const handlePointerDown = (
+    index: number,
+    event: React.PointerEvent<HTMLDivElement>,
+  ) => {
     if (event.pointerType === "mouse" && event.button !== 0) {
       return;
     }
 
-    const viewport = viewportRef.current;
-    if (!viewport) return;
-
-    isDraggingRef.current = true;
-    activePointerIdRef.current = event.pointerId;
+    setDraggedIndex(index);
     startXRef.current = event.clientX;
-    startScrollLeftRef.current = viewport.scrollLeft;
-    viewport.setPointerCapture(event.pointerId);
+    startYRef.current = event.clientY;
+    startTransformRef.current = transformRef.current[index] || { x: 0, y: 0 };
+
+    const card = cardRefs.current[index];
+    if (card) {
+      card.setPointerCapture(event.pointerId);
+      card.style.cursor = "grabbing";
+      card.style.transition = "none";
+      card.style.zIndex = "100";
+    }
   };
 
-  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
-    const viewport = viewportRef.current;
-    if (
-      !viewport ||
-      !isDraggingRef.current ||
-      activePointerIdRef.current !== event.pointerId
-    ) {
-      return;
-    }
+  const handlePointerMove = (
+    index: number,
+    event: React.PointerEvent<HTMLDivElement>,
+  ) => {
+    if (draggedIndex !== index) return;
 
     const deltaX = event.clientX - startXRef.current;
-    viewport.scrollLeft = startScrollLeftRef.current - deltaX;
+    const deltaY = event.clientY - startYRef.current;
+
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current);
+    }
+
+    rafRef.current = requestAnimationFrame(() => {
+      const card = cardRefs.current[index];
+      if (card) {
+        const newX = startTransformRef.current.x + deltaX;
+        const newY = startTransformRef.current.y + deltaY;
+        card.style.transform = `translate(${newX}px, ${newY}px)`;
+        transformRef.current[index] = { x: newX, y: newY };
+      }
+    });
   };
 
-  const stopDragging = (event: ReactPointerEvent<HTMLDivElement>) => {
-    const viewport = viewportRef.current;
-    if (!viewport || activePointerIdRef.current !== event.pointerId) {
-      return;
+  const handlePointerUp = (
+    index: number,
+    event: React.PointerEvent<HTMLDivElement>,
+  ) => {
+    if (draggedIndex !== index) return;
+
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
     }
 
-    if (viewport.hasPointerCapture(event.pointerId)) {
-      viewport.releasePointerCapture(event.pointerId);
+    const card = cardRefs.current[index];
+    if (card) {
+      if (card.hasPointerCapture(event.pointerId)) {
+        card.releasePointerCapture(event.pointerId);
+      }
+      card.style.cursor = "grab";
+      card.style.transition = "transform 0.3s ease-out";
+      card.style.transform = "translate(0px, 0px)";
+      card.style.zIndex = "0";
+      transformRef.current[index] = { x: 0, y: 0 };
     }
 
-    isDraggingRef.current = false;
-    activePointerIdRef.current = null;
+    setDraggedIndex(null);
   };
 
   return (
-    <div
-      ref={viewportRef}
-      className={styles.mobileViewport}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={stopDragging}
-      onPointerCancel={stopDragging}
-    >
+    <div className={styles.mobileViewport}>
       <div className={styles.mobileContainer}>
         {cards.map((src, index) => {
           const style = {
@@ -84,7 +104,20 @@ export default function ProjectMiniatureHomeMobile({
           } as unknown as CSSProperties;
 
           return (
-            <div key={src} className={styles.mobileSlide}>
+            <div
+              key={src}
+              ref={(el) => {
+                cardRefs.current[index] = el;
+              }}
+              className={styles.mobileDragSlot}
+              onPointerDown={(e) => handlePointerDown(index, e)}
+              onPointerMove={(e) => handlePointerMove(index, e)}
+              onPointerUp={(e) => handlePointerUp(index, e)}
+              onPointerCancel={(e) => handlePointerUp(index, e)}
+              style={{
+                cursor: draggedIndex === index ? "grabbing" : "grab",
+              }}
+            >
               <div className={styles.mobileCard} style={style}>
                 <Image
                   src={src}
