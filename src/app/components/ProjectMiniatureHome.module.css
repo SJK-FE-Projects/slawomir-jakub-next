@@ -20,8 +20,8 @@
     align-items: flex-start;
     width: 100%;
     box-sizing: border-box;
-    padding-inline: var(--gap-6);
-    padding-bottom: var(--gap-3-6);
+    padding-inline: var(--gap-9);
+    padding-block: var(--gap-6);
     gap: var(--gap-1);
     isolation: isolate;
     flex-wrap: nowrap;
@@ -56,10 +56,10 @@
     position: relative;
     width: 100%;
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: hidden;
     box-sizing: border-box;
-    padding-inline: var(--gap-0-5);
-    padding-bottom: var(--gap-0-5);
+    padding-inline: var(--gap-2);
+    padding-block: var(--gap-2);
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
 }
@@ -117,6 +117,7 @@
 
 .link {
     width: fit-content;
+    align-self: center;
 }
 
 @media (max-width: 767px) {
