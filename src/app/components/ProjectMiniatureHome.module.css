@@ -20,7 +20,7 @@
     align-items: flex-start;
     width: 100%;
     box-sizing: border-box;
-    padding-inline: var(--gap-9);
+    padding-inline: var(--gap-6);
     padding-block: var(--gap-6);
     gap: var(--gap-1);
     isolation: isolate;
@@ -35,13 +35,13 @@
     width: fit-content;
     overflow: visible;
     z-index: 0;
-    touch-action: none;
+    touch-action: pan-x;
     cursor: grab;
 }
 
 .desktopCard {
     position: relative;
-    width: a32o;
+    width: auto;
     height: 400px;
     transform: translateY(var(--offset-y)) rotate(var(--rotation));
     transform-origin: center bottom;
