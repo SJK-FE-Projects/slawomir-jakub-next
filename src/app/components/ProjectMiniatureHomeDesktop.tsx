@@ -15,12 +15,12 @@ type ProjectMiniatureHomeDesktopProps = {
 const OFFSET_VALUES = [
   "1.8rem",
   "-0.5rem",
-  "3.1rem",
+  "1.1rem",
   "1.9rem",
-  "2.2rem",
+  "-2.2rem",
   "1.9rem",
 ];
-const ROTATION_VALUES = [-2.5, 0.8, -1.6, 1.4, -0.9, 1.9];
+const ROTATION_VALUES = [-2.5, 0.8, -1.6, 1.4, -2.9, 1.9];
 const BASE_Z_INDEX = [1, 4, 3, 2, 2, 1];
 
 export default function ProjectMiniatureHomeDesktop({
@@ -56,7 +56,7 @@ export default function ProjectMiniatureHomeDesktop({
             drag
             dragConstraints={constraintsRef}
             dragMomentum={false}
-            dragElastic={0}
+            dragElastic={0.9}
             onTapStart={() => bringToFront(index)}
             style={{ zIndex: BASE_Z_INDEX[index % BASE_Z_INDEX.length] }}
           >
