@@ -12,6 +12,7 @@ import useIsClient from "../hooks/useIsClient";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import ProjectMiniatureHomeDesktop from "./ProjectMiniatureHomeDesktop";
 import ProjectMiniatureHomeMobile from "./ProjectMiniatureHomeMobile";
+import SectionButton from "./SectionButton";
 
 type ProjectMiniatureHomeProps = {
   cards: string[];
@@ -47,7 +48,7 @@ export default function ProjectMiniatureHome({
       </div>{" "}
       <Link href={href} className={styles.link}>
         {" "}
-        See more →{" "}
+        <SectionButton text="See more" selected={true} />
       </Link>{" "}
     </div>
   );
