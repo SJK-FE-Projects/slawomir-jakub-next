@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useLayoutEffect, useRef, useState } from "react";
-import type { CSSProperties } from "react";
-import { m } from "framer-motion";
+import {
+  useRef,
+  type CSSProperties,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 import styles from "./ProjectMiniatureHome.module.css";
 
 type ProjectMiniatureHomeMobileProps = {
@@ -17,56 +19,64 @@ export default function ProjectMiniatureHomeMobile({
   cards,
 }: ProjectMiniatureHomeMobileProps) {
   const viewportRef = useRef<HTMLDivElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [dragLimit, setDragLimit] = useState(0);
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const startScrollLeftRef = useRef(0);
+  const activePointerIdRef = useRef<number | null>(null);
 
-  useLayoutEffect(() => {
-    const viewport = viewportRef.current;
-    const container = containerRef.current;
-    if (!viewport || !container) return;
-
-    const updateDragLimit = () => {
-      const overflowWidth = container.scrollWidth - viewport.clientWidth;
-      setDragLimit(Math.max(0, overflowWidth));
-    };
-
-    updateDragLimit();
-
-    let resizeObserver: ResizeObserver | null = null;
-    let removeWindowListener: (() => void) | null = null;
-
-    if (typeof ResizeObserver !== "undefined") {
-      try {
-        resizeObserver = new ResizeObserver(updateDragLimit);
-        resizeObserver.observe(viewport);
-        resizeObserver.observe(container);
-      } catch {
-        window.addEventListener("resize", updateDragLimit);
-        removeWindowListener = () =>
-          window.removeEventListener("resize", updateDragLimit);
-      }
-    } else {
-      window.addEventListener("resize", updateDragLimit);
-      removeWindowListener = () =>
-        window.removeEventListener("resize", updateDragLimit);
+  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse" && event.button !== 0) {
+      return;
     }
 
-    return () => {
-      if (resizeObserver) resizeObserver.disconnect();
-      if (removeWindowListener) removeWindowListener();
-    };
-  }, [cards.length]);
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    isDraggingRef.current = true;
+    activePointerIdRef.current = event.pointerId;
+    startXRef.current = event.clientX;
+    startScrollLeftRef.current = viewport.scrollLeft;
+    viewport.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const viewport = viewportRef.current;
+    if (
+      !viewport ||
+      !isDraggingRef.current ||
+      activePointerIdRef.current !== event.pointerId
+    ) {
+      return;
+    }
+
+    const deltaX = event.clientX - startXRef.current;
+    viewport.scrollLeft = startScrollLeftRef.current - deltaX;
+  };
+
+  const stopDragging = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const viewport = viewportRef.current;
+    if (!viewport || activePointerIdRef.current !== event.pointerId) {
+      return;
+    }
+
+    if (viewport.hasPointerCapture(event.pointerId)) {
+      viewport.releasePointerCapture(event.pointerId);
+    }
+
+    isDraggingRef.current = false;
+    activePointerIdRef.current = null;
+  };
 
   return (
-    <div ref={viewportRef} className={styles.mobileViewport}>
-      <m.div
-        ref={containerRef}
-        className={styles.mobileContainer}
-        drag="x"
-        dragConstraints={{ left: -dragLimit, right: 0 }}
-        dragMomentum={false}
-        dragElastic={0}
-      >
+    <div
+      ref={viewportRef}
+      className={styles.mobileViewport}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={stopDragging}
+      onPointerCancel={stopDragging}
+    >
+      <div className={styles.mobileContainer}>
         {cards.map((src, index) => {
           const style = {
             ["--mobile-offset-y"]: OFFSET_VALUES[index % OFFSET_VALUES.length],
@@ -90,7 +100,7 @@ export default function ProjectMiniatureHomeMobile({
             </div>
           );
         })}
-      </m.div>
+      </div>
     </div>
   );
 }
