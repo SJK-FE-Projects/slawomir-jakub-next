@@ -61,7 +61,17 @@
     padding-inline: var(--gap-2);
     padding-block: var(--gap-2);
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    touch-action: pan-y;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    overscroll-behavior-x: contain;
     scrollbar-width: none;
+}
+
+.mobileViewport:active {
+    cursor: grabbing;
 }
 
 .mobileViewport::-webkit-scrollbar {
@@ -72,17 +82,11 @@
     display: flex;
     align-items: flex-end;
     width: max-content;
-    touch-action: none;
-    cursor: grab;
-    will-change: transform;
-}
-
-.mobileContainer:active {
-    cursor: grabbing;
 }
 
 .mobileSlide {
     flex: 0 0 auto;
+    scroll-snap-align: start;
 }
 
 /* Make mobile slides overlap by applying a negative left margin to
@@ -99,6 +103,7 @@
     height: auto;
     transform: translateY(var(--mobile-offset-y, 0)) rotate(var(--mobile-rotation, 0deg));
     transform-origin: center bottom;
+    scroll-snap-align: start;
 }
 
 .image {
