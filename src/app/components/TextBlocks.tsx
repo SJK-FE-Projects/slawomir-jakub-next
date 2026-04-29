@@ -205,7 +205,7 @@ function TextBlockContainer({
                 styles.pull3
             }
 
-            section fluid`}
+            `}
       >
         {" "}
         {textBlock.variant === "large" && Array.isArray(textBlock.text) && (
