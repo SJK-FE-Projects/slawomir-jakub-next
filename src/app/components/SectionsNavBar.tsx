@@ -26,7 +26,7 @@ const SectionsNavBar: React.FC<SectionsNavBarProps> = ({
         section
           .toLowerCase()
           .replace(/[^a-z0-9]+/g, "-")
-          .replace(/(^-|-$)/g, "")
+          .replace(/(^-|-$)/g, ""),
       );
       if (anchor) {
         const y =
@@ -51,7 +51,7 @@ const SectionsNavBar: React.FC<SectionsNavBarProps> = ({
   };
 
   return (
-    <div className={styles.sectionsNavBar}>
+    <div className={styles.sectionsNavBar} data-sections-nav>
       {sections.map((section, idx) => (
         <SectionButton
           key={idx}

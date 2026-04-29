@@ -89,6 +89,8 @@ export default function Home() {
   useSectionActiveClass({
     sectionIds,
     offsetTop: getNavbarHeight(),
+    // target only navbar buttons to avoid toggling active on content labels
+    buttonSelector: "[data-sections-nav] [data-section]",
     enabled: true,
   });
 
