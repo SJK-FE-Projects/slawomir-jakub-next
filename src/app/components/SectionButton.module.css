@@ -1,6 +1,7 @@
 .sectionButton {
     display: flex;
     width: fit-content;
+    flex: 0 0 auto;
     align-self: flex-start;
     padding: var(--gap-0-5) var(--gap-1);
     align-items: center;
@@ -20,7 +21,7 @@
     appearance: none;
     box-shadow: none;
     box-sizing: content-box;
-    text-wrap: nowrap;
+    white-space: nowrap;
 
 }
 

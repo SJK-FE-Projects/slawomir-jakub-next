@@ -21,14 +21,14 @@ type UseSectionActiveClassOptions = {
 export const useSectionActiveClass = ({
 	sectionIds,
 	offsetTop = 100,
-	buttonSelector = ".stickySectionButton",
+	buttonSelector = "[data-section]",
 	enabled = true,
 }: UseSectionActiveClassOptions) => {
 	useEffect(() => {
 		if (typeof window === "undefined" || typeof document === "undefined") return;
 
 		if (!enabled) {
-			document.querySelectorAll(`[data-section]`).forEach((btn) => {
+			document.querySelectorAll(buttonSelector).forEach((btn) => {
 				btn.classList.remove("active");
 			});
 			return;
@@ -37,29 +37,42 @@ export const useSectionActiveClass = ({
 		let currentActiveIdsKey = "";
 
 		const getActiveSectionIds = () => {
-			const labelButtons = Array.from(document.querySelectorAll(buttonSelector));
-
 			const candidates: Array<{
 				id: string;
 				top: number;
+				ratio: number;
 			}> = [];
 
-			labelButtons.forEach((button) => {
-				const sectionId = button.getAttribute("data-section");
-				if (!sectionId || !sectionIds.includes(sectionId)) return;
+			sectionIds.forEach((id) => {
+				const el = document.getElementById(id);
+				if (!el) return;
 
-				const rect = button.getBoundingClientRect();
-				const isVisibleInNavbarBand = rect.top <= offsetTop && rect.bottom > 0;
+				const rect = el.getBoundingClientRect();
+				const height = rect.height || Math.max(el.scrollHeight, 1);
+				const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+				const visibleRatio = visibleHeight > 0 ? visibleHeight / height : 0;
 
-				if (isVisibleInNavbarBand) {
-					candidates.push({
-						id: sectionId,
-						top: rect.top,
-					});
+				// consider section active when at least 30% visible
+				if (visibleRatio >= 0.3) {
+					candidates.push({ id, top: rect.top, ratio: visibleRatio });
 				}
 			});
 
+			// If none reach threshold, fallback to the section closest to top offset
 			if (candidates.length === 0) {
+				let nearest: { id: string; distance: number; top: number } | null = null;
+				sectionIds.forEach((id) => {
+					const el = document.getElementById(id);
+					if (!el) return;
+					const rect = el.getBoundingClientRect();
+					const distance = Math.abs(rect.top - offsetTop);
+					if (!nearest || distance < nearest.distance) {
+						nearest = { id, distance, top: rect.top };
+					}
+				});
+				if (nearest) {
+					return [nearest.id];
+				}
 				return [];
 			}
 
@@ -75,19 +88,32 @@ export const useSectionActiveClass = ({
 
 			if (newActiveIdsKey === currentActiveIdsKey) return;
 
-			document.querySelectorAll(`${buttonSelector}, [data-section]`).forEach((btn) => {
+			// remove active only from elements matching the provided button selector
+			document.querySelectorAll(buttonSelector).forEach((btn) => {
 				btn.classList.remove("active");
 			});
 
 			newActiveIds.forEach((activeId) => {
-				const activeButtons = document.querySelectorAll(
-					`[data-section="${activeId}"]`
-				);
-
-				activeButtons.forEach((activeButton) => {
+				const selector = `${buttonSelector}[data-section="${activeId}"]`;
+				document.querySelectorAll(selector).forEach((activeButton) => {
 					activeButton.classList.add("active");
 				});
 			});
+
+			// Scroll the first active button inside the nav to the left (align start)
+			if (newActiveIds.length > 0) {
+				const nav = document.querySelector('[data-sections-nav]');
+				const firstActiveId = newActiveIds[0];
+				const activeInNav = nav?.querySelector(`[data-section="${firstActiveId}"]`);
+				if (activeInNav && typeof (activeInNav as HTMLElement).scrollIntoView === 'function') {
+					try {
+						(activeInNav as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+					} catch (e) {
+						// fallback: instant
+						(activeInNav as HTMLElement).scrollIntoView({ block: 'nearest', inline: 'start' });
+					}
+				}
+			}
 
 			currentActiveIdsKey = newActiveIdsKey;
 		};
