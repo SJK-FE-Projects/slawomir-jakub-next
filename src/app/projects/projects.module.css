@@ -18,10 +18,17 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
     position: sticky;
     top: var(--gap-6);
     gap: var(--gap-1);
     width: 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+    padding-right: var(--gap-1);
     z-index: 1000;
 }
 
