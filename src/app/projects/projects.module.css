@@ -92,66 +92,6 @@
     opacity: 0.8;
 }
 
-/* Fluid Loading System - używa transform zamiast margin-top dla lepszej kontroli */
-
-/* Section base class - transition dla transform zamiast margin */
-.section {
-    transition: transform 1.5s ease-out;
-    position: relative;
-}
-
-/* Random transform values - zamiast margin-top używamy translateY */
-.temp-1 {
-    transform: translateY(50px);
-}
-
-.temp-2 {
-    transform: translateY(100px);
-}
-
-.temp-3 {
-    transform: translateY(150px);
-}
-
-.temp-4 {
-    transform: translateY(200px);
-}
-
-.temp-5 {
-    transform: translateY(75px);
-}
-
-.temp-6 {
-    transform: translateY(125px);
-}
-
-.temp-7 {
-    transform: translateY(175px);
-}
-
-.temp-8 {
-    transform: translateY(60px);
-}
-
-.temp-9 {
-    transform: translateY(110px);
-}
-
-.temp-10 {
-    transform: translateY(160px);
-}
-
-/* Gdy aktywne, resetuj transform do 0 */
-.section.active {
-    transform: translateY(0) !important;
-}
-
-/* The reference implementation DOES revert when leaving viewport */
-/* This creates the "jumping" effect which is the original behavior */
-
-/* In the reference implementation, .top and .bottom classes are added but have no visual effect */
-/* They're just state tracking classes for potential future use */
-
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .main {
@@ -200,27 +140,8 @@
         align-items: baseline !important;
     }
 
-    /* Disable fluid loading transforms on mobile for better performance */
-    .section {
-        transform: none !important;
-        gap: var(--gap-0-5) !important;
-    }
-
     .sectionButtons {
         top: var(--gap-5);
-    }
-
-    .temp-1,
-    .temp-2,
-    .temp-3,
-    .temp-4,
-    .temp-5,
-    .temp-6,
-    .temp-7,
-    .temp-8,
-    .temp-9,
-    .temp-10 {
-        transform: none !important;
     }
 }
 

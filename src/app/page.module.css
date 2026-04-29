@@ -340,60 +340,6 @@
     color: var(--Neutral-Cod-Black, #161616);
 }
 
-/* Fluid Loading System - exact copy from projects.module.css */
-
-/* Section base class - transition for transform instead of margin */
-.section {
-    transition: transform 1.5s ease-out;
-    position: relative;
-}
-
-/* Random transform values - using translateY instead of margin-top */
-.temp-1 {
-    transform: translateY(50px);
-}
-
-.temp-2 {
-    transform: translateY(100px);
-}
-
-.temp-3 {
-    transform: translateY(150px);
-}
-
-.temp-4 {
-    transform: translateY(200px);
-}
-
-.temp-5 {
-    transform: translateY(75px);
-}
-
-.temp-6 {
-    transform: translateY(125px);
-}
-
-.temp-7 {
-    transform: translateY(175px);
-}
-
-.temp-8 {
-    transform: translateY(60px);
-}
-
-.temp-9 {
-    transform: translateY(110px);
-}
-
-.temp-10 {
-    transform: translateY(160px);
-}
-
-/* When active, reset transform to 0 */
-.section.active {
-    transform: translateY(0) !important;
-}
-
 /* .stickySectionButton {
     position: sticky;
     top: var(--gap-9);
@@ -514,22 +460,4 @@
         column-gap: 0;
     }
 
-    /* Disable fluid loading transforms on mobile for better performance */
-    .section {
-        transform: none !important;
-        gap: var(--gap-0-5) !important;
-    }
-
-    .temp-1,
-    .temp-2,
-    .temp-3,
-    .temp-4,
-    .temp-5,
-    .temp-6,
-    .temp-7,
-    .temp-8,
-    .temp-9,
-    .temp-10 {
-        transform: none !important;
-    }
 }
