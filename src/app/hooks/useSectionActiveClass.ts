@@ -60,20 +60,18 @@ export const useSectionActiveClass = ({
 
 			// If none reach threshold, fallback to the section closest to top offset
 			if (candidates.length === 0) {
-				let nearest: { id: string; distance: number; top: number } | null = null;
-				sectionIds.forEach((id) => {
+				const nearest = sectionIds.reduce<{ id: string; distance: number; top: number } | null>((closest, id) => {
 					const el = document.getElementById(id);
-					if (!el) return;
+					if (!el) return closest;
 					const rect = el.getBoundingClientRect();
 					const distance = Math.abs(rect.top - offsetTop);
-					if (!nearest || distance < nearest.distance) {
-						nearest = { id, distance, top: rect.top };
+					if (closest === null || distance < closest.distance) {
+						return { id, distance, top: rect.top };
 					}
-				});
-				if (nearest) {
-					return [nearest.id];
-				}
-				return [];
+					return closest;
+				}, null);
+
+				return nearest !== null ? [nearest.id] : [];
 			}
 
 			return candidates
