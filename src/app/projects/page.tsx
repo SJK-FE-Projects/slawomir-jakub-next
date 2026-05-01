@@ -31,7 +31,7 @@ export default function ProjectsPage() {
     },
   );
 
-  const sections = ["All", "Business", "Cultural", ...yearLabels];
+  const sections = ["All", "Product", "Cultural", ...yearLabels];
   const yearSet = new Set(yearLabels);
 
   // Updated filtering: distinguishes between category and year

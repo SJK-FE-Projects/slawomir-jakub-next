@@ -21,6 +21,7 @@
     border-radius: 2rem;
     background: rgba(255, 255, 255, 0.96);
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.16);
+    animation: slideUpFade 1s cubic-bezier(0.24, 1.24, 0.64, 1) forwards;
 }
 
 .closeButtonWrapper {
@@ -147,5 +148,17 @@
 
     .closeButton {
         width: fit-content;
+    }
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(75vh);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
