@@ -42,6 +42,15 @@ export default function ProjectDetailsContent({
 
         <div className={styles.metaRow}>
           <SectionButton
+            text="Type"
+            selected={false}
+            className={styles.metaLabel}
+          />
+          <div className={styles.metaValue}>{project.sectionLabel}</div>
+        </div>
+
+        <div className={styles.metaRow}>
+          <SectionButton
             text="Role"
             selected={false}
             className={styles.metaLabel}

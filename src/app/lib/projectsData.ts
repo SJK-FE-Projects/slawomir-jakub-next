@@ -28,7 +28,7 @@ export const projects: Project[] = [
 		year: "2022",
 		description:
 			"Designed the web flow and interface system for Porsche's internal test-drive rental operations, focusing on staff who manage vehicle pickup, return, and location control under time pressure. The main challenge was reducing errors in barcode and key scanning and making fallback actions explicit when scans fail. I mapped the operational workflow end to end, then designed clear table hierarchies, status indicators, and decision-focused modals, such as retry scan versus manual booking number input. The result was a robust, high-clarity back-office UI that supports faster handling, fewer handover mistakes, and better traceability across locations.",
-		sectionLabel: "Business",
+		sectionLabel: "Product",
 		width: 4,
 		pull: 1,
 		images: [
@@ -72,7 +72,7 @@ export const projects: Project[] = [
 		year: "2024",
 		description:
 			"Hermaid is a digital health platform for women navigating menopause, with a parallel value stream for HR and corporate stakeholders. The core UX challenge was combining education, symptom tracking, tele-consultation, and structured care journeys without overwhelming users. I led information architecture and screen design across desktop and mobile, including appointment booking flows, guided questionnaires, insights and journal areas, and post-session feedback loops. The solution balanced medical credibility with empathetic UX, making complex care pathways understandable, actionable, and suitable for long-term engagement.",
-		sectionLabel: "Business",
+		sectionLabel: "Product",
 		width: 4,
 		pull: 1,
 		images: [
@@ -105,7 +105,7 @@ export const projects: Project[] = [
 		year: "2025",
 		description:
 			"UX and screen design for a high-performance brand platform presenting Red Bull Advanced Technologies' engineering work across mobility and innovation domains. The challenge was to unify brand spectacle with practical navigation for different audiences: fans, partners, media, and talent. I developed page structures and responsive layouts that foreground key narratives such as projects, races, careers, and expertise while preserving premium visual impact. The outcome is a clear, scalable web experience that supports both storytelling and conversion-oriented journeys like recruitment and project discovery. Project delivered on behalf of diesdas.digital.",
-		sectionLabel: "Business",
+		sectionLabel: "Product",
 		width: 4,
 		pull: 1,
 		images: [
@@ -156,7 +156,7 @@ export const projects: Project[] = [
 		year: "2023",
 		description:
 			"Co-designed a participatory digital platform for Badisches Landesmuseum that invites younger and underrepresented audiences to create, share, and vote on cultural content. The central problem was turning passive museum consumption into active contribution while keeping participation simple and motivating. Through workshops, user journeys, wireframes, and UI iterations, we shaped a feed-based, campaign-driven product with gamified mechanics, profile progression, and lightweight creation tools including media and audio contribution flows. The final concept positions visitors as co-creators and strengthens continuous engagement beyond a one-time museum visit. Credits: anschlaege.de x Badisches Landesmuseum.",
-		sectionLabel: "Business",
+		sectionLabel: "Product",
 		width: 4,
 		pull: 1,
 		images: [
