@@ -101,7 +101,7 @@ export default function Home() {
       variant: "large",
       sectionLabel: "Intro",
       text: [
-        "UI/Product Designer and Web (Frontend) Developer with 5+ years of expertise in responsive web design, design systems and React, NextJS, JavaScript/TypeScript and HTML5/CSS3.",
+        "UX/UI, Product Designer and Web (Frontend) Developer with 5+ years of expertise in responsive web design, design systems and React, NextJS, JavaScript/TypeScript and HTML5/CSS3.",
         "Skilled in creating user-centric designs and dynamic user interfaces for international clients. Experienced in Agile development, version control with Git, and UI component libraries.",
       ],
     },
