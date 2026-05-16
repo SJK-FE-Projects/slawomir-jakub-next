@@ -15,30 +15,27 @@ const nextConfig = {
 		minimumCacheTTL: 86400, // 24 hours
 	},
 
-	// Add proper caching headers
+	// Keep immutable caching only for versioned static assets.
 	async headers() {
 		return [
 			{
-				// Apply to all routes
-				source: '/:path*',
+				source: '/_next/static/:path*',
 				headers: [
 					{
 						key: 'Cache-Control',
-						// Aggressive caching for static assets
 						value: 'public, max-age=31536000, immutable',
-					}
+					},
 				],
 			},
 			{
-				// Special handling for media files
 				source: '/projectImages/:path*',
 				headers: [
 					{
 						key: 'Cache-Control',
 						value: 'public, max-age=31536000, immutable',
-					}
+					},
 				],
-			}
+			},
 		];
 	},
 
