@@ -48,6 +48,10 @@ const MenuButton = () => {
   };
 
   const toggleMobileMenu = () => {
+    if (showMobileMenu) {
+      setShowContactDropdown(false);
+    }
+
     setShowMobileMenu(!showMobileMenu);
   };
 
@@ -58,6 +62,7 @@ const MenuButton = () => {
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setShowContactDropdown(false);
+
         // Only close mobile menu if we're actually on mobile
         if (window.innerWidth <= 768) {
           setShowMobileMenu(false);
@@ -76,46 +81,65 @@ const MenuButton = () => {
 
   return (
     <div className={styles.menuContainer} ref={dropdownRef}>
+      {" "}
       {/* Mobile Menu Button */}
-      <button className={styles.mobileMenuButton} onClick={toggleMobileMenu}>
-        Menu
-      </button>
-
+      <button
+        type="button"
+        className={`${styles.pill} ${styles.mobileMenuButton}`}
+        onClick={toggleMobileMenu}
+        aria-expanded={showMobileMenu}
+        aria-controls="main-menu-row"
+      >
+        {" "}
+        Menu{" "}
+      </button>{" "}
       {/* Desktop Menu Row */}
       <div
-        className={`${styles.menuRow} ${
-          showMobileMenu ? styles.mobileMenuOpen : ""
-        }`}
+        id="main-menu-row"
+        className={`${styles.menuRow} ${showMobileMenu ? styles.mobileMenuOpen : ""}`}
       >
+        {" "}
         {menuItems.map((item) => (
-          <Link key={item.href} href={item.href} className={styles.menuItem}>
+          <Link
+            key={item.href}
+            href={item.href}
+            className={`${styles.pill} ${styles.menuItem}`}
+          >
+            {" "}
             {item.label}
           </Link>
         ))}
         <div className={styles.dropdownWrapper}>
+          {" "}
           <button
+            type="button"
             onClick={toggleContactDropdown}
-            className={styles.contactButton}
+            className={`${styles.pill} ${styles.contactButton}`}
+            aria-expanded={showContactDropdown}
+            aria-controls="contacts-dropdown"
           >
-            Contacts
-          </button>
-        </div>
+            {" "}
+            Contacts{" "}
+          </button>{" "}
+        </div>{" "}
         {showContactDropdown && (
-          <div className={styles.dropdown}>
+          <div id="contacts-dropdown" className={styles.dropdown}>
+            {" "}
             {contactItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className={styles.dropdownItem}
+                className={`${styles.pill} ${styles.dropdownItem}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
+                {" "}
                 {item.label}
               </a>
             ))}
           </div>
         )}
-      </div>
+      </div>{" "}
     </div>
   );
 };

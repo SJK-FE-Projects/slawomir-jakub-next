@@ -7,8 +7,9 @@
     align-items: center;
     gap: var(--gap-1-5);
     border-radius: 104px;
-    backdrop-filter: blur(5px);
     background: var(--neutral-cod-black-12, rgba(22, 22, 22, 0.12));
+    -webkit-backdrop-filter: blur(6px) saturate(110%);
+    backdrop-filter: blur(6px) saturate(110%);
     color: var(--cod-black);
     font-weight: 400;
     line-height: normal;
@@ -22,25 +23,33 @@
     box-shadow: none;
     box-sizing: content-box;
     white-space: nowrap;
+    transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
 
 }
 
 .sectionButton:focus {
-    outline: 1px solid var(--cod-black);
-    outline-offset: -1px;
+    outline: 2px solid rgba(34,34,34,0.06);
+    outline-offset: 2px;
     box-shadow: none;
 }
 
 .sectionButton:active {
-    outline: 1px solid var(--cod-black);
-    outline-offset: -1px;
+    outline: none;
     transform: none;
     box-shadow: none;
 }
 
 .selected {
-    background: #000;
+    background: var(--cod-black, #000);
     color: #fff;
+    border: none;
+    box-shadow: none;
+}
+
+.sectionButton:hover {
+    transform: none;
+    box-shadow: none;
+    background: var(--neutral-cod-black-16, rgba(22, 22, 22, 0.16));
 }
 
 @media (max-width: 768px) {
