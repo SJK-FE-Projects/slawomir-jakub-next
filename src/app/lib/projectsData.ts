@@ -467,13 +467,13 @@ export const projects: Project[] = [
 
 	{
 		id: "9",
-		title: "Swissimage Industry Support Platform",
-		client: "Swissimage",
+		title: "suissimage Industry Support Platform",
+		client: "suissimage",
 		agency: "formdusche",
 		roles: "Screen Design / UX Conept",
 		year: "2021",
 		description:
-			"UI and UX concept with screen design for a platform in the Swiss cinematographic sector, developed with formdusche. The core goal was to support industry professionals with clear access to relevant information, practical guidance, and support resources. I designed user flows and content structures that make key services easier to find, reduce navigation friction, and improve clarity in content-dense interfaces. The outcome was a focused platform direction centered on professional needs, everyday usability, and fast access to help.",
+			"UI and UX concept with screen design for a platform in the Swiss cinematographic sector, developed for a pitch project for formdusche design agency. The core goal was to support industry professionals with clear access to relevant information, practical guidance, and support resources. I designed user flows and content structures that make key services easier to find, reduce navigation friction, and improve clarity in content-dense interfaces. The outcome was a focused platform direction centered on professional needs, everyday usability, and fast access to help.",
 		sectionLabel: "Cultural",
 		width: 4,
 		pull: 1,
