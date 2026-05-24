@@ -48,63 +48,6 @@
     }
 }
 
-/* Layout Components */
-.menuButton {
-    position: fixed;
-    top: var(--gap-2);
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-}
-
-/* Universal Button Styles */
-.button,
-.menuButton,
-.menuItem,
-.contactButton,
-.dropdownItem,
-.mobileMenuButton {
-    display: inline-flex;
-    padding: var(--gap-1) var(--gap-2);
-    align-items: flex-start;
-    gap: 10px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.80);
-    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(5px);
-    color: var(--cod-black);
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 120%;
-    border: none;
-    outline: none;
-    box-sizing: content-box;
-    cursor: pointer;
-    z-index: 2000;
-    text-decoration: none;
-    transition: background-color 0.2s;
-}
-
-.button:hover,
-.menuButton:hover,
-.menuItem:hover,
-.contactButton:hover,
-.dropdownItem:hover,
-.mobileMenuButton:hover {
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.button:focus,
-.menuButton:focus,
-.menuItem:focus,
-.contactButton:focus,
-.dropdownItem:focus,
-.mobileMenuButton:focus {
-    outline: 1px solid var(--cod-black);
-    outline-offset: -2px;
-}
-
-
 /* Small Caps style */
 .smallCaps {
     font-variant-caps: small-caps;
@@ -243,29 +186,6 @@ a {
         letter-spacing: -0.1px;
     }
 
-    /* Universal Button Styles - Mobile Override */
-    .button,
-    .menuButton,
-    .menuItem,
-    .contactButton,
-    .dropdownItem,
-    .mobileMenuButton {
-        font-size: 18px;
-        padding: var(--gap-0-75) var(--gap-1-5);
-        width: auto;
-        justify-content: flex-start;
-    }
-
-    /* Hide desktop menu button positioning on mobile */
-    .menuButton {
-        position: fixed;
-        top: var(--gap-1);
-        left: var(--gap-1);
-        right: var(--gap-1);
-        transform: none;
-        z-index: 100;
-    }
-
     /* Projects Layout - Single Column */
     .projectsGrid {
         display: flex !important;
@@ -278,18 +198,6 @@ a {
         max-width: none !important;
     }
 
-    /* Menu becomes dropdown on mobile */
-    .menuRow {
-        width: 100% !important;
-        ;
-    }
-
-    .dropdown {
-        position: static !important;
-        flex-direction: column !important;
-        width: 100vw !important;
-        gap: var(--gap-0-5) !important;
-    }
 }
 
 /* Section button active state - added by Intersection Observer */

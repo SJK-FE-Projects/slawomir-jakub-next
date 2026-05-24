@@ -85,7 +85,7 @@ const MenuButton = () => {
       {/* Mobile Menu Button */}
       <button
         type="button"
-        className={`${styles.pill} ${styles.mobileMenuButton}`}
+        className={`${styles.glassPill} ${styles.mobileMenuButton}`}
         onClick={toggleMobileMenu}
         aria-expanded={showMobileMenu}
         aria-controls="main-menu-row"
@@ -103,7 +103,7 @@ const MenuButton = () => {
           <Link
             key={item.href}
             href={item.href}
-            className={`${styles.pill} ${styles.menuItem}`}
+            className={`${styles.glassPill} ${styles.menuItem}`}
           >
             {" "}
             {item.label}
@@ -114,7 +114,7 @@ const MenuButton = () => {
           <button
             type="button"
             onClick={toggleContactDropdown}
-            className={`${styles.pill} ${styles.contactButton}`}
+            className={`${styles.glassPill} ${styles.contactButton}`}
             aria-expanded={showContactDropdown}
             aria-controls="contacts-dropdown"
           >
@@ -129,7 +129,7 @@ const MenuButton = () => {
               <a
                 key={item.href}
                 href={item.href}
-                className={`${styles.pill} ${styles.dropdownItem}`}
+                className={`${styles.glassPill} ${styles.dropdownItem}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >

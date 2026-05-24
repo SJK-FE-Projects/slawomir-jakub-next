@@ -22,11 +22,12 @@
     width: fit-content;
 }
 
-.pill {
+.glassPill {
     display: inline-flex;
     position: relative;
     isolation: isolate;
     overflow: hidden;
+    align-items: flex-start;
     border-radius: 32px;
     background-color: rgba(255, 255, 255, 0.34);
     background-color: color(display-p3 1 1 1 / 0.34);
@@ -47,17 +48,18 @@
     text-decoration: none;
     -webkit-appearance: none;
     appearance: none;
+    box-sizing: content-box;
+    cursor: pointer;
     transition:
         transform 180ms ease,
         box-shadow 180ms ease,
         background-color 180ms ease,
         border-color 180ms ease,
         filter 180ms ease;
-    box-sizing: border-box;
     will-change: transform, box-shadow, filter;
 }
 
-.pill:hover {
+.glassPill:hover {
     transform: translateY(-1px);
     background-color: rgba(255, 255, 255, 0.5);
     background-color: color(display-p3 1 1 1 / 0.5);
@@ -74,7 +76,7 @@
     backdrop-filter: blur(16px) saturate(175%);
 }
 
-.pill:active {
+.glassPill:active {
     transform: translateY(0) scale(0.985);
     filter: saturate(1.02);
     box-shadow:
@@ -83,12 +85,12 @@
         inset 0 -1px 0 rgba(255, 255, 255, 0.14);
 }
 
-.pill:focus-visible {
+.glassPill:focus-visible {
     outline: 2px solid rgba(22, 22, 22, 0.16);
     outline-offset: 2px;
 }
 
-.pill::before {
+.glassPill::before {
     content: "";
     position: absolute;
     inset: 1px;
@@ -99,8 +101,7 @@
     z-index: -1;
 }
 
-.contactButton[aria-expanded="true"],
-.mobileMenuButton[aria-expanded="true"] {
+.glassPill[aria-expanded="true"] {
     background-color: rgba(255, 255, 255, 0.56);
     background-color: color(display-p3 1 1 1 / 0.56);
     background-image: linear-gradient(180deg,
@@ -127,7 +128,6 @@
     gap: 10px;
     padding: var(--gap-1) var(--gap-2);
     font-size: 22px;
-    border: none;
     cursor: pointer;
     z-index: 2000;
     width: fit-content;
@@ -163,7 +163,6 @@
     display: none;
     padding: var(--gap-1) var(--gap-2);
     font-size: 18px;
-    border: none;
     cursor: pointer;
 }
 
@@ -237,7 +236,4 @@
         flex: 0 0 auto;
     }
 
-    .pill:hover {
-        transform: none;
-    }
 }
