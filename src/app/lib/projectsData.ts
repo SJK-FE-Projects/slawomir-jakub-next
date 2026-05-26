@@ -195,6 +195,12 @@ export const projects: Project[] = [
 		pull: 1,
 		images: [
 			{
+				src: "/projectImages/P11/blm8.png",
+				alt: "P11 Image 3",
+				width: 4,
+				pull: 2,
+			},
+			{
 				src: "/projectImages/P11/blm9.jpg",
 				alt: "P11 Image 3",
 				width: 4,
