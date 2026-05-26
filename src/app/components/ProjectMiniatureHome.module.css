@@ -56,7 +56,7 @@
     position: relative;
     width: 100%;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     box-sizing: border-box;
     padding-inline: var(--gap-2);
     padding-block: var(--gap-2);

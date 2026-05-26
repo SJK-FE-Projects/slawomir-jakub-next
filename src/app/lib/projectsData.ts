@@ -73,7 +73,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: "2",
-		title: "Hermaid Care Journey Platform",
+		title: "Hermaid Health Care Journey Platform",
 		client: "Hermaid",
 		roles: "UI Design & Development",
 		year: "2024",
@@ -95,8 +95,34 @@ export const projects: Project[] = [
 				width: 4,
 				pull: 2,
 			},
+
+
 			{
-				src: "/projectImages/P12/hm3a.jpg",
+				src: "/projectImages/P12/hm5a.jpg",
+				alt: "P12 Image 3",
+				width: 4,
+				pull: 3,
+			},
+			{
+				src: "/projectImages/P12/hm6a.jpg",
+				alt: "P12 Image 3",
+				width: 4,
+				pull: 3,
+			},
+			{
+				src: "/projectImages/P12/hm7.jpg",
+				alt: "P12 Image 3",
+				width: 4,
+				pull: 3,
+			},
+			{
+				src: "/projectImages/P12/hm8.jpg",
+				alt: "P12 Image 3",
+				width: 4,
+				pull: 3,
+			},
+			{
+				src: "/projectImages/P12/hm9.jpg",
 				alt: "P12 Image 3",
 				width: 4,
 				pull: 3,
