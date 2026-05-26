@@ -90,6 +90,28 @@
     position: sticky;
 }
 
+.descriptionBlock {
+    gap: var(--gap-1);
+    display: flex;
+    flex-direction: column;
+}
+
+.projectSubheading {
+    margin: 0;
+    margin-top: var(--gap-1);
+    margin-bottom: calc(var(--gap-0-5));
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+    font-weight: 600;
+}
+
+.projectQuote {
+    margin: var(--gap-1) 0;
+    padding-left: var(--gap-1);
+    border-left: 3px solid rgba(0, 0, 0, 0.06);
+    color: rgba(0, 0, 0, 0.78);
+    font-style: italic;
+}
+
 .projectMeta {
     display: flex;
     flex-direction: row !important;

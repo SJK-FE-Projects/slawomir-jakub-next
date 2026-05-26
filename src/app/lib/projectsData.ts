@@ -6,6 +6,13 @@ export type Project = {
 	roles: string;
 	year: string;
 	description: string;
+	// Optional structured content: ordered blocks with optional titles and paragraphs
+	descriptionBlocks?: {
+		title?: string;
+		level?: 3 | 4;
+		paragraphs: string[];
+		quote?: boolean;
+	}[];
 	images: {
 		src: string;
 		alt: string;
@@ -78,7 +85,51 @@ export const projects: Project[] = [
 		roles: "UI Design & Development",
 		year: "2024",
 		description:
-			"Hermaid is a digital health platform for women navigating menopause, with a parallel value stream for HR and corporate stakeholders. The core UX challenge was combining education, symptom tracking, tele-consultation, and structured care journeys without overwhelming users. I led information architecture and screen design across desktop and mobile, including appointment booking flows, guided questionnaires, insights and journal areas, and post-session feedback loops. The solution balanced medical credibility with empathetic UX, making complex care pathways understandable, actionable, and suitable for long-term engagement.",
+			"Hermaid is a digital health platform focused on menopause and hormone-related life phases — a space where trust is everything and stigma still shapes how women seek help.",
+		// Structured description blocks
+		descriptionBlocks: [
+			{
+				paragraphs: [
+					"Hermaid is a digital health platform focused on menopause and hormone-related life phases — a space where trust is everything and stigma still shapes how women seek help.",
+				],
+			},
+			{
+				title: "The Goal",
+				paragraphs: [
+					"Translate a science-based brand into a modern web experience that feels credible to partners and approachable to users — without sounding clinical or cold.",
+				],
+			},
+			{
+				title: "",
+				quote: true,
+				paragraphs: [
+					"If nobody solved it, Hermaid risked being perceived as just another wellness app — not the expert-backed health platform it actually is.",
+				],
+			},
+			{
+				title: "Bussiness Problem",
+				paragraphs: [
+					"Explain a complex, hybrid offering — app, expert consultations, and education — in a way that feels credible to corporate partners and approachable to individual users, without oversimplifying or losing the science.",
+				],
+			},
+			{
+				title: "User Problem",
+				paragraphs: [
+					"Women arriving on the site needed to quickly answer: \"Is this for me?\" — understanding what Hermaid does and how to start, without feeling overwhelmed, medicalized, or talked down to.",
+				],
+			},
+
+			{
+				title: "Deliverables",
+				paragraphs: [
+					"→ UX and visual design for all key screens and flows",
+					"→ Design system translated from Figma to production code",
+					"→ Responsive, accessible frontend implementation",
+					"→ Brand consistency across every touchpoint",
+				],
+			},
+
+		],
 		sectionLabel: "Product",
 		width: 4,
 		pull: 1,

@@ -13,6 +13,15 @@ export type ProjectDetailsContentProject = {
   roles: string;
   sectionLabel: string;
   description: string;
+  // New structured blocks: each block can have an optional title, level, paragraphs and quote flag
+  descriptionBlocks?: {
+    title?: string;
+    level?: 3 | 4;
+    paragraphs: string[];
+    quote?: boolean;
+  }[];
+  subheading?: string;
+  descriptions?: string[];
   width: number;
   pull: number;
 };
@@ -79,12 +88,76 @@ export default function ProjectDetailsContent({
         ) : null}
       </div>
 
-      <p
-        className={`${styles.projectDescription} textLarge`}
-        dangerouslySetInnerHTML={{
-          __html: project.description,
-        }}
-      />
+      {/* Prefer descriptionBlocks, then descriptions[], then HTML description */}
+      {project.descriptionBlocks && project.descriptionBlocks.length > 0 ? (
+        <>
+          {/* Intro: first block first paragraph */}
+          <p className={`${styles.projectDescription} textLarge`}>
+            {project.descriptionBlocks[0].paragraphs[0]}
+          </p>
+
+          {/* Remaining paragraphs of the first block */}
+          {project.descriptionBlocks[0].paragraphs
+            .slice(1)
+            .map((p: string, i: number) => (
+              <p
+                key={`intro-${i}`}
+                className={`${styles.projectDescription} textLarge`}
+              >
+                {p}
+              </p>
+            ))}
+
+          {/* Subsequent blocks */}
+          {project.descriptionBlocks.slice(1).map((block, idx) => (
+            <section key={idx} className={styles.descriptionBlock}>
+              {block.title ? (
+                <SectionButton text={block.title} selected={false} />
+              ) : null}
+
+              {block.quote ? (
+                <blockquote className={styles.projectQuote}>
+                  {block.paragraphs.map((p: string, i: number) => (
+                    <p key={i} className={styles.projectDescription}>
+                      {p}
+                    </p>
+                  ))}
+                </blockquote>
+              ) : (
+                block.paragraphs.map((p: string, i: number) => (
+                  <p
+                    key={i}
+                    className={`${styles.projectDescription} textLarge`}
+                  >
+                    {p}
+                  </p>
+                ))
+              )}
+            </section>
+          ))}
+        </>
+      ) : project.descriptions && project.descriptions.length > 0 ? (
+        <>
+          <p className={`${styles.projectDescription} textLarge`}>
+            {project.descriptions[0]}
+          </p>
+          {project.subheading && project.descriptions.length > 1 ? (
+            <h3 className={styles.projectSubheading}>{project.subheading}</h3>
+          ) : null}
+          {project.descriptions.slice(1).map((p, i) => (
+            <p key={i} className={`${styles.projectDescription} textLarge`}>
+              {p}
+            </p>
+          ))}
+        </>
+      ) : (
+        <p
+          className={`${styles.projectDescription} textLarge`}
+          dangerouslySetInnerHTML={{
+            __html: project.description,
+          }}
+        />
+      )}
     </div>
   );
 }
