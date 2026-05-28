@@ -99,13 +99,13 @@ export const projects: Project[] = [
 					"Translate a science-based brand into a modern web experience that feels credible to partners and approachable to users — without sounding clinical or cold.",
 				],
 			},
-			{
-				title: "",
-				quote: true,
-				paragraphs: [
-					"If nobody solved it, Hermaid risked being perceived as just another wellness app — not the expert-backed health platform it actually is.",
-				],
-			},
+			// {
+			// 	title: "",
+			// 	quote: true,
+			// 	paragraphs: [
+			// 		"If nobody solved it, Hermaid risked being perceived as just another wellness app — not the expert-backed health platform it actually is.",
+			// 	],
+			// },
 			{
 				title: "Bussiness Problem",
 				paragraphs: [
