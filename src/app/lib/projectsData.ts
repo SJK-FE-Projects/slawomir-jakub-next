@@ -90,13 +90,14 @@ export const projects: Project[] = [
 		descriptionBlocks: [
 			{
 				paragraphs: [
-					"Hermaid is a digital health platform focused on menopause and hormone-related life phases — a space where trust is everything and stigma still shapes how women seek help.",
+					"Hermaid is a digital health platform focused on menopause and hormone-related life phases.",
 				],
 			},
 			{
 				title: "The Goal",
 				paragraphs: [
-					"Translate a science-based brand into a modern web experience that feels credible to partners and approachable to users — without sounding clinical or cold.",
+					"Translate a science-based brand into a modern web experience that feels credible to partners and approachable to users.",
+					"Serve two target groups via two web presences: an employer-facing image page introducing the app, and a patient-facing teleclinic.",
 				],
 			},
 			// {
@@ -107,15 +108,15 @@ export const projects: Project[] = [
 			// 	],
 			// },
 			{
-				title: "Bussiness Problem",
+				title: "Business Problem",
 				paragraphs: [
-					"Explain a complex, hybrid offering — app, expert consultations, and education — in a way that feels credible to corporate partners and approachable to individual users, without oversimplifying or losing the science.",
+					"Communicate the hybrid offering (app + expert care + education) as an expert-backed solution for corporate partners.",
 				],
 			},
 			{
 				title: "User Problem",
 				paragraphs: [
-					"Women arriving on the site needed to quickly answer: \"Is this for me?\" — understanding what Hermaid does and how to start, without feeling overwhelmed, medicalized, or talked down to.",
+					"Help visitors immediately answer 'Is this for me?' and show a simple starting path without overwhelming or medicalizing them.",
 				],
 			},
 
