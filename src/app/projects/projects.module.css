@@ -9,8 +9,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--gap-4);
-    padding-top: var(--gap-6);
+    gap: var(--gap-6);
+    padding-top: var(--gap-9);
     width: 100%;
 }
 
@@ -42,7 +42,8 @@
     column-count: 2;
     column-gap: var(--gap-1-5);
     width: 100%;
-    /* margin-block: 6rem; */}
+    /* margin-block: 6rem; */
+}
 
 .projectPreviewItem {
     display: inline-block;
