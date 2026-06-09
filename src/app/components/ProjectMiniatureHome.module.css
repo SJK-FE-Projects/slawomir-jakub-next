@@ -120,6 +120,33 @@
     position: relative;
 }
 
+.mobileScrollViewport {
+    position: relative;
+    width: 100%;
+    overflow: clip;
+    box-sizing: border-box;
+    padding-inline: var(--gap-2);
+    padding-block: var(--gap-2);
+}
+
+.mobileScrollTrack {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--gap-1);
+    width: max-content;
+    position: relative;
+    will-change: transform;
+}
+
+.mobileScrollSlot {
+    position: relative;
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    overflow: visible;
+}
+
 .mobileSlide {
     flex: 0 0 auto;
 }
@@ -160,17 +187,18 @@
 
 @media (max-width: 767px) {
     .carouselArea {
-        min-height: auto;
+        min-height: 100svh;
     }
 
     .desktopStickyFragment {
-        position: relative;
-        top: auto;
+        position: sticky;
+        top: calc(50svh - 11rem);
         transform: none;
+        gap: var(--gap-2);
     }
 
     .desktopScrollSpacer {
-        display: none;
+        display: block;
     }
 
     .image {

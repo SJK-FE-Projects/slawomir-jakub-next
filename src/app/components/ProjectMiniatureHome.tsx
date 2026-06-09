@@ -6,9 +6,7 @@ import type { RefObject } from "react";
 
 import styles from "./ProjectMiniatureHome.module.css";
 import useIsClient from "../hooks/useIsClient";
-import { useMediaQuery } from "../hooks/useMediaQuery";
-import ProjectMiniatureHomeMobile from "./ProjectMiniatureHomeMobile";
-import ProjectMiniatureHomeDesktop from "./ProjectMiniatureHomeDesktopScroll";
+import ProjectMiniatureHomeScroll from "./ProjectMiniatureHomeScroll";
 import SectionButton from "./SectionButton";
 
 type ProjectMiniatureHomeProps = {
@@ -23,12 +21,11 @@ export default function ProjectMiniatureHome({
   parentConstraintsRef = null,
 }: ProjectMiniatureHomeProps) {
   const isClient = useIsClient();
-  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const localConstraintsRef = useRef<HTMLDivElement>(null);
   const constraintsRef = parentConstraintsRef ?? localConstraintsRef;
 
-  const [desktopTravelDistance, setDesktopTravelDistance] = useState(0);
+  const [scrollTravelDistance, setScrollTravelDistance] = useState(0);
 
   return (
     <div className={styles.root}>
@@ -39,15 +36,11 @@ export default function ProjectMiniatureHome({
           <div className={styles.desktopStickyFragment}>
             <SectionButton text="Projects Overview" selected={false} />
 
-            {isDesktop ? (
-              <ProjectMiniatureHomeDesktop
-                cards={cards ?? []} // ✅ prevent undefined crash
-                constraintsRef={constraintsRef}
-                onTravelDistanceChange={setDesktopTravelDistance}
-              />
-            ) : (
-              <ProjectMiniatureHomeMobile cards={cards ?? []} />
-            )}
+            <ProjectMiniatureHomeScroll
+              cards={cards ?? []}
+              constraintsRef={constraintsRef}
+              onTravelDistanceChange={setScrollTravelDistance}
+            />
 
             <Link href={href} className={styles.link}>
               <SectionButton text="See more" selected={true} />
@@ -55,11 +48,11 @@ export default function ProjectMiniatureHome({
           </div>
         )}
 
-        {isDesktop && desktopTravelDistance > 0 ? (
+        {scrollTravelDistance > 0 ? (
           <div
             className={styles.desktopScrollSpacer}
             aria-hidden="true"
-            style={{ height: desktopTravelDistance }}
+            style={{ height: scrollTravelDistance }}
           />
         ) : null}
       </div>
