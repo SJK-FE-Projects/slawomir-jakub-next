@@ -422,8 +422,6 @@ export default function Home() {
           className={styles.projectsSection}
           id={sectionIdsByLabel["Projects Overview"]}
         >
-          {" "}
-          <SectionButton text="Projects Overview" selected={false} />{" "}
           <ProjectMiniatureHome cards={projectCards} href="/projects" />{" "}
         </section>{" "}
         <section className={styles.resumeSection}>
