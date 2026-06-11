@@ -15,6 +15,44 @@
     min-height: 32rem;
 }
 
+.desktopRow {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline: var(--gap-6);
+    padding-block: var(--gap-6);
+    gap: var(--gap-1);
+    isolation: isolate;
+    flex-wrap: nowrap;
+}
+
+.desktopDragSlot {
+    position: relative;
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    overflow: visible;
+    z-index: 0;
+    cursor: grab;
+    touch-action: pan-x;
+}
+
+.desktopCard {
+    position: relative;
+    width: auto;
+    height: 400px;
+    transform: translateY(var(--offset-y)) rotate(var(--rotation));
+    transform-origin: center bottom;
+    user-select: none;
+}
+
+.desktopDragSlot:active {
+    cursor: grabbing;
+}
+
 .desktopStickyFragment {
     position: sticky;
     top: calc(50vh - 16rem);
@@ -62,23 +100,31 @@
     flex-wrap: nowrap;
 }
 
-.desktopCardSlot {
+.mobileScrollViewport {
+    position: relative;
+    width: 100%;
+    overflow: clip;
+    box-sizing: border-box;
+    padding-inline: var(--gap-2);
+    padding-block: var(--gap-2);
+}
+
+.mobileScrollTrack {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--gap-1);
+    width: max-content;
+    position: relative;
+    will-change: transform;
+}
+
+.mobileScrollSlot {
     position: relative;
     flex: 0 0 auto;
     display: flex;
     justify-content: center;
     width: fit-content;
     overflow: visible;
-    z-index: 0;
-}
-
-.desktopCard {
-    position: relative;
-    width: auto;
-    height: 400px;
-    transform: translateY(var(--offset-y)) rotate(var(--rotation));
-    transform-origin: center bottom;
-    user-select: none;
 }
 
 .mobileViewport {
@@ -120,33 +166,6 @@
     position: relative;
 }
 
-.mobileScrollViewport {
-    position: relative;
-    width: 100%;
-    overflow: clip;
-    box-sizing: border-box;
-    padding-inline: var(--gap-2);
-    padding-block: var(--gap-2);
-}
-
-.mobileScrollTrack {
-    display: flex;
-    align-items: flex-end;
-    gap: var(--gap-1);
-    width: max-content;
-    position: relative;
-    will-change: transform;
-}
-
-.mobileScrollSlot {
-    position: relative;
-    flex: 0 0 auto;
-    display: flex;
-    justify-content: center;
-    width: fit-content;
-    overflow: visible;
-}
-
 .mobileSlide {
     flex: 0 0 auto;
 }
@@ -172,6 +191,7 @@
     border-radius: 0.75rem;
     height: 100% !important;
     user-select: none;
+    -webkit-user-drag: none;
     pointer-events: none;
 }
 
@@ -187,28 +207,15 @@
 
 @media (max-width: 767px) {
     .carouselArea {
-        min-height: 100svh;
-    }
-
-    .desktopStickyFragment {
-        position: sticky;
-        top: calc(50svh - 11rem);
-        transform: none;
-        gap: var(--gap-2);
-    }
-
-    .desktopScrollSpacer {
-        display: block;
+        min-height: auto;
     }
 
     .image {
         width: 100% !important;
     }
 
-    .desktopStage,
-    .desktopStickyViewport,
-    .desktopTrack,
-    .desktopCardSlot,
+    .desktopRow,
+    .desktopDragSlot,
     .desktopCard {
         display: none;
     }
