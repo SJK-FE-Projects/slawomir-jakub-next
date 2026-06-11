@@ -207,6 +207,7 @@ export default function ProjectMiniatureHomeMobileScroll({
     target: constraintsRef,
     offset: ["start start", "end end"],
   });
+  const invertedScrollY = useTransform(scrollYProgress, (v) => 1 - v);
 
   return (
     <LazyMotion features={domMax} strict>
@@ -225,7 +226,7 @@ export default function ProjectMiniatureHomeMobileScroll({
               src={src}
               index={index}
               total={cards.length}
-              scrollYProgress={scrollYProgress}
+              scrollYProgress={invertedScrollY}
               cardWidth={cardWidth}
               viewportWidth={viewportWidth}
               naturalX={naturalPositions[index]}

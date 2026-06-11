@@ -30,18 +30,7 @@ const OFFSET_VALUES = [
   "-2.2rem",
   "1.9rem",
 ];
-const ROTATION_VALUES = [
-  -5.5,
-  3.2,
-  -7.1,
-  4.8,
-  -2.9,
-  6.3,
-  -4.4,
-  2.1,
-  -6.8,
-  5.5,
-];
+const ROTATION_VALUES = [-5.5, 3.2, -7.1, 4.8, -2.9, 6.3, -4.4, 2.1, -6.8, 5.5];
 const BASE_Z_INDEX = [1, 4, 3, 2, 2, 1];
 const BASE_CARD_WIDTH = 640;
 const BASE_CARD_GAP = 16;
@@ -92,9 +81,7 @@ function DesktopCardSlot({
     index === 0
       ? [0, 1]
       : [Math.max(0, segStart), Math.min(driftStart, segEnd), driftStart, 1],
-    index === 0
-      ? [0, 0]
-      : [naturalX, stackedX, stackedX, driftedX],
+    index === 0 ? [0, 0] : [naturalX, stackedX, stackedX, driftedX],
   );
 
   const slotX = useSpring(rawSlotX, {
@@ -177,7 +164,9 @@ export default function ProjectMiniatureHomeDesktopScroll({
           currentCardWidth === nextCardWidth ? currentCardWidth : nextCardWidth,
         );
         setCardHeight((currentCardHeight) =>
-          currentCardHeight === nextCardHeight ? currentCardHeight : nextCardHeight,
+          currentCardHeight === nextCardHeight
+            ? currentCardHeight
+            : nextCardHeight,
         );
       }
     };
@@ -197,7 +186,8 @@ export default function ProjectMiniatureHomeDesktopScroll({
 
     const resizeObserver = new ResizeObserver(scheduleLayoutMetricsUpdate);
 
-    if (firstCardMeasureRef.current) resizeObserver.observe(firstCardMeasureRef.current);
+    if (firstCardMeasureRef.current)
+      resizeObserver.observe(firstCardMeasureRef.current);
     if (constraintsRef.current) resizeObserver.observe(constraintsRef.current);
     window.addEventListener("resize", scheduleLayoutMetricsUpdate);
 
@@ -220,6 +210,7 @@ export default function ProjectMiniatureHomeDesktopScroll({
     target: constraintsRef,
     offset: ["start start", "end end"],
   });
+  const invertedScrollY = useTransform(scrollYProgress, (v) => 1 - v);
 
   return (
     <LazyMotion features={domMax} strict>
@@ -240,7 +231,7 @@ export default function ProjectMiniatureHomeDesktopScroll({
             src={src}
             index={index}
             total={cards.length}
-            scrollYProgress={scrollYProgress}
+            scrollYProgress={invertedScrollY}
             cardWidth={cardWidth}
             naturalX={naturalPositions[index]}
             reducedMotion={Boolean(reducedMotion)}
@@ -248,8 +239,8 @@ export default function ProjectMiniatureHomeDesktopScroll({
               index === 0
                 ? firstCardMeasureRef
                 : index === cards.length - 1
-                ? lastCardMeasureRef
-                : null
+                  ? lastCardMeasureRef
+                  : null
             }
           />
         ))}
