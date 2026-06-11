@@ -9,8 +9,8 @@ import {
   m,
   type MotionValue,
   useScroll,
-  useSpring,
   useTransform,
+  useSpring,
 } from "framer-motion";
 
 import styles from "./ProjectMiniatureHome.module.css";
@@ -29,6 +29,7 @@ const OFFSET_VALUES = [
   "-2.2rem",
   "1.9rem",
 ];
+// 2× more rotation variety
 const ROTATION_VALUES = [-5.5, 3.2, -7.1, 4.8, -2.9, 6.3, -4.4, 2.1, -6.8, 5.5];
 const BASE_Z_INDEX = [1, 4, 3, 2, 2, 1];
 const BASE_CARD_WIDTH = 640;
@@ -76,19 +77,14 @@ function DesktopCardSlot({
   const rawSlotX = useTransform(
     scrollYProgress,
     index === 0
-      ? [0, 0.25, 1]
+      ? [0, 1]
       : [Math.max(0, segStart), Math.min(driftStart, segEnd), driftStart, 1],
-    index === 0
-      ? [naturalX, stackedX, driftedX]
-      : [naturalX, stackedX, stackedX, driftedX],
+    index === 0 ? [0, 0] : [naturalX, stackedX, stackedX, driftedX],
   );
 
-  const slotX = useSpring(rawSlotX, {
-    stiffness: 100,
-    damping: 40,
-    mass: 0.5,
-  });
+  const slotX = useSpring(rawSlotX, { stiffness: 100, damping: 40, mass: 0.5 });
 
+  // 4. More rotation variety: wider base values + stronger seed influence
   const baseRotation = ROTATION_VALUES[index % ROTATION_VALUES.length];
   const rotation = `${(baseRotation + (rotationSeed * 2 - 1) * 3.5).toFixed(2)}deg`;
 
@@ -140,9 +136,11 @@ export default function ProjectMiniatureHomeDesktopScroll({
   const [cardWidth, setCardWidth] = useState(BASE_CARD_WIDTH);
   const [cardHeight, setCardHeight] = useState(0);
 
+  // 1. Padding so the first card's left border isn't cut — matches the 16px overflow
   const LEFT_PADDING = 16;
+
   const naturalPositions = cards.map(
-    (_, i) => LEFT_PADDING + i * (cardWidth + BASE_CARD_GAP * 0.8),
+    (_, i) => LEFT_PADDING + i * (cardWidth + BASE_CARD_GAP),
   );
   const totalSpread =
     cards.length > 0
@@ -152,7 +150,6 @@ export default function ProjectMiniatureHomeDesktopScroll({
   useEffect(() => {
     const updateLayoutMetrics = () => {
       const cardNode = firstCardMeasureRef.current;
-
       if (cardNode) {
         const rect = cardNode.getBoundingClientRect();
         const nextCardWidth = rect.width || BASE_CARD_WIDTH;
@@ -183,18 +180,15 @@ export default function ProjectMiniatureHomeDesktopScroll({
     scheduleLayoutMetricsUpdate();
 
     const resizeObserver = new ResizeObserver(scheduleLayoutMetricsUpdate);
-
     if (firstCardMeasureRef.current)
       resizeObserver.observe(firstCardMeasureRef.current);
     if (constraintsRef.current) resizeObserver.observe(constraintsRef.current);
     window.addEventListener("resize", scheduleLayoutMetricsUpdate);
-
     return () => {
       if (layoutFrameRef.current !== null) {
         cancelAnimationFrame(layoutFrameRef.current);
         layoutFrameRef.current = null;
       }
-
       resizeObserver.disconnect();
       window.removeEventListener("resize", scheduleLayoutMetricsUpdate);
     };
@@ -204,11 +198,12 @@ export default function ProjectMiniatureHomeDesktopScroll({
     onTravelDistanceChange?.(totalSpread);
   }, [totalSpread, onTravelDistanceChange]);
 
+  // 2. Scroll starts only when the section enters view and ends only when
+  //    the last card is fully in the viewport — use "end end" for the exit offset.
   const { scrollYProgress } = useScroll({
     target: constraintsRef,
     offset: ["start start", "end end"],
   });
-  const invertedScrollY = useTransform(scrollYProgress, (v) => 1 - v);
 
   return (
     <LazyMotion features={domMax} strict>
@@ -218,6 +213,9 @@ export default function ProjectMiniatureHomeDesktopScroll({
         style={{
           position: "relative",
           width: totalSpread,
+          // Explicit height so .desktopStickyFragment's gap/margin to the
+          // "See more" button is preserved — without this the flex
+          // gap on .desktopStickyFragment actually has something to push against.
           height: cardHeight || undefined,
           transform: "none",
           overflow: "visible",
@@ -229,7 +227,7 @@ export default function ProjectMiniatureHomeDesktopScroll({
             src={src}
             index={index}
             total={cards.length}
-            scrollYProgress={invertedScrollY}
+            scrollYProgress={scrollYProgress}
             cardWidth={cardWidth}
             naturalX={naturalPositions[index]}
             measureRef={
