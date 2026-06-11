@@ -79,9 +79,11 @@ function DesktopCardSlot({
   const rawSlotX = useTransform(
     scrollYProgress,
     index === 0
-      ? [0, 1]
+      ? [0, 0.25, 1]
       : [Math.max(0, segStart), Math.min(driftStart, segEnd), driftStart, 1],
-    index === 0 ? [0, 0] : [naturalX, stackedX, stackedX, driftedX],
+    index === 0
+      ? [naturalX, stackedX, driftedX]
+      : [naturalX, stackedX, stackedX, driftedX],
   );
 
   const slotX = useSpring(rawSlotX, {
@@ -144,7 +146,7 @@ export default function ProjectMiniatureHomeDesktopScroll({
 
   const LEFT_PADDING = 16;
   const naturalPositions = cards.map(
-    (_, i) => LEFT_PADDING + i * (cardWidth + BASE_CARD_GAP),
+    (_, i) => LEFT_PADDING + i * (cardWidth + BASE_CARD_GAP * 0.8),
   );
   const totalSpread =
     cards.length > 0
