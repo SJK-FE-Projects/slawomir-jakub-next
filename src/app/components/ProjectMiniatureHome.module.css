@@ -202,7 +202,8 @@
 
 .link {
     width: fit-content;
-    align-self: center;
+    display: block;
+    margin-inline: auto;
 }
 
 @media (max-width: 767px) {

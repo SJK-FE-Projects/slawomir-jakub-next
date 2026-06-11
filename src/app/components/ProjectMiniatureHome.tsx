@@ -1,11 +1,14 @@
 "use client";
 
 import Link from "next/link";
+
 import { useRef, useState } from "react";
+
 import type { RefObject } from "react";
 
 import styles from "./ProjectMiniatureHome.module.css";
 import useIsClient from "../hooks/useIsClient";
+
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import ProjectMiniatureHomeDesktopScroll from "./ProjectMiniatureHomeDesktopScroll";
 import ProjectMiniatureHomeMobileScroll from "./ProjectMiniatureHomeMobileScroll";
@@ -30,43 +33,49 @@ export default function ProjectMiniatureHome({
 
   return (
     <div className={styles.root}>
+      {" "}
       <div ref={constraintsRef} className={styles.carouselArea}>
+        {" "}
         {!isClient ? (
           <div className={styles.skeleton} aria-hidden="true" />
         ) : isDesktop ? (
           <div className={styles.desktopStickyFragment}>
-            <SectionButton text="Projects Overview" selected={false} />
-
+            {" "}
+            <SectionButton text="Projects Overview" selected={false} />{" "}
             <ProjectMiniatureHomeDesktopScroll
               cards={cards}
               constraintsRef={constraintsRef}
               onTravelDistanceChange={setScrollTravelDistance}
-            />
-
+            />{" "}
             <Link href={href} className={styles.link}>
-              <SectionButton text="See more" selected={true} />
-            </Link>
+              {" "}
+              <SectionButton text="See more" selected={true} />{" "}
+            </Link>{" "}
           </div>
         ) : (
           <>
+            {" "}
+            <SectionButton text="Projects Overview" selected={false} />{" "}
             <ProjectMiniatureHomeMobileScroll
               cards={cards}
               constraintsRef={constraintsRef}
-            />
+            />{" "}
             <Link href={href} className={styles.link}>
-              <SectionButton text="See more" selected={true} />
-            </Link>
+              {" "}
+              <SectionButton text="See more" selected={true} />{" "}
+            </Link>{" "}
           </>
         )}
-
         {isDesktop && scrollTravelDistance > 0 ? (
           <div
             className={styles.desktopScrollSpacer}
             aria-hidden="true"
-            style={{ height: scrollTravelDistance }}
+            style={{
+              height: scrollTravelDistance,
+            }}
           />
         ) : null}
-      </div>
+      </div>{" "}
     </div>
   );
 }
