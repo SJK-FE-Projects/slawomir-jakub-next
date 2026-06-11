@@ -121,7 +121,8 @@ export default function ProjectMiniatureHomeMobileScroll({
 
   const MOBILE_LEFT_PADDING = 0;
   const naturalPositions = cards.map(
-    (_, index) => MOBILE_LEFT_PADDING + index * (cardWidth + BASE_CARD_GAP * 0.8),
+    (_, index) =>
+      MOBILE_LEFT_PADDING + index * (cardWidth + BASE_CARD_GAP * 0.8),
   );
   const totalSpread =
     cards.length > 0 && cardWidth > 0
