@@ -8,7 +8,6 @@ import {
   domMax,
   m,
   type MotionValue,
-  useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
@@ -34,7 +33,6 @@ type MobileCardSlotProps = {
   cardWidth: number;
   viewportWidth: number;
   naturalX: number;
-  reducedMotion: boolean;
   measureRef?: RefObject<HTMLDivElement | null> | null;
 };
 
@@ -46,7 +44,6 @@ function MobileCardSlot({
   cardWidth,
   viewportWidth,
   naturalX,
-  reducedMotion,
   measureRef = null,
 }: MobileCardSlotProps) {
   const segSize = 1 / Math.max(total - 1, 1);
@@ -75,7 +72,7 @@ function MobileCardSlot({
         position: "absolute",
         left: -16,
         top: -16,
-        x: reducedMotion ? naturalX : slotX,
+        x: slotX,
         zIndex: index + 1,
       }}
     >
@@ -117,7 +114,6 @@ export default function ProjectMiniatureHomeMobileScroll({
   const [viewportWidth, setViewportWidth] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const [cardHeight, setCardHeight] = useState(0);
-  const reducedMotion = useReducedMotion();
 
   const MOBILE_LEFT_PADDING = 0;
   const naturalPositions = cards.map(
@@ -231,7 +227,6 @@ export default function ProjectMiniatureHomeMobileScroll({
               cardWidth={cardWidth}
               viewportWidth={viewportWidth}
               naturalX={naturalPositions[index]}
-              reducedMotion={Boolean(reducedMotion)}
               measureRef={
                 index === 0
                   ? firstCardMeasureRef

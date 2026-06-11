@@ -8,7 +8,6 @@ import {
   domMax,
   m,
   type MotionValue,
-  useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
@@ -47,7 +46,6 @@ type DesktopCardSlotProps = {
   scrollYProgress: MotionValue<number>;
   cardWidth: number;
   naturalX: number;
-  reducedMotion: boolean;
   measureRef?: RefObject<HTMLDivElement | null> | null;
 };
 
@@ -58,7 +56,6 @@ function DesktopCardSlot({
   scrollYProgress,
   cardWidth,
   naturalX,
-  reducedMotion,
   measureRef = null,
 }: DesktopCardSlotProps) {
   const rotationSeed = createSeededValue(index + 1);
@@ -104,7 +101,7 @@ function DesktopCardSlot({
         left: 0,
         top: 0,
         zIndex: BASE_Z_INDEX[index % BASE_Z_INDEX.length],
-        x: reducedMotion ? naturalX : slotX,
+        x: slotX,
       }}
     >
       <div
@@ -142,7 +139,6 @@ export default function ProjectMiniatureHomeDesktopScroll({
   const layoutFrameRef = useRef<number | null>(null);
   const [cardWidth, setCardWidth] = useState(BASE_CARD_WIDTH);
   const [cardHeight, setCardHeight] = useState(0);
-  const reducedMotion = useReducedMotion();
 
   const LEFT_PADDING = 16;
   const naturalPositions = cards.map(
@@ -236,7 +232,6 @@ export default function ProjectMiniatureHomeDesktopScroll({
             scrollYProgress={invertedScrollY}
             cardWidth={cardWidth}
             naturalX={naturalPositions[index]}
-            reducedMotion={Boolean(reducedMotion)}
             measureRef={
               index === 0
                 ? firstCardMeasureRef
