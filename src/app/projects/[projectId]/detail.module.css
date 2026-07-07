@@ -186,12 +186,10 @@
 
 @keyframes slideUpFade {
     from {
-        opacity: 0;
         transform: translateY(75vh);
     }
 
     to {
-        opacity: 1;
         transform: translateY(0);
     }
 }
