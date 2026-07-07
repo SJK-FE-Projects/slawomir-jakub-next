@@ -56,7 +56,7 @@ export default function ProjectDetailsContent({
               rel="noreferrer"
             >
               <SectionButton
-                text="Visit the website"
+                text="Website"
                 selected={false}
                 className={styles.metaLabel}
               />

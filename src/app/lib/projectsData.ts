@@ -461,7 +461,7 @@ export const projects: Project[] = [
 				pull: 1,
 			},
 			{
-				src: "/projectImages/P6/km2.mp4",
+				src: "/projectImages/P6/KM2.mp4",
 				alt: "KM Image 6",
 				width: 5,
 				pull: 2,
