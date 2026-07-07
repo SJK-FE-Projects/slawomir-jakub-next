@@ -82,6 +82,16 @@
     line-height: 1.15;
 }
 
+.metaLink {
+    min-width: 0;
+    font-size: clamp(1.05rem, 1.25vw, 1.25rem);
+    line-height: 1.15;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    overflow-wrap: anywhere;
+}
+
 .projectDescription {
     margin: 0;
     font-size: clamp(1.05rem, 1.4vw, 1.4rem);
@@ -176,12 +186,10 @@
 
 @keyframes slideUpFade {
     from {
-        opacity: 0;
         transform: translateY(75vh);
     }
 
     to {
-        opacity: 1;
         transform: translateY(0);
     }
 }
