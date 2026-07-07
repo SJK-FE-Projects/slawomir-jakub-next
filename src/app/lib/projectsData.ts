@@ -5,6 +5,7 @@ export type Project = {
 	agency?: string;
 	roles: string;
 	year: string;
+	link?: string;
 	description: string;
 	// Optional structured content: ordered blocks with optional titles and paragraphs
 	descriptionBlocks?: {
@@ -84,6 +85,7 @@ export const projects: Project[] = [
 		client: "Hermaid",
 		roles: "UI Design & Development",
 		year: "2024",
+		link: "https://hermaid.me",
 		description:
 			"Hermaid is a digital health platform focused on menopause and hormone-related life phases — a space where trust is everything and stigma still shapes how women seek help.",
 		// Structured description blocks
@@ -305,6 +307,7 @@ export const projects: Project[] = [
 		agency: "anschlaege.de",
 		roles: "Design System / WebFlow / UX / UI",
 		year: "2023",
+		link: "jugend-im-museum.de",
 		description:
 			"Designed a web and design-system foundation for Jugend im Museum, serving children, teens, parents, educators, and partner institutions. The main UX problem was navigation complexity across diverse offerings such as courses, school formats, projects, and association content. I developed clearer category architecture, filter interactions, and reusable UI patterns to support both fast discovery and deeper editorial browsing. The outcome is a more inclusive and maintainable platform that helps users find relevant programs faster and supports ongoing content growth. Developed on behalf of anschlaege.de.",
 		sectionLabel: "Cultural",
@@ -420,6 +423,7 @@ export const projects: Project[] = [
 		agency: "anschlaege.de",
 		roles: "Screen Design / UX Concept",
 		year: "2022",
+		link: "www.kleist-museum.de",
 		description:
 			"Developed UX concept and screen design for a text-heavy editorial museum platform where content depth and accessibility are equally critical. The challenge was to preserve literary richness while improving scanability, orientation, and cross-linking between exhibitions, events, and educational material. I created component and layout patterns for long-form pages, modular media inserts, and clearer thematic navigation. The resulting direction supports broader audience access to complex cultural content without diluting institutional tone. Project developed on behalf of anschlaege.de.",
 		sectionLabel: "Cultural",
@@ -516,6 +520,7 @@ export const projects: Project[] = [
 		agency: "StanHema",
 		roles: "Screen Design",
 		year: "2021",
+		link: "documenta-fifteen.de/en/",
 		description:
 			"Created screen layouts and motion-focused digital assets for a branding context linked to the fifteenth edition of Documenta, developed on behalf of StanHema. The challenge was translating a strong cultural identity into animated digital expressions that remained readable across channels and devices. My process centered on visual rhythm, typographic timing, and modular layout systems that support campaign consistency. The result was a cohesive set of UI and animation components that extended the brand language into dynamic media touchpoints.",
 		width: 4,

@@ -10,6 +10,7 @@ export type ProjectDetailsContentProject = {
   client: string;
   agency?: string;
   year: string;
+  link?: string;
   roles: string;
   sectionLabel: string;
   description: string;
@@ -33,6 +34,12 @@ type ProjectDetailsContentProps = {
 export default function ProjectDetailsContent({
   project,
 }: ProjectDetailsContentProps) {
+  const websiteHref = project.link
+    ? project.link.startsWith("http://") || project.link.startsWith("https://")
+      ? project.link
+      : `https://${project.link}`
+    : undefined;
+
   return (
     <div
       className={`${layoutStyles[`width${project.width}`]} ${layoutStyles[`pull${project.pull}`]} ${styles.detailsContent}`}
@@ -40,6 +47,24 @@ export default function ProjectDetailsContent({
       <h1 className={styles.projectTitle}>{project.title}</h1>
 
       <div className={styles.metaList}>
+        {websiteHref ? (
+          <div className={styles.metaRow}>
+            <a
+              className={`${styles.metaLabel} ${styles.metaLink}`}
+              href={websiteHref}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <SectionButton
+                text="Visit the website"
+                selected={false}
+                className={styles.metaLabel}
+              />
+            </a>
+            <div className={styles.metaValue} />
+          </div>
+        ) : null}
+
         <div className={styles.metaRow}>
           <SectionButton
             text="Year"
