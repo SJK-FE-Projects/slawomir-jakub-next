@@ -292,12 +292,12 @@ export const projects: Project[] = [
 				width: 4,
 				pull: 2,
 			},
-			// {
-			// 	src: "/projectImages/P7/abi6b.jpg",
-			// 	alt: "ABI Video 3",
-			// 	width: 5,
-			// 	pull: 1,
-			// },
+			{
+				src: "/projectImages/P7/abi2.jpg",
+				alt: "ABI Video 3",
+				width: 5,
+				pull: 1,
+			},
 		],
 	},
 	{
