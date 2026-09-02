@@ -287,17 +287,17 @@ export const projects: Project[] = [
 				pull: 1,
 			},
 			{
-				src: "/projectImages/P7/abi8b.jpg",
+				src: "/projectImages/P7/abi1.jpg",
 				alt: "ABI Video 3",
 				width: 4,
 				pull: 2,
 			},
-			{
-				src: "/projectImages/P7/abi6b.jpg",
-				alt: "ABI Video 3",
-				width: 5,
-				pull: 1,
-			},
+			// {
+			// 	src: "/projectImages/P7/abi6b.jpg",
+			// 	alt: "ABI Video 3",
+			// 	width: 5,
+			// 	pull: 1,
+			// },
 		],
 	},
 	{
